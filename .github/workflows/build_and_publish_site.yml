@@ -1,9 +1,6 @@
 name: Build and publish site
 on:
   workflow_dispatch:
-  push:
-    branches:
-      - current
 permissions:
   contents: write
   pages: write
