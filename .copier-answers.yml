@@ -1,0 +1,8 @@
+# Changes here will be overwritten by Copier
+_commit: '0.1'
+_src_path: gh:Netbeheer-Nederland/template-doc
+description: This is a collection of solution designs for various data products created
+    and maintained by Netbeheer Nederland.
+git_protocol: SSH
+name: solution-designs
+title: Solution Designs
