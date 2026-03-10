@@ -362,7 +362,7 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: Mondeling, Besloten door Enterprise Architect Leon
 
-|{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van https://netbeheer-nederland.github.io/docs-dev/dp-meetdata/latest/index.html[Meetdata].
+|{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van https://modellen.netbeheernederland.nl/meetdata/1.1[Meetdata].
 
 |{counter:bea} |Aanname |Elke dataset bevat gegevens over drie maanden.
 
