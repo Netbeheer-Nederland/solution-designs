@@ -1,0 +1,132 @@
+= Realisatie Dataproducten
+:page-title: Realisatie van Dataproducten
+:page-nav-title: Dataproducten
+
+== Executive Summary
+
+Dit document beschrijft de belemmeringen en oplossingsrichting in het proces
+voor het realiseren van dataproducten door Themateam Datadelen (Klant & Markt).
+Om te versnellen wordt er voorgesteld gebruik te maken van dataproducten
+beheerd door Kernteam Netdigitalisering, vanuit Domeinraad Systeem & Infra.
+Deze dataproducten zijn echter nog niet beschikbaar, waardoor op de korte
+termijn wordt ingezet op het optimaliseren van het bestaande proces. De focus
+ligt hierbij op het verbeteren van governance, businesscase en mandaat.
+
+Op de middenlangetermijn en Langetermijn wordt aangesloten op processen
+ingericht door Kernteam Netdigitalisering, waarbij er synergie ontstaat tussen
+mens, proces en techniek voor dataproducten ontsloten vanuit *Klant & Markt* en
+*Systeem & Infra*.
+
+== Doel
+
+Het doel van dit document is om de concrete stappen en acties te beschrijven
+voor het realiseren van dataproducten door Themateam Datadelen. Nadruk ligt op
+korte-termijnacties die nodig zijn om *governance*, *businesscase* en *mandaat*
+vast te leggen, in voorbereiding van de middenlangetermijn en Langetermijn.
+Deze acties vormen de basis voor de verdere ontwikkeling van dataproducten in
+2026 en 2027.
+
+== Achtergrond
+
+Vanuit *Werkgroep TSO/DSO-interface* (onderdeel van *Kernteam
+Netdigitalisering*, *Domeinraad Systeem & Infra*) worden meerdere dataproducten
+ontsloten met S&I data (connectiviteit, geolokatie, topologie, *steady state*
+en *operations*). Deze dataproducten kunnen als basis dienen voor dataproducten
+(te) realiseren door Themateam Datadelen.
+
+Er wordt momenteel beperkte voortgang geboekt bij het realiseren van
+dataproducten door Themateam Datadelen, waarbij het hergebruiken van
+dataproducten vanuit S&I een versnelling kan opleveren.
+
+== Analyse
+
+Om inzicht te geven in de beperkende factoren voor realisatie van dataproducten
+vanuit Themateam Datadelen wordt de volgende analyse gepositioneerd. Deze
+analyse is gebaseerd op aannames en ervaring vanuit Themateam Datadelen. Voor
+een volledige beoordeling is overleg met externe stakeholders noodzakelijk.
+
+|===
+| Nr | Aspect | Observatie / Uitdaging | Implicatie
+
+| 1
+| Eigenaarschap
+| Onvoldoende eigenaarschap voor dataproducten vanuit de netbeheerders
+| Noodzaak voor duidelijke verantwoordelijkheden
+
+| 2
+| Bestuur en mandaat
+| Het mandaat van de netbeheerder is onvoldoende geborgd
+| Acteerbaar mandaat voor dataproducten uitvoeren. Hier ligt een rol voor het
+  Data Lead Team, Programma LAN en CDOs. Al deze stakeholders dienen een
+  actieve rol (kampioen) in het voorbrengingsproces te hebben
+
+| 3
+| Weerstand
+| Beperkingen door traditionele werkwijzen en beperkte expertise
+| Draagvlak creëren bij netbeheerders via concrete voorbeelden en inhoudelijk
+  opleiden binnen de domeinen architectuur en data
+
+| 4
+| Klantgerichtheid
+| Onvoldoende (perceptie van) klantwaarde in bestaande en voorgestelde
+  dataproducten
+| Dataproducten moeten direct aantoonbare waarde opleveren. Betrek klanten in
+  een vroeg stadium om de druk voor implementatie op te voeren
+
+| 5
+| Businesscase
+| De waarde van dataproducten is niet (voldoende) aantoonbaar
+| De businesscase moet expliciet worden gedefinieerd, uitgedragen en doorleefd
+
+| 6
+| Prioritering
+| Netbeheerders kennen dataproductwerk lage tot geen prioriteit toe
+| Betere prioritering met testcases en stakeholders, ondersteunen met
+  businesscase
+|===
+
+== Tijdspad en Acties
+
+**Kortetermijn (0–6 maanden)**
+
+De focus ligt in deze fase op het expliciet maken van *governance*, *mandaat*
+en *businesscase*. Dit omvat:
+
+* Vastleggen van en acteren op governance en mandaat (knelpunten 1, 2).
+* Het ontwikkelen van businesscase en prioriteiten, in samenspraak met de
+*klant* (knelpunten 5, 6).
+* Voorbereiden van processen en documentatie voor de langere termijn
+(knelpunten 3, 5). Hierbij ondersteunt Themateam Datadelen actief bij het
+inrichten van processen bij decentrale netbeheerders.
+
+**Middenlangetermijn (6–18 maanden)**
+
+De eerste S&I-dataproducten en implementerende teams worden decentraal
+gerealiseerd door Kernteam Netdigitalisering:
+
+* aansluiten bij nieuw gerealiseerde teams bij de netbeheerders, voor
+implementatie van dataproducten voor Themateam Datadelen. Hergebruik van
+processen ingericht door Kernteam Netdigitalisering.
+* nadruk op synergie: zoek overlap tussen *functionele eisen* zowel voor
+Themateam Datadelen als Kernteam Netdigitalisering van toepassing zijn.
+* Testen en evalueren van de dataproducten op basis van S&I-data (knelpunten 3,
+5).
+* Verbeteren van klantwaarde door het ontwikkelen van dataproducten die voldoen
+aan de behoeften van externe stakeholders (knelpunt 5).
+
+**Langetermijn (18+ maanden)**
+
+Het proces wordt volledig opgeschaald en geoptimaliseerd:
+
+* Continue verbetering van S&I-dataproducten door Kernteam Netdigitalisering
+(knelpunten 1–7).
+* Gewenste informatie vanuit S&I wordt gevraagd aan en geïmplementeerd door
+Kernteam Netdigitalisering.
+* Optimalisatie van kwaliteit, traceerbaarheid en klantwaarde.
+
+== Continue verbeteren
+
+Na de initiële implementatie van de eerste dataproducten, moet er een evaluatie
+plaatsvinden van de governance, businesscase en mandaat. Op basis van de
+evaluatie kunnen verdere optimalisaties en verbeteringen worden doorgevoerd om
+het proces en de dataproducten continu te verbeteren.

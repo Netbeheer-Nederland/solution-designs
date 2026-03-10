@@ -1,0 +1,477 @@
+= Netcode Elektriciteit H13
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten
+behorende bij de implementatie van
+https://wetten.overheid.nl/BWBR0037940/2025-05-08#Hoofdstuk13[Netcode
+Elektriciteit Hoofdstuk 13], alsmede de achterliggende architectuur en gemaakte
+keuzes.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Vanuit het kernteam Netdigitalisering is opdracht gegeven voor de start van de
+eerste fase van de projectopdracht. Een eerste deel focust op het leggen van de
+definities voor de samenwerking:
+
+* standaardisering van de attribuutdefinities;
+* opstellen informatiemodellen;
+* identificatie van assets in elkaars net;
+* onderzoeken beschikbaarheid data binnen de organisatie van de DSO en TSO
+  zoals beschreven in Netcode 13.
+
+Het op te leveren product is een informatiemodel ten behoeve van de
+uitwisseling van structurele _asset_ data tussen de netbeheerders. Deze dient
+op zo'n manier vorm te zijn gegeven dat zij de basis vormt voor de tweede fase
+waarin de uitwisseling verder wordt vormgegeven.
+
+Voor de eerste fase is gekozen voor implementatie van artikelen §13.5, §13.6 en
+§13.7, alsmede ondersteunende artikelen.
+
+== Rollen
+
+De dataproducten beschreven in dit ontwerp kennen meerdere stakeholders, elk
+met een eigen verzameling behoeften en wensen. De <<_functionele_eisen>>
+behorend bij elke rol worden in het volgende hoofdstuk beschreven.
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Landelijke Netbeheerder (LNB)
+|Een netbeheerder die is aangewezen voor het beheer van één of meer netten
+ vallend onder het landelijk hoogspanningsnet.
+
+|Regionale Netbeheerder (RNB)
+|Een netbeheerder die is aangewezen voor het beheer van één of meer netten,
+ anders dan het landelijk hoogspanningsnet.
+
+|Toezichthouder
+|De Autoriteit Consument & Markt (ACM) is de onafhankelijke toezichthouder
+ binnen de Nederlandse Energiemarkt.
+|===
+
+== Functionele eisen
+
+De dataproducten zijn onderheving aan functionele eisen: de informatievraag die
+de dataproducten en onderliggende oplossing moeten beantwoorden. Daar waar van
+toepassing zijn functionele eisen gerelateerd aan de
+https://wetten.overheid.nl/BWBR0037940/2025-05-08#Hoofdstuk13[Netcode
+Elektriciteit].
+
+.Functionele eisen
+[cols="1, 1, 3, 3, 2"]
+|===
+|ID |Als Rol |Wil ik |Want |NC13
+
+|{counter:fr}
+|RNB
+|Inzicht in alle onderstations in het landelijk hoogspanningsnet
+|
+|
+
+|{counter:fr}
+|RNB
+|Inzicht in alle voor mij relevante koppelpunten met het landelijk
+hoogspanningsnet
+|
+|
+
+|{counter:fr}
+|LNB
+|Inzicht in elke vermogenstransformator van de RNB, direct gekoppeld aan het
+landelijk hoogspanningsnet
+|
+|
+
+|===
+
+== Dataset
+
+De oplossing voor de implementatie van Netcode H13 bestaat uit het
+implementeren van meerdere dataproducten voor o.a. connectiviteit,
+netelementinformatie en de stabiele toestand van het elektriciteitsnet.
+
+[NOTE]
+====
+Vanuit _Netbeheer Nederland_ is gekozen voor standaardisatie van de
+data-uitwisseling op basis van het _Common Information Model_ (CIM). Het CIM is
+een verzameling internationale standaarden die samen een informatiemodel vormen
+voor het beschrijven van het elektriciteitsnet.
+
+Als beginpunt van het beschrijven van de dataproducten is er gekozen voor de
+_Common Grid Model Exchange Standard_ (CGMES). CGMES is een verzameling
+*profielen* (dataproducten) die meerdere gebruiksscenario's beschrijven,
+specifiek voor Transmission System Operators (TSO). De CGMES is daarmee een
+specialisatie van het CIM, maar niet volledig toepasbaar voor het beschrijven
+van het elektriciteitsnet van de regionale netbeheerder.
+
+De in deze oplossing beschreven dataproducten worden om die reden aangevuld
+vanuit het CIM, daar waar CGMES een functioneel gevraagd gebruiksscenario niet
+ondersteunt.
+====
+
+Er zijn vijf verschillende profielen (dataproducten met bijbehorende datasets)
+nodig om de informatievraag in te vullen:
+
+.Profielen
+[cols="1, 2"]
+|===
+|Profiel |Beschrijving
+
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/index.html[Equipment (EQ)]
+|Eigenschappen van *netfuncties*, de connectiviteit van het elektriciteitsnet
+
+|Operation (OP)
+|Operationele meetwaarden, discreet en analoog. Meetwaarden zijn gemeten,
+ berekend of geschat.
+
+|Geo Location (GL)
+|Fysieke ligging van assets/netfuncties.
+
+|Steady State Hypothesis (SSH)
+|Stabiele toestand van het elektriciteitsnet
+
+|Asset (AS)
+|Fysieke eigenschappen van *netelementen*
+
+|Market (MKT)
+|Marktfacilitering binnen EU-markten
+|===
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+Voor alle vijf de profielen gelden dezelfde kenmerken:
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Medium, de gegevens zijn bij elke netbeheerder beschikbaar, maar niet elke
+ netbeheerder heeft een volledig en/of integraal beeld van het huidig en
+ toekomstig elektriciteitsnet.
+
+|Velocity
+|Laag, datasets worden per kwartaal uitgewisseld en zijn maximaal drie maanden
+ geldig.
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Om invulling te geven aan de functionele behoefte worden er profielen (zie
+<<_dataset>>) uitgewisseld tussen verschillende netbeheerders. Elke
+netbeheerder produceert voor een specifiek profiel één dataset. Deze dataset
+bevat de gevraagde gegevens voor het dekkingsgebied (en corresponderende
+netvlak) van de netbeheerder. Het produceren van datasets geschiedt
+*decentraal*, elke netbeheerder verstrekt alleen gegevens waar desbetreffende
+netbeheerder verantwoordelijk voor is.
+
+Er is één uitzondering op het decentrale aspect van de profielen; gedeelde
+netfuncties. Het elektriciteitsnet bestaat uit een hiërarchie van netfuncties,
+waarbij regionele netbeheerders (RNB) aansluiten op de door de landelijke
+netbeheerder (LNB) beheerde netfuncties. In beginsel betreft dit:
+
+* onderstations (150 kV -> 50 kV)
+* koppelpunten tussen LNB & RNB en beheerders van _gesloten
+  distributiesystemen_.
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+shape: sequence_diagram
+
+Landelijke\nNetbeheerder -> Landelijke\nNetbeheerder: "1. Verzamel gegevens"
+Landelijke\nNetbeheerder -> Regionale\nNetbeheerder: "2. Lever profielen"
+
+Regionale\nNetbeheerder -> Regionale\nNetbeheerder: "3. Verwerk koppelpunten"
+Regionale\nNetbeheerder -> Landelijke\nNetbeheerder: "4. Lever profielen"
+Regionale\nNetbeheerder -> Regionale\nNetbeheerder: "5. Lever profielen"
+----
+
+1. de LNB verzamelt intern de gegevens voor de gevraagde datasets (zie
+<<_dataset>>)
+2. de LNB levert de datasets behorende bij de profielen aan de RNBs. De dataset
+met connectiviteitgegevens (_Equipment Profile_) voor het hoogspanningsnet
+bevat de koppelpunten met de RNBs;
+3. de RNB ontvangt en verwerkt de koppelpunten als beginpunt van de eigen
+datasets. Er wordt gerefereerd naar koppelpunten in het _Equipment Profile_ van
+de LNB, van waaruit de profielen door elke RNB voor haar dekkingsgebied verder
+worden ingevuld;
+4. de RNB levert de profielen aan de LNB voor verdere verwerking door de LNB;
+5. de RNB levert de profielen aan de andere RNBs voor verdere verwerking door
+de RNBs.
+
+Om bovenstaande gebruiksscenario te ondersteunen dient elke netbeheerder een
+aantal processen te implementeren, beschreven onder <<_architectuur>>.
+
+=== Kwaliteitseisen
+
+Kwaliteitseisen (_non functionals_) beschrijven wat een oplossing moet *zijn*.
+Voor dit ontwerp wordt de categorisering vanuit _ISO/IEC 25010_ aangehouden,
+waar van toepassing.
+
+.Kwaliteitseisen
+[cols="1, 2, 2"]
+|===
+|Categorie |Beschrijving |Kwaliteitseisen
+
+ |Prestaties
+ |Snel en efficiënt functioneren, met minimale laadtijden en schaalbaar
+a|
+
+ |Overdraagbaarheid
+ |Eenvoudig te verplaatsen of te migreren naar een andere omgeving
+a|
+
+ |Gebruiksvriendelijkheid
+ |Intuïtief en makkelijk te gebruiken voor de eindgebruiker
+a|
+
+ |Betrouwbaarheid
+ |Stabiel en foutbestendig, met een hoge beschikbaarheid
+a|
+
+ |Beveiliging
+ |Bescherming bieden tegen ongeautoriseerde toegang en datalekken
+a|
+
+ |Onderhoudbaarheid
+ |Eenvoudig aanpasbaar en uitbreidbaar zijn
+a|* één aanspreekpunt (team) per netbeheerder
+|===
+
+== Voorwaarden
+
+De vijf profielen (zie <<_dataset>>) worden als *open data* aangeboden,
+onder de _Grondslag Wettelijke Verplichting_.
+
+== Architectuur
+
+De oplossing wordt beschreven over de as van twee perspectieven: het produceren
+van de profielen (_Build_) en het uitwisselen van de profielen (_Run_). Beide
+perspectieven worden gestructureerd op basis van het bedrijfsprocesmodel van
+_NBility_ en waar nodig aangevuld. De bedrijfsprocessen zijn wat een
+netbeheerder implementeert binnen de eigen organisatie om tot een duurzame
+ontsluiting van de dataproducten te komen. Daarnaast vormen de
+bedrijfsprocessen de basis van de _features_ geïmplementeerd door elke
+netbeheerder.
+
+De architectuur zelf is abstract; *elke* netbeheerder wordt geacht een eigen,
+passende invulling te geven aan de bedrijfsprocessen zoals beschreven in dit
+ontwerp. Voorkeur ligt op het hergebruiken van bestaande bedrijfsprocessen
+binnen de netbeheerder.
+
+[NOTE]
+====
+Voor de architectuur van de oplossing wordt gebruik gemaakt van meerdere
+perspectieven beschreven in het https://github.com/NBility-Model[NBility
+model].
+====
+
+[NOTE]
+====
+De https://github.com/Netbeheer-Nederland/am-doelarchitectuur-datadelen[Doelarchitectuur
+Datadelen] wordt als basis gebruikt voor de uitwerking van de oplossing.
+Profielen (zie <<_dataset>>) zoals beschreven in dit ontwerp worden als
+dataproduct beschreven en uitgewisseld.
+====
+
+=== Beschikbaar stellen van netbeheerdata (Build)
+
+Elke netbeheerder is zowel producent als consument van de profielen. Daarmee
+moet de netbeheerder in staat zijn om profielen te produceren onder de
+_velocity_ die past bij het corresponderende profiel (zie
+<<_volume_variety_veracity_velocity>>). Om dit te faciliteren implementeert de
+netbeheerder onderstaande bedrijfsprocessen en bedrijfsfuncties om de profielen
+gereed te maken voor uitwisseling (zie
+<<_beschikbaar_stellen_van_netbeheerdata_run>>).
+
+Primaire actoren zijn de _netbeheerder_ voor het beschikbaar stellen van de
+profielen en _Team Semantiek_ (_Netbeheer Nederland_) voor het beheer van de
+informatiemodellen behorende bij de profielen.
+
+.Beschikbaar stellen van netbeheerdata (Build)
+image::beschikbaar_stellen_van_netbeheerdata_build-20250602.svg[]
+
+[cols="1, 2, 3"]
+|===
+|Type |Naam |Beschrijving
+
+|Bedrijfsproces
+|Vindbaar maken dataproduct
+|Onder de _Doelarchitectuur Datadelen_ is elk profiel FAIR (_Findable_,
+ _Accessible_, _Interoperable_, _Reusable_), waarbij dit proces het profiel
+ vindbaar maakt. Vindbaar maken bestaat uit het registeren van het profiel in de
+ _Data Product Catalog_, samen met het publiceren van de locatie van de dataset.
+
+|Bedrijfsproces
+|In behandeling nemen dataproductverzoek
+|Bij implementatie of aanpassen van een profiel dient er aangesloten te worden
+ op het voortbrengingsproces van de netbeheerder. Dit proces faciliteert
+ prioritering van implementatie van het profiel.
+
+|Bedrijfsproces
+|Overeenkomen dataproduct
+|Definitie, _refinement_ en uitvoering van de werkzaamheden om (aanpassingen
+ in) het profiel te realiseren. Werkzaamheden vinden primair plaats in de
+ _dataintegratieomgeving_ van de netbeheerder. Werkzaamheden uitvoerd in dit
+ proces vinden hun uiting in de _Netbeheerderdataverstrekking_.
+
+|Bedrijfsfunctie
+|Master Data Management
+|Opzetten, verbeteren en instandhouden van Master Data Management (MDM) binnen
+ de netbeheerder. Dit omvat beleid, proces en procedure rondom het consistent
+ en (waar nodig) persistent omgaan met identifiers.
+|===
+
+=== Beschikbaar stellen van netbeheerdata (Run)
+
+Het uitwisselen van profielen bestaat uit het technisch ontsluiten van de
+dataservices en datasets, toegangsbeheer, datakwaliteit, afhandelen van vragen
+en het aannemen van -en communiceren over- functionele eisen.
+
+.Beschikbaar stellen van netbeheerdata (Run)
+image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
+
+[cols="1, 2, 3"]
+|===
+|Type |Naam |Beschrijving
+
+|Bedrijfsproces
+|Authenticatie en autorisatie
+|Authenticeren en autoriseren van toegang tot profielen. Dit betreft de
+ technische middelen om toegang te beveiligen, alsmede het beheren van de
+ _identiteit_ van netbeheerders via een _Identity Access Management_-oplossing.
+
+|Bedrijfsproces
+|Leveren dataproduct
+|Het (geautomatiseerd) beschikbaar stellen van de _dataset_ voor profielen, via
+ de corresponderende _dataservice_.
+
+|Bedrijfsfunctie
+|Datakwaliteit borgen
+|Het controleren en corrigeren van datakwaliteit van de profielen. Dit omhelst
+ (geautomatiseerde) controle van de datasets tot beleid, proces en procedure
+ voor correctie van datasets.
+
+|Bedrijfsproces
+|Behandelen vraag over dataproduct
+|Vragen van afnemers van de profielen beantwoorden. Dit kan gaan om
+ inhoudelijke vragen over gebruik van de profielen, maar ook
+ datakwaliteitgerelateerde zaken. Interactie wordt vastgelegd als _Algemene
+ klantzaak_ in de _Customer Management_-oplossing van de netbeheerder.
+
+|Bedrijfsproces
+|Vaststellen functionele eisen
+|Sommige vragen leveren nieuwe functionele eisen op voor profielen. Dit proces
+ handelt implementatievragen af vanuit _Netbeheer Nederland_ en faciliteert het
+ consolideren van implementatievragen van andere netbeheerders, indien niet
+ direct bij _Netbeheer Nederland_ belegd.
+|===
+
+== Beslissingen en aannames
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Beslissing
+|Voor de gegevensuitwisseling tussen netbeheerders wordt gekozen voor een
+ invulling op basis van NBility waardestroom _P.H Beschikbaar stellen van
+ netbeheerdata_. Deze waardestoom voorziet in het uitwisselen van dataproducten
+ tussen netbeheerders en derden, en bevat meer dan nodig voor uitwisseling
+ tussen netbeheerders. Voor dit ontwerp zijn alleen de datasets en dataservices
+ nodig om de oplossing te realiseren. Echter, met het oog op hergebruik wordt
+ al voorgesorteerd op het kunnen uitwisselen van de dataproducten met derden.
+
+|Beslissing
+|_Use cases_ worden incrementeel opgesteld, waarbij het ontwerp bij nieuwe use
+ cases wordt aangepast. Dit houdt in dat er over de tijd meer NBility
+ waardestromen in scope worden gebracht.
+
+|Beslissing
+|Voor het beschrijven van de dataproducten wordt CGMES gebruikt, aangevuld
+ vanuit het CIM.
+
+|Beslissing
+|_CGMES-interop_ is geen doel van de oplossing, door de uitbreiding nodig voor
+ de regionale netbeheerder kan interoperabiliteit met CGMES niet gerealiseerd
+ worden.
+
+|Beslissing
+|Minstens één landelijke en één regionale netbeheerder is als producent en
+ consument van de profielen beschikbaar om kwaliteit en toepasbaarheid te
+ testen.
+
+|Aanname
+|Profielen (alle data die onder Netcode H13 wordt uitgewisseld) worden als open
+ data aangeboden. Profielen zijn zuiver netbeheerderdata en daarmee onderhevig
+ aan de _Visie Datadelen_. Deze aanname is alleen van toepassing indien de
+ profielen ook als dataproducten aan derden worden verstrekt.
+
+|Aanname
+|Netbeheerders factureren *niet* onderling voor het uitwisselen van de
+ profielen.
+
+|Aanname
+|Elke netbeheerder implementeert de architectuur op basis van eigen middelen en
+ invulling. Het ontkoppelpunt tussen netbeheerders zijn de
+ profielen/dataproducten die uitgewisseld worden.
+
+|Aanname
+|Elke netbeheerder publiceert via de eigen
+ dataintegratieomgeving/maatwerkproces decentraal de profielen.
+
+|Aanname
+|Technische architectuur (integratiepatroon, dataplatform, etc.) worden op
+ een later moment uitgewerkt nadat _business analyse_ de correctheid van
+ <<_volume_variety_veracity_velocity>> bevestigt.
+
+|Aanname
+|Netbeheerders maken gebruik van decentrale IAM-oplossingen, er wordt geen
+ gefedereerde IAM-oplossing ingezet.
+
+|Aanname
+|De _NBNL Data Catalog_ is beschikbaar.
+
+|Aanname
+|Datasets worden per kwartaal geleverd en zijn maximaal 3 maanden geldig.
+
+|Beslissing
+|Er wordt afgeweken van de in _NBility_ beschreven waardestromen: _Overeenkomen
+ dataproduct_ wordt gebruikt om dataproducten te realiseren. NBility definieert
+ een complete waardestroom voor het realiseren van nieuwe producten, wat
+ significant meerwerk in scope brengt voor dit ontwerp. Implementerende
+ netbeheerders worden geadviseerd naar waardestroom _I.B Veranderen
+ bedrijfsinrichting_ te kijken voor implementatie van een voortbrengingsproces.
+
+|Aanname
+|Gedurende implementatie van het ontwerp door _Werkgroep TSO/DSO_ is de
+ werkgroep eigenaar van de te implementeren profielen.
+|===

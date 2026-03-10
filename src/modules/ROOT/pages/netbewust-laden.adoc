@@ -1,0 +1,243 @@
+= Netbewust Laden
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
+https://netbeheer-nederland.github.io/docs/dp-netbewust-laden/latest/[``Netbewust
+Laden``], alsmede de achterliggende architectuur en gemaakte keuzes.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+De gezamenlijke netbeheerders verwachten dat door de sterk toenemende vraag
+naar netcapaciteit op de LS-netten congestie zal ontstaan en waarbij _NetBewust
+Laden_ gezien wordt als een van de oplossingen.
+
+Dit dataproduct biedt de gezamenlijke netbeheerders de mogelijkheid om
+periodiek op een uniforme wijze inzicht te geven aan de gemeenten,
+laadpaalexploitanten, NAL-regio’s en andere belanghebbenden in welke gebieden
+(dreigende) capaciteit schaarste te verwachten valt.
+
+Dit om de mobiliteitstransitie te kunnen faciliteren en om de lokaal
+beschikbare netcapaciteit optimaal mogelijk te benutten voor alle gebruikers
+van elektriciteit en overbelasting door pieken in de vraag te voorkomen. Het
+alternatief is het verzwaren van het net wat een lange doorlooptijd kent, hoge
+investeringen en de energie transitie zal vertragen.
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+Gebruiker -> EDSN: 1. Zoek dataproduct op NBNL Dataportaal
+EDSN -> Gebruiker: 2. Vind dataproduct
+Gebruiker -> Netbeheerder: 3. Vraag dataset bij individuele netbeheerder
+Netbeheerder -> Gebruiker: 4. Lever dataset
+Gebruiker -> Gebruiker: 5. Verwerk dataset
+----
+
+1. de gebruiker zoekt het dataproduct op het NBNL Dataportaal;
+2. de gebruiker vindt het gezochte dataproduct;
+3. de gebruiker downloadt de dataset voor een individuele netbeheerder vanuit
+   de decentrale dataservice;
+4. de netbeheerder levert de dataset;
+5. de gebruiker verwerkt de dataset(s) voor eigen doeleinden.
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+"Netbeheerder".class: [noun; business]
+Consumer.class: [noun; business]
+1.class: empty
+2.class: empty
+
+3.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+"HTTP Server".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+4.class: empty
+
+5.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Consumer -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"HTTP Server" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "HTTP Server": "assigned to"
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+* de structuur (logisch model) van de dataset behorende bij het dataproduct is
+  gebaseerd op het conceptuele model _Begrippenmodel NBNL_ en het _Common
+  Information Model_;
+* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
+  Een JSON Schema op basis van het logisch model is hiervoor beschikbaar
+  gemaakt;
+* netbeheerders leveren de dataset aan via een eigen bestandslocatie;
+* het dataproduct _Netbewust Laden_ is vindbaar via het NBNL Dataportaal.
+
+== Dataset
+
+De dataset beschrijft capaciteits- en belastinginformatie voor kabels en
+transformatoren, clustering van laadpalen en bijbehorende _Charge Point
+Operators_ (CPO).
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Medium, sluit aan op het bestaande inzicht van de netbeheerder in het LS-net
+
+|Velocity
+|Laag, dataset verandert wanneer de clustering verandert
+|===
+
+== Voorwaarden
+
+Dit dataproduct wordt als _open data_ aangeboden.
+
+== Beslissingen en aannames
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Beslissing
+|Dataproduct _NetBewust Laden_ wordt als decentraal dataproduct onder een gecentraliseerd schema beschikbaar gemaakt.
+|===

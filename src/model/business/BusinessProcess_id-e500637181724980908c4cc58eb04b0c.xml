@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="Vaststellen functionele eisen"
+    id="id-e500637181724980908c4cc58eb04b0c">
+  <properties
+      key="Level"
+      value="3"/>
+  <properties
+      key="Code"
+      value="I.B.1.1.1"/>
+  <properties
+      key="Name (en)"
+      value="Define functional requirements"/>
+</archimate:BusinessProcess>

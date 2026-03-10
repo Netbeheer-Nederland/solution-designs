@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="In behandeling nemen dataproductverzoek"
+    id="id-b451197ec3a0463ab882f1e07b16d03a">
+  <properties
+      key="Level"
+      value="3"/>
+  <properties
+      key="Code"
+      value="P.H.1.1.2"/>
+  <properties
+      key="Name (en)"
+      value="Process dataproduct request"/>
+</archimate:BusinessProcess>

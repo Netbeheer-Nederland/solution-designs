@@ -1,0 +1,8 @@
+Data kent vier kenmerken:
+
+* _volume_: data kent een volume, een hoeveelheid;
+* _variety_ (variëteit): data is te verdelen in gestructureerde en
+  ongestructureerde data. Ongestructureerde data kent geen metamodel;
+* _veracity_ (betrouwbaarheid): de mate waarin de data vertrouwd kan worden
+  voor de toepassing;
+* _velocity_ (snelheid): de frequentie waarmee data verandert.

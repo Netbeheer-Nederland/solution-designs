@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="Authenticeren &amp; autoriseren"
+    id="id-2a490f7348d640cc97555cc107a8d55e">
+  <properties
+      key="Level"
+      value="3"/>
+  <properties
+      key="Code"
+      value="P.H.2.1.2"/>
+  <properties
+      key="Name (en)"
+      value="Authenticate &amp; authorise"/>
+</archimate:BusinessProcess>

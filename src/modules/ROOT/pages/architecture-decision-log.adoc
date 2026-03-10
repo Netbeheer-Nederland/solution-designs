@@ -1,0 +1,30 @@
+= Architecture Decision Log (ADL)
+
+Maintainer::
+    mailto:rteunissen@netbeheernederland.nl[R. Teunissen] (Netbeheer Nederland)
+Release date::
+    30-01-2026
+
+Het doel van dit document is het vastleggen van belangrijke
+architectuurbeslissingen, inclusief context, afwegingen en consequenties.
+
+[cols="1,1, 2, 2"]
+|===
+|# |Datum |Beslissing |Context
+
+|AD-001
+|01-09-2025
+|Dataproducten onder integratiepatroon _Read-only Data Store_ (_Bulk_) worden
+als JSON-LD uitgewisseld.
+|https://www.w3.org/TR/json-ld11/[JSON-LD] is de _W3C Recommendation_ voor het
+uitwisselen van Linked Data, wat aansluit bij de structuur van het _Common
+Information Model_.
+
+|AD-002
+|21-01-2026
+|Centrale dataproducten, zoals dataproducten afgeleid vanuit de
+https://netbeheer-nederland.github.io/docs-dev/doc-modeling-guidelines/latest/index.html[NBNL
+Profile Group], worden uitgewiseld via EDSN.
+|EDSN stelt faciliteiten voor technische uitwisseling via _S3 Bucket_, _REST
+API_ en handmatige upload beschikbaar vanuit de _File Gateway_.
+|===

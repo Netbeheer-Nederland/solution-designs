@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="Leveren dataproduct"
+    id="id-a54302a5969b4be3a6ec64f40877fea7">
+  <properties
+      key="Level"
+      value="3"/>
+  <properties
+      key="Code"
+      value="P.H.2.1.1"/>
+  <properties
+      key="Name (en)"
+      value="Deliver dataproduct"/>
+</archimate:BusinessProcess>

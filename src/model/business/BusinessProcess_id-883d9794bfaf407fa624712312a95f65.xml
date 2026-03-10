@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="Overeenkomen dataproduct"
+    id="id-883d9794bfaf407fa624712312a95f65">
+  <properties
+      key="Level"
+      value="3"/>
+  <properties
+      key="Code"
+      value="P.H.1.2.2"/>
+  <properties
+      key="Name (en)"
+      value="Agree dataproduct"/>
+</archimate:BusinessProcess>

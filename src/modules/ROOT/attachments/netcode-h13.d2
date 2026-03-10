@@ -1,0 +1,99 @@
+vars: {
+  d2-config: {
+    layout-engine: elk
+    pad: 20
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  hide: {
+      style: {opacity: 0}
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#f0a825"
+    }
+  }
+  application: {
+    style: {
+      fill: "#ef709d"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#337e7d"
+      font-color: "#fff"
+    }
+  }
+  start: {
+    style: {
+      fill: "#00abe9"
+    }
+  }
+  role: {
+    style: {
+      fill: "#c1dc8e"
+    }
+  }
+}
+
+steps: {
+    1: {
+        "Netcode H13".class: start
+        "Mens, proces & techniek".class: [verb; business]
+        "Dataproducten".class: [application; noun]
+        "Use cases".class: [business; noun]
+
+        "Netcode H13" -> "Mens, proces & techniek": "omvat"
+        "Netcode H13" -> "Dataproducten": "omvat"
+        "Netcode H13" -> "Use cases": "omvat"
+    }
+    2: {
+        "Business Analist".class: role
+        "Team Semantiek".class: role
+        "Netbeheerder".class: role
+
+        "Business Analist" -> "Use cases": "beschrijft"
+        "Team Semantiek" -> "Dataproducten": "beschrijft"
+        "Netbeheerder" -> "Mens, proces & techniek": "implementeert"
+    }
+    3: {
+        "Use cases" -> "Dataproducten": "stuurt"
+        "Mens, proces & techniek" -> Dataproducten: "realiseert"
+    }
+    4: {
+        "CIM".class: [noun; technology]
+        "CGMES".class: [noun; technology]
+
+        "Dataproducten" -> "CIM": "conform"
+        "Dataproducten" -> "CGMES": "gebaseerd op"
+    }
+    5: {
+        "Eén\naanspreekpunt".class: [verb; business]
+        "Kwaliteit- &\nmasterdatamanagement".class: [verb; business]
+        "Implementatie &\nbeheer".class: [verb; business]
+
+        "Mens, proces & techniek" -> "Eén\naanspreekpunt": "realiseert"
+        "Mens, proces & techniek" -> "Kwaliteit- &\nmasterdatamanagement": "realiseert"
+        "Mens, proces & techniek" -> "Implementatie &\nbeheer": "realiseert"
+    }
+    6: {
+        "Profiles".class: [noun; technology]
+        "JSON-LD".class: [noun; technology]
+
+        "CGMES" -> "Profiles": "gestructureerd in"
+        "CGMES" -> "JSON-LD": "uitgewisseld als"
+    }
+}

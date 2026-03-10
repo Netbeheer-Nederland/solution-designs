@@ -1,0 +1,520 @@
+= Nettopologie, belasting en capaciteit (NBC)
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _NBC_ (nettopologie, belasting en capaciteit), alsmede de achterliggende architectuur en gemaakte keuzes. 
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Het doel is om belanghebbende (Technische Adviseurs en Derden) voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor GV-klanten te doen, waardoor het net beter wordt benut.
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 21
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Netbeheerder
+|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen.
+
+|GV-klant
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m^3^(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998.
+
+|Technisch adviseur
+|Een organisatie of persoon die faciliteert bij het zoeken naar oplossingen voor congestieproblematiek door energie-advies te geven.
+
+|Derden
+|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt vanuit dit dataproduct.
+
+|===
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
+
+.Functionele eisen
+[cols="1, 1, 3, 3"]
+|===
+|ID |Als Rol |Wil ik |Want
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) _capaciteit_ kunnen krijgen
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
+
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik kan dan bepalen hoe de _aansluitingen_, _verbindingen_ en _stations_ onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik krijg dan _handelingsperspectief_ om met slimme oplossingen te komen om het net beter te benutten
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
+
+|{counter:fr}
+|Netbeheerder
+|Enkel inzicht verstrekken vanuit *use case*-perspectief.
+|Ik moet voldoen aan beleid rondom het communiceren van _nettopologie_ van de netbeheerder.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de (technische) _zekeringswaarde_ van het overdrachtspunt.
+|Ik wil inzicht in de bandbreedte van energieverbruik.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de kabels en of deze onder _congestie_ (afname & invoeding) liggen.
+|Ik moet _aansluitingen_ op deze kabels uitsluiten van deelname aan een _energiehub_
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de individuele _capaciteit_ van kabels.
+|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een _energiehub_ toetsen/doorrekenen.
+
+|{counter:fr}
+|Derde
+|Inzicht in de_ capaciteit_ en _restcapaciteit_ (_vrije ruimte_) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
+|Dit geeft inzicht in de _capaciteit_
+
+// |{counter:fr}
+// |Derde
+// |Inzicht in de _belasting_ op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
+// |#TODO: ?#
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de wachtrij (gevraagd vermogen) ?
+|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een _energiehub_.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de _nettopologie_, de _capaciteit_ en de _belasting_ van _stations_ en _verbindingen_
+|Als de RNB een CBC (Capaciteitsbeperkings Contract) afkeurt zonder alternatief te bieden dan wil ik de zaken zelf doorrekenen.
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil graag de _nettopologie_, de _vrije ruimte_ op een _station_ en de _verbindingen_ weten.
+|Ik wil een zo relevant mogelijk voorstel doen aan de netbeheerder en dit binnen een zo kort mogelijke doorlooptijd emet met een concrete aanbeveling naar de klant (de aangeslotene)
+
+|{counter:fr}
+|Technisch adviseur
+|Informatie over _capaciteit_ en _belasting_ van _verbindingen_ en _stations_ die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
+|Ik wil geen netrekencapaciteiten ontwikkelen.
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik weet hiermee wat er wanneer mogelijkerwijs nog wel kan
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik kan hiermee een (grove) business case maken voor individuele en collectieve oplosingen en de inzet van energieassets 
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik kan hiermee gericht een voorstel doen richting netbeheerders die bijdraagt aan het beter benutten van het net en hiermee GV-klanten helpen die geen extra capaciteit kunnen krijgen
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"TA": "Technisch\nAdviseur"
+"GV-klant": "GV\nklant"
+"NB": "Netbe-\nheerder"
+
+"TA" -> "GV-klant": "1. Verzoekt om NBC tbv advies"
+"GV-klant" -> "NB": "2. Verzoekt om NBC"
+"NB" -> "GV-klant": "3. Verzoekt om authenticatie \nen welke EAN"
+"GV-klant" -> "NB": "4. Authenticeert en levert EAN"
+"NB" -> "NB": "5. Bepaalt NBC op basis van EAN\nvoor afgaand veld + station"
+"NB" -> "GV-klant": "6. Levert NBC-gegevens"
+"GV-klant" -> "TA": "7. Levert NBC-gegevens"
+"TA" -> "TA": "8. Maakt advies"
+"TA" -> "GV-klant": "9. Geef advies"
+
+----
+
+1. De Technisch Adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
+2. De GV-klant vraagt zijn netbeheerder om NBC-gegevens van een specifiek gebied;
+3. De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
+4. De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
+5. De netbeheerder bepaalt het afgaande veld en het bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens van een specifiek gebied behorende bij dit station;
+6. De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
+7. De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
+8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
+9. De Technische Adviseur geeft zijn advies aan de GV-klant.
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+Netbeheerder.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
+5.class: empty
+
+6.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+"MijnOmgeving/Maatwerk".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+7.class: empty
+
+8.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Extract -> Consumer: "serves"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+== Dataset
+
+De dataset beschrijft van een EAN de nettopologie, de belasting en de capaciteit (operationele limiet) van het afgaande veld dat bij deze EAN hoort en haar transformator.
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Midden
+
+|Velocity
+|Laag, datasets worden op verzoek samengesteld
+
+|===
+
+== Voorwaarden
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de netbeheerder. 
+
+== Beslissingen en aannames
+
+[cols="1, 3, 6"]
+|===
+|Id |Type |Beschrijving
+
+|{counter:ba}
+|Beslissing
+|Nettopologie, belasting en capaciteit worden drie dataproducten. 
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
+
+|{counter:ba}
+|Beslissing
+|Nettopologie mag niet als open data gepubliceerd worden, maar uitsluitend aangeboden worden per gebied per use case.
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
+
+|{counter:ba}
+|Aanname
+|GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt
+
+|{counter:ba}
+|Beslissing
+|Capaciteit (operationele limiet) mag niet als open data gepubliceerd worden, maar uitsluitend aangeboden worden per gebied per use case.
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
+
+|{counter:ba}
+|Beslissing
+|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming. In 2026 gaan we toewerken naar centrale uitlevering
+
+// Bron: Petra Barelds, mail "Notities 15 juli - Specificatie/realisatie nettopologie, operationele limiet en belasting", di 15-7-2025 17:24
+
+|{counter:ba}
+|Aanname
+|De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor dit dataproduct (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken
+
+|{counter:ba}
+|Aanname
+|Capaciteit in kVA in plaats van werkelijk vermogen, hanteren we dan een cos(phi) van 1 of bijv 0,85
+
+|{counter:ba}
+|Aanname
+|Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV)
+
+|{counter:ba}
+|Aanname
+|We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie
+
+|{counter:ba}
+|Aanname
+|De belastingsdata kan als gevolg van onderhoud en/of storing afwijken van de normaalstand
+
+|{counter:ba}
+|Aanname
+|Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd
+
+|{counter:ba}
+|Aanname
+|Er is besloten rekening te houden met _N-1_; op basis van de normaalstand dus de operationele limiet van de transformator.
+
+|{counter:ba}
+|Aanname
+|Geen gegevens over kabels
+
+|{counter:ba}
+|Beslissing
+|Het delen van de netfuncties en de geografische ligging ervan is een risico vanuit de bescherming van informatie over ons net. Liggingsdata kan misbruikt worden voor sabotage of fysieke aanvallen. Daarom wordt deze data niet als open dataproduct beschouwt, zij kan passief openbaar gemaakt worden.
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
+
+|{counter:ba}
+|Aanname
+|Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
+
+|{counter:ba}
+|Beslissing
+|Geolocatie ook niet over stations. Het delen van de netfuncties en de geografische ligging ervan is een risico vanuit de bescherming van informatie over ons net. Liggingsdata kan misbruikt worden voor sabotage of fysieke aanvallen. Daarom wordt deze data niet als open dataproduct beschouwt, zij kan passief openbaar gemaakt worden.
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
+
+|{counter:ba}
+|Aanname
+|Het combineren van datasets levert mogelijk meer informatie
+
+|{counter:ba}
+|Aanname
+|Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie
+
+|{counter:ba}
+|Aanname
+|Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen
+
+|{counter:ba}
+|Aanname
+|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd
+
+|{counter:ba}
+|Aanname
+|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energiehub
+
+|{counter:ba}
+|Beslissing
+|Met specifiek gebied wordt bedoeld de afbakening van station met afgaande velden tot en met GV-aansluitadressen. De aanvrager kan dit aanvragen op basis van een bepaalde EAN uit dat gebied of op basis van een bepaald adres uit dat gebied of op basis van de routenaam/stationsnaam. Dit laatste is alleen mogelijk als de desbetreffende partij ook al in bezit is van netburen, nettopologie of in geval van Liander de EBS. 
+
+|{counter:ba}
+|Beslissing
+|We delen de waarde (capaciteit en belasting)  waar de netbeheerder vanuit gaat. Aangezien het beleid verschilt per netbeheerder kan de opbouw van de data dus ook van elkaar verschillen. Het is niet aan ons om die beleidsregels te uniformeren. Voorbeeld is dat Liander corrigeert t.o.v. de normaalstand en andere netbeheerders mogelijk (nog) niet. 
+
+// Bron: Petra Barelds, mail "Notities voortgangsoverleg 19 aug nettopologie, capaciteit en belasting", vr 22-8-2025 17:06
+
+|{counter:ba}
+|Beslissing
+|Data wordt gemaskeerd bij minder dan vijf (5) GV-aansluitingen. Hiermee voldoende de anonimiteit van de bedrijven wordt gewaarborgd. Voor gegevens van personen wordt 10 gehanteerd. Dit aantal is voor bedrijven vaak niet haalbaar. Overigens geldt wel dat als één bedrijf de uitkomst van het gemiddelde zodanig beïnvloedt dat de gegevens alsnog tot dat ene bedrijf te herleiden zijn, er ook niets gedeeld mag worden. 
+
+// Bron: Koen de Natris, mail "Dataproducten EBS vs Sector", dinsdag 29 juli 2025 14:20
+
+|{counter:ba}
+|Beslissing
+|Het delen van belastingsdata mag niet indien dat herleidbaar is naar individuele energiedata
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
+
+|{counter:ba}
+|Beslissing
+|Er is voor al deze dataproducten een risico op fouten in de data, misinterpretaties van de data en verkeerde aannames o.b.v. deze data, die leiden tot verkeerde adviezen of investeringen. Dit risico moet gemitigeerd worden door een disclaimer op te nemen waarin het voorbehoud staat van fouten en wijzigingen
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 4
+|===
+
+// == Technische en ambigue begrippen
+// 
+// In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie (interpretatie) in spreektaal.
+// 
+// [cols="2, 8"]
+// |===
+// |Begrip |Informele definitie (interpretatie)
+// 
+// |Aansluiting |Recht op gebruik van een verbinding
+// |Belasting |Een waarde die aangeeft welk deel van de capaciteit benut wordt
+// |Capaciteit |Een waarde die aangeeft wat een elektrische geleider zou kunnen
+// |Congestie |Een afname of invoeding die de capaciteit van een elektrische geleider overtreft
+// |Energiehub |Een samenwerking tussen bedrijven en organisaties om hun lokale energievoorziening te organiseren
+// |Handelingsperspectief |Het hebben van mogelijkheden om in moeilijke situaties toch te kunnen handelen 
+// |Nettopologie |Het netwerk op een gegeven moment in de tijd
+// |Operationele limiet |De hoogste waarde die tijdens de uitvoering toegestaan kan worden. Verwant aan zekeringswaarde, maar niet altijd daaraan gelijk
+// |Overdrachtspunt |De overeengekomen grens waarop de verantwoordelijkheid overgaat van het energienet van de netbeheerder naar de installatie van de aangeslotene, of tussen twee energienetten
+// |Restcapaciteit |Dat deel van capaciteit dat niet benut wordt. Verwant aan vrije ruimte, maar niet altijd daaraan gelijk 
+// |Verbinding |Object waar energie door getransporteerd wordt
+// |Vrije ruimte |Dat deel van capaciteit dat niet benut wordt. Verwant aan restcapaciteit, maar niet altijd daaraan gelijk 
+// |Zekeringswaarde |Waarde die aangeeft hoe zwaar een zekering moet zijn om een elektrisch circuit te beschermen tegen overbelasting en kortsluiting. Verwant aan operationele limiet, maar niet altijd daaraan gelijk
+// 
+// |===

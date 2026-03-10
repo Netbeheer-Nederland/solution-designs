@@ -1,0 +1,408 @@
+= Meetdata
+
+Dit ontwerp beschrijft de beoogde gebruiksscenario's voor het dataproduct
+https://netbeheer-nederland.github.io/docs/dp-meetdata/latest/[``GV
+Meetdata``], alsmede de achterliggende architectuur en gemaakte keuzes.
+
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Er is steeds meer behoefte aan inzicht in data over energieverbruik en
+energieopwekking van grootverbruikers (GV) om optimaal gebruik te maken van de
+beschikbare energiecapaciteit. Deze data is bijvoorbeeld relevant voor
+bedrijven die willen samenwerken op een industrieterrein of voor organisaties
+die individuele bedrijven willen helpen met duurzame energie oplossingen en
+energiebesparingen. De GV-klant is eigenaar van deze data en moet toestemming
+geven aan andere partijen om de data te gebruiken. Een erkend
+meetverantwoordelijke (MV) verzorgt de metingen van deze data.
+
+Dit ontwerp beschrijft het proces om tot ontsluiting van het bijbehorende
+dataproduct te komen en de betekenis & structuur van het dataproduct.
+
+== Functionele eisen
+
+Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
+*doen*.
+
+.Functionele eisen
+[cols="1, 1, 1"]
+|===
+|Als Rol |Wil ik |Want
+
+|GV-klant
+|Een uniform overzicht van gemeten energieverbruik (E&G, invoeding en afname), in kwartier- en/of uurwaarden per meetinstallatie
+|Ik wens inzicht in mijn verbruik
+
+|GV-klant
+|Via self-service (MijnOmgeving, centraal meetdataregister) mijn meetgegevens ophalen
+| Ik wens zo snel mogelijk mijn verbruiksgegevens ontvangen
+
+|GV-klant
+|Een service desk om online vragen te kunnen stellen
+|Ik wens ondersteuning bij gebruik van mijn verbruiksgegevens
+
+|Derde
+|Een uniform overzicht van gemeten energieverbruik (E & G, invoeding en afname), in kwartierwaarden per meetinstallatie
+|Ik wens inzicht in het verbruik van de aangeslotene(n)
+
+|Derde
+|Een service desk om online vragen te kunnen stellen
+|Ik wens ondersteuning bij gebruik van het dataproduct
+
+|Netbeheerder
+|Gemeten energieverbruik via de MijnOmgeving ontsluiten
+|Ik wil mijn klant faciliteren in het inzicht in verbruiksgegevens
+
+|Netbeheerder
+|Een uniform overzicht van gemeten energieverbruik kunnen ontsluiten via de MijnOmgeving
+|Ik wens mijn GV-klant te ondersteunen bij inzicht in de verbruiksgegevens
+
+|Netbeheerder
+|Een service desk om tweede- en derdelijns vragen te kunnen stellen over levering via de MijnOmgeving
+|Ik ondervind mogelijk problemen bij het leveren van verbruiksgegevens
+
+|Netbeheerder
+|GV-klanten en derden doorverwijzen naar een *Centraal Dataportaal*
+|Ik wens een uniforme ontsluiting van verbruiksgegevens voor zowel GV-klant als derde
+
+|Netbeheerder
+|Verbruiksgegevens onder de juiste grondslag kunnen leveren voor GV-klant en derde
+|Ik wens in lijn te zijn met wet- en regelgeving
+|===
+
+== Dataservice
+
+In beide gebruiksscenario's vraagt de GV-klant of een *derde* (zoals een
+adviesbureau of ontwikkelbedrijf) meetgegevens op bij de netbeheerder van een
+GV-klant. Indien een derde meetgegevens opvraagt dient toestemming verleend te
+worden door de aangeslotene. Hierbij vervult de GV-klant de rol van
+*aangeslotene*.
+
+[WARNING]
+====
+Beide gebruiksscenario's gaan uit van _geauthenticeerde rollen_. Voor
+authenticatie dient aangesloten te worden op bestaande processen. Indien er
+geen _enrolment- en authenticatieproces_ is *moet* deze worden ingericht.
+====
+
+De gebruiksscenario's beschrijven niet het uitvalproces (_happy flow_), deze
+stappen dienen apart beschreven en geïmplementeerd te worden.
+
+=== Gebruiksscenario: centraal dataproduct
+
+.Gebruiksscenario: centraal dataproduct
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"GV-klant": "GV-klant/Derde"
+"Meetdataregister"
+"Toestemmingplatform"
+"Aangeslotene"
+
+"GV-klant" -> "Meetdataregister": "1. Vraag meetdata"
+"Meetdataregister" -> "Toestemmingplatform": "2. Toestemming verleend?"
+"Vraag toestemming": {
+  "Toestemmingplatform" -> "Aangeslotene": "3. Verleen toestemming?"
+  "Aangeslotene" -> "Toestemmingplatform": "4. Verleen toestemming"
+}
+"Toestemmingplatform" -> "Meetdataregister": "5. Toestemming verleend"
+"Meetdataregister" -> "GV-klant": "6. Lever meetdata"
+----
+
+1. een _GV-klant_ of een _derde_ (e.g. een ontwikkelbedrijf) vraagt
+meetgegevens op voor één of meerdere aansluitingen bij het _EDSN
+meetdataregister_.  GV-klanten vragen meetdata aan voor eigen aansluiting(en),
+derden voor te specificeren aansluitingen;
+2. het meetdataregister toetst of er toestemming is verleend voor de combinatie
+derde/aansluiting. Indien de GV-klant meetdata voor eigen aansluiting(en)
+aanvraagt is toestemming niet vereist en wordt de meetdata geleverd (stap 6);
+3. indien er geen toestemming is voor opvragen van de meetdata wordt de
+_aangeslotene_ gevraagd deze te verlenen. De aangeslotene kan potentieel weken
+wachten voordat toestemming verleend of afgewezen wordt;
+4. de verleende toestemming wordt vastgelegd in het Toestemmingplatform;
+5. het _Toestemmingplatform_ notificeert het meetdataregister dat toestemming
+verleend is door de aangeslotene;
+6. het meetdataregister levert de meetgegevens, onder het _uniforme
+informatiemodel_.
+
+Het beschreven scenario kent een aantal varianten voor implementatie:
+
+* de netbeheerder leidt _GV-klanten_ vanuit de _Mijn-omgeving_ door naar het
+meetdataregister;
+* de netbeheerder leidt _derden_ door naar het meetdataregister;
+* de netbeheerder ontsluit het meetdataregister vanuit de Mijn-omgeving.
+Hiervoor vraagt de netbeheerder onder eigen autorisatie de meetgegevens op voor
+de geauthenticeerde GV-klant;
+* de netbeheerder ontsluit het meetdataregister vanuit de partner- of
+derdenomgeving. Een derde vraagt voor specifieke aansluiting(en) meetgegevens
+op, welke na toestemming van de aangeslotene worden geleverd. Niet alle
+netbeheerders kennen een dergelijke partneromgeving.
+
+=== Gebruikersscenario: decentraal dataproduct
+
+.Gebruiksscenario: decentraal dataproduct
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"GV-klant": "GV-klant/Derde"
+"Netbeheerder"
+"Aangeslotene"
+
+"GV-klant" -> "Netbeheerder": "1. Vraag meetdata"
+"Netbeheerder" -> "Netbeheerder": "2. Toestemming verleend?"
+"Vraag toestemming": {
+  "Netbeheerder" -> "Aangeslotene": "3. Toestemming verleend?"
+  "Aangeslotene" -> "Netbeheerder": "4. Toestemming verleend"
+}
+"Netbeheerder" -> "GV-klant": "5. Lever meetdata"
+----
+
+1. een _GV-klant_ of een _derde_ (e.g. een ontwikkelbedrijf) vraagt
+meetgegevens op voor één of meerdere aansluitingen bij de netbeheerder.
+GV-klanten vragen meetdata aan voor eigen aansluiting(en), derden voor te
+specificeren aansluitingen;
+2. de netbeheerder toetst of er toestemming is verleend voor de combinatie
+derde/aansluiting. Indien de GV-klant meetdata voor eigen aansluiting(en)
+aanvraagt is toestemming niet vereist en wordt de meetdata geleverd (stap
+5);
+3. indien er geen toestemming is voor opvragen van de meetdata wordt de
+_aangeslotene_ gevraagd deze te verlenen. De aangeslotene kan potentieel
+weken wachten voordat toestemming verleend of afgewezen wordt;
+4. de verleende toestemming wordt vastgelegd in de administratie van de
+netbeheerder;
+5. de netbeheerder levert de meetgegevens, onder het _uniforme
+informatiemodel_.
+
+Het beschreven scenario kent een aantal varianten voor implementatie:
+
+* de netbeheerder levert meetdata als voor de _GV-klant_ vanuit de
+_Mijn-omgeving_;
+* de netbeheerder levert meetdata als _maatwerkverzoek_ vanuit de eigen
+_service desk_, of gedelegeerd naar _Partners in Energie_.
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+1.class: empty
+EDSN.class: [noun; business]
+2.class: empty
+3.class: empty
+
+Netbeheerder.class: [noun; business]
+Broker.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
+
+5.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+"MijnOmgeving/Maatwerk".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+6.class: empty
+
+7.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Extract -> Consumer: "serves"
+EDSN -> Broker: "assigned to"
+Broker -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+* de structuur (logisch model) van de dataset is gebaseerd op het
+_Begrippenmodel NBNL_ en het _Common Information Model_;
+* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
+* het dataproduct is vindbaar via het NBNL Dataportaal.
+
+== Dataset
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog, de dataset wordt samengesteld uit brongegevens die ook voor facturatie worden ingezet
+
+|Velocity
+|Laag, datasets worden op verzoek samengesteld
+|===
+
+== Voorwaarden
+
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag
+Toestemming_.  De grondslag is vereist indien een derde de aanvraag doet, voor
+een GV-klant is toestemming *niet* vereist indien het om meetdata van de eigen
+aansluiting(en) gaat.
+
+== Beslissingen en aannames
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Aanname
+|Netbeheerders hebben de gevraagde meetgegevens (dataset) beschikbaar voor levering als decentraal dataproduct
+
+|Aanname
+|EDSN maakt geen aanpassingen in de bestaande interface(s) voor het decentrale dataproduct
+
+|Aanname
+|De aangeslotene verleent toestemming over toegang tot *al* haar meetdata behorende bij een aansluiting. Dit voorkomt toestemmingverzoeken voor meetgegevens in een tijdsperiode
+
+|Aanname
+|Zowel GV-klant, als aangeslotene, als derde zijn te identificeren, authenticeren en te benaderen voor communicatie
+
+|Aanname
+|Toestemming wordt verleend op basis van de combinatie derde/aansluiting
+
+|Aanname
+|_Partners in Energie_ stopt met het invullen van maatwerkverzoeken voor meetdata na implementatie van het centrale dataproduct
+
+|Aanname
+|De geldigheid van een verleende toestemming is minstens 90 dagen, om aantal toestemmingsverzoeken te beperken
+
+|Aanname
+|Er wordt op sectorniveau een *Centraal Dataportaal* gerealiseerd en het dataproduct meetdata wordt hierop aangeboden
+|===

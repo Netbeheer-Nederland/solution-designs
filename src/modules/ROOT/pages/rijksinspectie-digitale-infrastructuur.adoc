@@ -1,0 +1,293 @@
+= Rijksinspectie Digitale Infrastructuur (RDI)
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario van dataproduct _RDI_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Distributiesysteembeheerder (DSB), ook wel Regionale Netbeheerder (RNB) genoemd. Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Per 1 januari 2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een 'ouderwetse terugdraaimeter' hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter geplaatst worden met een aparte registratie voor levering (afname) en teruglevering (invoeding). Hiervoor dienen de netbeheerders een aanbiedingsbrief te sturen. Indien dit niet resulteert in een plaatsing dan zal de Rijksinspectie Digitale Infrastructuur (RDI) overgaan tot handhaving. Daarvoor zal de RDI procesdata (klantinteractiegegevens) opvragen bij de DSB's: het dataproduct _RDI_.
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*").
+
+.Functionele eisen
+[cols="1, 1, 1"]
+|===
+|Als rol |Wil ik |Want
+
+|Distributiesysteembeheerder (DSB)
+|Een verzoek om procesdata krijgen met een sleutel waarmee ik de klant kan identificeren (EAN)
+|Het leveren van procesdata gaat op verzoek
+
+|Rijksinspectie Digitale Infrastructuur (RDI)
+|Procesdata van klanten waarvoor ik moet handhaven
+|Deze gegevens heb ik nodig om een dossier op te bouwen en te kunnen handhaven
+
+|===
+
+== Dataservice
+
+Er is gekozen voor een decentraal scenario waarbij de Rijksinspectie Digitale Infrastructuur (RDI) de Distributiesysteembeheerder (DSB's) bevraagt _via_ de Gegevensuitwisselingsentiteit (GUE). 
+
+=== Gebruiksscenario
+
+.Gebruiksscenario 
+[d2,svg,theme=4]
+----
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+Decentraal scenario: {
+  shape: sequence_diagram
+
+  RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
+  DSB: "Distributie-\nsysteembeheerder\n(DSB)"
+
+  RDI -> DSB: 1. Verzoek procesdata van klant
+  DSB -> RDI: 2. Levering procesdata
+}
+
+----
+
+1. De RDI stuurt, via de GUE, de sleutel van een klant (EAN) naar de betreffende DSB met een verzoek om de procesdata van deze klant
+2. De RNB stuurt, via de GUE, de procesdata van een klant
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4]
+----
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+0_1.class: empty
+RDI: "RDI" {
+  class: [noun; business]
+}
+0_3.class: empty
+0_4.class: empty
+
+DSB: "Distributiesysteem-\nbeheerder\n(DSB)" {
+  class: [noun; business]
+}
+GUE: "Broker\n(GUE)" {
+  class: [noun; business]
+}
+1_3.class: empty
+1_4.class: empty
+
+2_1.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+Maatwerk.class: [noun; application]
+Dataproduct.class: [noun; application]
+3_3.class: empty
+3_4.class: empty
+
+4_1.class: empty
+"JSON": {
+  label: JSON File\nProcesdata
+  class: [artifact; technology]
+}
+4_3.class: empty
+4_4.class: empty
+
+RDI -> GUE: "assigned to"
+
+DSB -> Maatwerk: "assigned to"
+GUE -> Extract: "assigned to"
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+
+Maatwerk -> Dataproduct: "accesses (write)"
+Dataproduct -> Extract: "serving"
+
+JSON -> Dataproduct: "realises"
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+
+1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+2. Aanlevering van de procesdata geschiedt met JSON-bestanden
+
+== Dataset
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+==== Dataset 
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Midden
+
+|Velocity
+|Laag, op aanvraag
+|===
+
+== Voorwaarden
+
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettelijke verplichting_.
+
+
+== Beslissingen en aannames
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Beslissing
+|Er is gekozen voor een decentraal scenario waarbij de RDI de procesdata opvraagt bij de DSB _via_ de GUE
+
+|Beslissing
+|Het GUE regelt autorisatie, authenticatie en filtering waardoor zij de gewenste datasets ongewijzigd kan verstrekken
+
+|Aanname
+|Het betreft uitsluitend KV-klanten; GV-klanten hebben geen salderingsregeling (maar misschien wel een ouderwetse terugdraaimeter)
+
+|Aanname
+|De GUE is in staat de gevraagde gegevens tijdig te leveren
+
+|Beslissing
+|RDI vraagt alleen procesdata (klantinteractiegegevens) uit bij de DSB's
+
+|Beslissing
+|Dossiervorming en dossierhouderschap liggen volledig bij de RDI
+
+|Beslissing
+|Er wordt gewerkt op basis van een pullmechanisme: De RDI _vraagt_ om procesdata. Het is _niet_ zo dat een DSB deze gegevens uit zichzelf aanbiedt
+
+|Aanname
+|De DSB's leveren de procesdata onbewerkt op, dat wil zeggen zonder verrijkingen of andere bewerkingen
+
+|Beslissing
+|Data zal vanuit de DSB’s/EDSN gedeeld worden met de RDI via de GUE
+
+|Beslissing
+|EAN code is leidend voor de vragen die gesteld worden door de RDI
+
+|Beslissing
+|Er gaat gewerkt worden met delta bestanden. Dus de RDI vraagt om verschillen op bepaalde ean codes tov datum X
+
+|===

@@ -1,0 +1,14 @@
+<archimate:BusinessProcess
+    xmlns:archimate="http://www.archimatetool.com/archimate"
+    name="Bedienen klant voor dataproduct"
+    id="id-d180ec9264234d2886880849260d35af">
+  <properties
+      key="Level"
+      value="1"/>
+  <properties
+      key="Code"
+      value="P.H.1"/>
+  <properties
+      key="Name (en)"
+      value="Serve customer for data product"/>
+</archimate:BusinessProcess>
