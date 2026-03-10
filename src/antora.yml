@@ -3,3 +3,6 @@ title: Solution Designs
 version: true
 nav:
   - modules/ROOT/nav.adoc
+ext:
+  versioning_strategy: evolution
+prerelease: false
