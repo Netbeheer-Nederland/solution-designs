@@ -1,0 +1,18 @@
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+  
+Scenario - Geaggregeerd (d2): {
+  shape: sequence_diagram
+
+  "DST": "Data Science\nTeams"
+  "DP": "Energiedata\nPortaal"
+  "Opv": "Opvrager\n "
+  
+  "DST" -> "DP": "1. Ontsluit uniforme overzicht"
+  "Opv" -> "DP": "2. Vraag uniforme overzicht"
+  "DP" -> "DP": "3. Aggregeer het uniforme overzicht"
+  "DP" -> "Opv": "4. Lever uniforme overzich uit"
+}
