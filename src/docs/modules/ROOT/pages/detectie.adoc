@@ -118,9 +118,11 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggr
 
 .Gebruiksscenario 
 [d2,svg,theme=4]
---
-include::partial$/diagrams/detectie-scenario-geaggregeerd.d2[]
---
+----
+
+include::../partials/diagrams/detectie-scenario-geaggregeerd.d2[]
+
+----
 
 1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
 2. Een opvrager vraagt het geaggregeerde uniforme overzicht van een gebied op bij het Energiedata Portaal van EDSN.
@@ -176,52 +178,7 @@ Transform -> Load: "triggers"
 "Slimme Meter Lezer" -> "Slimme Meter": "accesses (read)"
 "Netbeheerder" -> "Slimme Meter Lezer": "assigned to"
 
-legend: "" {
-  style: {
-    fill: transparent
-    stroke: transparent
-  }
-  grid-rows: 3
-  grid-columns: 2
-  grid-gap: 10
-  near: bottom-right
-  business_color: "" {
-    style: {
-      fill: "#ffffaf"
-      stroke: black
-      stroke-width: 1
-    }
-    width: 10
-    height: 10
-  }
-  business_text: "Business" {
-    shape: text
-  }
-  application_color: "" {
-    style: {
-      fill: "#afffff"
-      stroke: black
-      stroke-width: 1
-    }
-    width: 10
-    height: 10
-  }
-  application_text: "Application" {
-    shape: text
-  }
-  technology_color: "" {
-    style: {
-      fill: "#afffaf"
-      stroke: black
-      stroke-width: 1
-    }
-    width: 10
-    height: 10
-  }
-  technology_text: "Technology" {
-    shape: text
-  }
-}
+include::../partials/diagrams/legend.d2[]
 
 classes: {
   *: {
