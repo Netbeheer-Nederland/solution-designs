@@ -118,28 +118,9 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggr
 
 .Gebruiksscenario 
 [d2,svg,theme=4]
-----
-
-vars: {
-  d2-config: {
-    pad: 20
-  }
-}
-  
-Scenario - Geaggregeerd: {
-  shape: sequence_diagram
-
-  "DST": "Data Science\nTeams"
-  "DP": "Energiedata\nPortaal"
-  "Opv": "Opvrager\n "
-  
-  "DST" -> "DP": "1. Ontsluit uniforme overzicht"
-  "Opv" -> "DP": "2. Vraag uniforme overzicht"
-  "DP" -> "DP": "3. Aggregeer het uniforme overzicht"
-  "DP" -> "Opv": "4. Lever uniforme overzich uit"
-}
-
-----
+--
+include::partials$diagrams/detectie-scenario-geaggregeerd.d2[]
+--
 
 1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
 2. Een opvrager vraagt het geaggregeerde uniforme overzicht van een gebied op bij het Energiedata Portaal van EDSN.
