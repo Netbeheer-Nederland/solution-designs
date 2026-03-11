@@ -119,7 +119,7 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggr
 .Gebruiksscenario 
 [d2,svg,theme=4]
 --
-include::partials$diagrams/detectie-scenario-geaggregeerd.d2[]
+include::partial$/diagrams/detectie-scenario-geaggregeerd.d2[]
 --
 
 1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
