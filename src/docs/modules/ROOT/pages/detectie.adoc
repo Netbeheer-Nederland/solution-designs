@@ -73,32 +73,7 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de aanges
 [d2,svg,theme=4]
 ----
 
-vars: {
-  d2-config: {
-    pad: 20
-  }
-}
-
-Scenario - Flexaanbieder: {
-  shape: sequence_diagram
-
-  FA: "Flexaan-\nbieder"
-  EDSN: "EDSN\n "
-  TSP: "Toestemmings-\nplatform"
-  A: "Aange-\nslotene"
-
-  A -> FA: "1. Verzoek flexpropositie"
-  FA -> EDSN: "2. Verzoek overzicht"
-  EDSN -> TSP: "3. Toestemming verleend?"
-  "Verifieer toestemming": {
-    TSP -> A: "4. Toestemming verleend?"
-    A -> TSP: "5. Toestemming verleend!"
-  }
-  TSP -> EDSN: "6. Toestemming verleend"
-  EDSN -> FA: "7. Lever overzicht"
-  FA -> FA: "8. Maak flexpropositie"
-  FA -> A: "9. Lever flexpropositie"
-}
+include::../partials/diagrams/detectie/gebruiksscenario.d2[]
 
 ----
 
@@ -120,7 +95,7 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggr
 [d2,svg,theme=4]
 ----
 
-include::../partials/diagrams/detectie-scenario-geaggregeerd.d2[]
+include::../partials/diagrams/detectie/scenario-geaggregeerd.d2[]
 
 ----
 
@@ -137,85 +112,11 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 [d2,svg,theme=4]
 ----
 
-vars: {
-  d2-config: {
-    pad: 20
-  }
-}
-
-grid-rows: 5
-grid-columns: 4
-
-vertical-gap: 80
-horizontal-gap: 160
-
-"Netbeheerder".class: [noun; business]
-1_2.class: empty
-"Data Scientist".class: [noun; business]
-1_4.class: empty
-
-3_1.class: empty
-Extract.class: [verb; business]
-Transform.class: [verb; business]
-Load.class: [verb; business]
-
-"Slimme Meter Lezer".class: [noun; application]
-"Slimme Meter".class: [noun; application]
-3_3.class: empty
-3_4.class: empty
-
-4_1.class: empty
-"C-ARM".class: [artifact; technology]
-4_3.class: empty
-4_4.class: empty
-
-Extract -> Transform: "triggers"
-Transform -> Load: "triggers"
-"Slimme Meter" -> "Extract": "serves"
-"Data Scientist" -> Extract: "assigned to"
-"Data Scientist" -> Load: "assigned to"
-"C-ARM" -> "Slimme Meter": "realises"
-"Slimme Meter Lezer" -> "Slimme Meter": "accesses (read)"
-"Netbeheerder" -> "Slimme Meter Lezer": "assigned to"
+include::../partials/diagrams/detectie/architecture.d2[]
 
 include::../partials/diagrams/legend.d2[]
 
-classes: {
-  *: {
-    style: {
-      shadow: true
-    }
-  }
-  empty: {
-    label: ""
-    style: {
-      fill: transparent
-      stroke-width: 0
-    }
-  }
-  verb: {
-    style: {border-radius: 30}
-  }
-  noun: {
-    style: {border-radius: 4}
-  }
-  artifact: {shape: page}
-  business: {
-    style: {
-      fill: "#ffffaf"
-    }
-  }
-  application: {
-    style: {
-      fill: "#afffff"
-    }
-  }
-  technology: {
-    style: {
-      fill: "#afffaf"
-    }
-  }
-}
+include::../partials/diagrams/classes.d2[]
 
 ----
 
