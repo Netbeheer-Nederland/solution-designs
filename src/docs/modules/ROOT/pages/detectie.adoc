@@ -73,7 +73,7 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de aanges
 [d2,svg,theme=4]
 ----
 
-include::../partials/diagrams/detectie/gebruiksscenario.d2[]
+include::partial$diagrams/detectie/gebruiksscenario.d2[]
 
 ----
 
@@ -95,7 +95,7 @@ In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggr
 [d2,svg,theme=4]
 ----
 
-include::../partials/diagrams/detectie/scenario-geaggregeerd.d2[]
+include::partial$diagrams/detectie/scenario-geaggregeerd.d2[]
 
 ----
 
@@ -112,11 +112,11 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 [d2,svg,theme=4]
 ----
 
-include::../partials/diagrams/detectie/architecture.d2[]
+include::partial$diagrams/detectie/architecture.d2[]
 
-include::../partials/diagrams/legend.d2[]
+include::partial$diagrams/legend.d2[]
 
-include::../partials/diagrams/classes.d2[]
+include::partial$diagrams/classes.d2[]
 
 ----
 
