@@ -1,4 +1,4 @@
-= Design Documentation
+= Solution Designs
 
 This is a collection of solution designs for various data products created and
 maintained by _Netbeheer Nederland_.
