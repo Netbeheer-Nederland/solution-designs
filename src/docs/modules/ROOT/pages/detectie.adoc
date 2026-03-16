@@ -9,33 +9,34 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP, ook wel afgekort tot HP (_heat pumps_)), thuisbatterijen (BESS, _Battery Energy Storage System_) en apparaten ten behoeve van elektrisch koken (keramische en inductie kookplaten). 
+Zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP, ook wel afgekort tot HP (_heat pumps_)) en thuisbatterijen (BESS, _Battery Energy Storage System_) zijn energie-intensieve apparaten. Zowel netbeheerders als andere partijen (_derden_) willen graag weten waar zij zich bevinden en hoe energie-intensief zij zijn. Data Scientist teams bij de drie grote netbeheerders werken samen om statistische modellen te maken die dit inzicht kunnen geven.
 
-Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners (flexaanbieders) inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. Data Scientist teams bij de RNB's werken samen om statistische modellen te maken die dit inzicht kunnen geven.
-
-De epic bestaat uit drie fasen, een pilot fase, een landelijke fase en een data deel fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
+De epic bestaat uit drie fasen, een _pilot fase_, een _landelijke fase_ en een _data deel_ fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
 
 === Pilot fase
 
-In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
+In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om het statistische model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
+
 In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is per aansluiting en kan geaggregeerd worden tot middenspanningsruimte (MS/LS-trafo) of tot postcode 6-niveau niveau en tot gebiedsniveau. Formeel zijn dit geen dataproducten omdat ze worden uitgewisseld tussen netbeheerders onderling.
 
 .Voorbeeld eindresultaat (uniform overzicht geaggregeerd op MS/LS-trafo)
-[cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
+[cols= "1, 1, 1, 1"]
 |===
-|Trafo |PV |CL |EV |CL |WP |CL |BESS |CL
-
-|123 |0 |100 |0 |90 |5 |80 |0 |100
-|345 |3 |90 |22 |95 |5 |70 |4 |70
-
+|PowerTransformer |DeviceKind |ConfidenceLevel (%) |PeakPower (kW(p))
+|123 |BESS |95 |123 
+|123 |PV |97 |150
+|127 |HP |65 |77
+|123 |PV |99 |60
 |===
+
 
 === Data deel fase
-In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct aan te bieden op het Energiedata Portaal van EDSN.
 
-De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mag op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen alleen geaggregeerd gedeeld worden.
+In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar derden.
+
+De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mogen op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen niet op aansluitniveau gedeeeld worden.
 
 == Functionele eisen
 
@@ -46,63 +47,61 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |===
 |ID |Als rol |Wil ik |Want
 
-|{counter:fe} 
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
-|Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vijf apparaattypes bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP),  thuisbatterijen (BESS) of apparaten tbv elektrisch koken
+ |{counter:fe} 
+ |Regionale Netbeheerder (RNB)
+ |Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
+ |Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vijf apparaattypes bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP),  thuisbatterijen (BESS) of apparaten tbv elektrisch koken
 
-|{counter:fe} 
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
-|Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
+ |{counter:fe} 
+ |Regionale Netbeheerder (RNB)
+ |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
+ |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
 
-|{counter:fe} 
-|Derde
-|Een uniform overzicht van het geschatte piekvermogen van energie-intensieve apparaten (PV, EV, WP en BESS) van een aangeslotene
-|Ik wil deze aangeslotene, op diens verzoek, een flexpropositie doen
+
+ |{counter:fe} 
+ |Derde
+ |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator
+a|
+* Als gemeente wil ik weten waar er behoefte is aan publieke laadpalen. 
+* Als brandweer wil ik weten waar thuisbatterijen een verhoogd risico zijn.
+* Als flexaanbieder wil ik gebruikers van energie-intensieve apparaten een flexpropositie kunnen doen.
 
 |===
 
 == Dataservice
 
-=== Gebruiksscenario - Flexaanbieder
+=== Gebruiksscenario - Centraal dataproduct
 
 In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
 
-.Gebruiksscenario 
+.Gebruiksscenario: Centraal dataproduct
 [d2,svg,theme=4]
 ----
 
-include::partial$diagrams/detectie/gebruiksscenario.d2[]
+include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
 
 ----
 
-1. Een aangeslotene verzoekt een flexaanbieder om een flexpropositie
-2. De flexaanbieder verzoekt EDSN om het uniforme overzicht van de aangeslotene
-3. EDSN vraagt aan het toestemmingsplatform of de aangeslotene toestemming heeft verleend aan de flexaanbieder
-4. Het toestemmingsplatform verifieert bij de aangeslotene of er toestemming is verleend
-5. De aangeslotene antwoordt het toestemmingsplatform dat er toestemming verleend
-6. Het toestemmingsplatform antwoordt EDSN dat er toestemming is verleend
-7. EDSN levert het uniforme overzicht van de aangeslotene aan de flexaanbieder
-8. De flexaanbieder maakt een flexpropositie op basis van het uniforme overzicht
-9. De flexaanbieder levert de flexpropositie aan de aangeslotene
+1. Een derde of een RNB vraagt een uniform overzicht op bij de EDSN.
+2. De Centrale Dataopslag verstrekt het gevraagde uniforme overzicht.
 
-=== Gebruiksscenario - Geaggregeerd
+=== Gebruiksscenario - Decentraal dataproduct
 
-In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggreerde datasets als open dataproduct worden aangeboden.
+In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
 
-.Gebruiksscenario 
+.Gebruiksscenario: Decentraal dataproduct
 [d2,svg,theme=4]
 ----
 
-include::partial$diagrams/detectie/scenario-geaggregeerd.d2[]
+include::partial$diagrams/detectie/gebruiksscenario-decentraal.d2[]
 
 ----
 
-1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
-2. Een opvrager vraagt het geaggregeerde uniforme overzicht van een gebied op bij het Energiedata Portaal van EDSN.
-3. Het Energiedata Portaal van EDSN genereert het gewenste geaggregeerde uniforme overzicht.
-4. Het Energiedata Portaal van EDSN levert het gewenste geaggregeerde uniforme overzicht aan de opvrager.
+1. Een derde of een RNB vraagt een uniform overzicht bij alle relevante RNBs.
+2. Elke relevante RNB verstrekt het gevraagde uniforme overzicht.
+3. De aanvrager consolideert de ontvangen uniforme overzicht tot een geconsolideerd uniform overzicht.
+
+
 
 === Architectuur
 
@@ -160,10 +159,12 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 |===
 |ID |Type |Beschrijving
 
-|{counter:bea} 
+// 1 
+|{counter:bea}
 |Beslissing
 |De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
 
+// 2
  |{counter:bea} 
  |Aanname
  a|De Data Scientist teams verrijken de kwartierwaarden met 
@@ -172,37 +173,69 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 * het locatieadres van de aansluiting (ten behoeve van de aggregatie),
 * de MS/LS-transformator van de aansluiting (ten behoeve van de aggregatie)
 
+// 3
 |{counter:bea}
 |Aanname
 |De uniforme overzichten worden periodiek bijgewerkt
 
+// 4
 |{counter:bea}
 |Aanname
-|De uniforme overzichten per aansluiting worden ontsloten op het Energiedata Portaal van EDSN
+|In het centrale gebruikersscenario worden de uniforme overzichten ontsloten door EDSN.
 
-|{counter:bea}
-|Aanname
-|De geaggreeerde uniforme overzichten worden ontsloten op het Energiedata Portaal van EDSN
-
+// 5
 |{counter:bea}
 |Aanname
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
-|{counter:bea}
-|Aanname
-|Wat in de landelijke fase wordt opgeleverd is ten behoeve van de netbeheerders onderling, formeel geen dataproduct. In de data deel fase wordt er ook extern gedeeld waardoor het wel een dataproduct wordt.
-
+// 6
 |{counter:bea}
 |Aanname
 |In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
 
+// 7
 |{counter:bea}
 |Aanname
-|In de data deel fase wordt de data op postcode 6-niveau geaggregeerd. *Dus niet* op MSR en ook niet op gebied.
+|In de data deel fase moet de parameter waarover geaggregeerd worden voor de aanvrager (derde en RNB) een herkenbare en bruikbare waarde zijn. Het is dus *geen* interne (RNB-specifieke) waarde.
 
+// 8
 |{counter:bea}
 |Aanname
-|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratieft via zes URLs (één per nebeheerder)
+|In de data deel fase wordt de data op transformator (MS/LS) geaggregeerd. *Dus niet* op PC6 en ook niet op gebied.
 
+// 9
+|{counter:bea}
+|Aanname
+|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratieft via zes URLs (één per nebeheerder).
+
+// 10
+|{counter:bea}
+|Aanname
+|Het is mogelijk om een dataset, als onderdeel van de dataservice, gefilterd te verstrekken.
+
+// 11
+ |{counter:bea}
+ |Aaname 
+ |In de data deel fase wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. NB: Er is een positief advies van GEMS vereist om deze beslissing definitief te nemen.
+
+// 12
+ |{counter:bea}
+ |Aanname
+ |Aan het einde van fase 2 is er één statistisch model dat alle zeven netbeheerders kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
+
+// 13
+  |{counter:bea}
+  |Aanname
+  |De uitkomsten van het draaien van het statistische model dat aan het einde van fase 2 wordt opgeleverd is interoperabel; lees de datasets sluiten aan.
+
+// 14
+ |{counter:bea}
+ |Aanname
+ |Het statistische model wordt periodiek (driemaandelijks) gedraaid op de data van alle netbeheerders.
+
+// 15
+ |{counter:bea}
+ |Aaname
+ |CERES wordt de centrale opslagplek. En CERES kan gebruik maken van een autorisatie en authenticatie platform.
 
 |===
