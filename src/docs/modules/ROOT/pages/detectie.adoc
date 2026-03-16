@@ -57,7 +57,7 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
 
 |{counter:fe} 
-|Flexaanbieder
+|Derde
 |Een uniform overzicht van het geschatte piekvermogen van energie-intensieve apparaten (PV, EV, WP en BESS) van een aangeslotene
 |Ik wil deze aangeslotene, op diens verzoek, een flexpropositie doen
 
