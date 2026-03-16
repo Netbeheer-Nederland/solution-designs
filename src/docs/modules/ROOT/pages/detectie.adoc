@@ -206,7 +206,7 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 9
 |{counter:bea}
 |Aanname
-|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratieft via zes URLs (één per nebeheerder).
+|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratief via zes URLs (één per nebeheerder).
 
 // 10
 |{counter:bea}
@@ -216,7 +216,7 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 11
  |{counter:bea}
  |Aaname 
- |In de data deel fase wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. NB: Er is een positief advies van GEMS vereist om deze beslissing definitief te nemen.
+ |In de data deel fase wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. *NB*: Er is een positief advies van GEMS vereist om deze beslissing definitief te nemen.
 
 // 12
  |{counter:bea}
