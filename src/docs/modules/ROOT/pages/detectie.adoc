@@ -57,6 +57,15 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
  |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
  |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
 
+ |{counter:fe}
+ |Registerbeheerder
+ |Uniforme overzichten van aansluitingen waarachter zich energie-intensieve apparaten bevinden
+ |Ik wil deze overzichten middels een broker kunnen aanbieden aan de daartoe gerechtigde afnemers.
+
+ |{counter:fe}
+ |Broker
+ |Uniforme overzichten van aansluitingen waarachter zich energie-intensieve apparaten bevinden
+ |Ik wil deze overzichten aan de daartoe gerechtigde afnemers beschikbaar stellen.
 
  |{counter:fe} 
  |Derde
