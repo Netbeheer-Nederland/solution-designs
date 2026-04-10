@@ -144,7 +144,7 @@ nodig om de informatievraag in te vullen:
 include::partial$four_v.adoc[]
 ====
 
-Voor alle vijf de profielen gelden dezelfde kenmerken:
+Voor alle vier de profielen gelden dezelfde kenmerken:
 
 [cols="1, 1"]
 |===
@@ -262,7 +262,7 @@ a|* één aanspreekpunt (team) per netbeheerder
 
 == Voorwaarden
 
-De vijf profielen (zie <<_dataset>>) worden als *open data* aangeboden,
+De vier profielen (zie <<_dataset>>) worden als *open data* aangeboden,
 onder de _Grondslag Wettelijke Verplichting_.
 
 == Architectuur
