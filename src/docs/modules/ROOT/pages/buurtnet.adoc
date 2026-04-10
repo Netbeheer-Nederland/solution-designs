@@ -264,26 +264,26 @@ include::partial$four_v.adoc[]
 |===
 |Dataproduct |Volume |Variety |Veracity |Velocity
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/[Equipment]
+|https://modellen.netbeheernederland.nl/nbnl-equipment[Equipment]
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
 aansluitingen.
 |Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-operation/latest/[Operation]
+|https://modellen.netbeheernederland.nl/nbnl-operation[Operation]
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |
 |Hoog, minimaal één maal per 24 uur (zie <<_functionele_eisen>>)
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-geolocation/latest/[GeoLocation]
+|https://modellen.netbeheernederland.nl/nbnl-geographical-location[GeoLocation]
 |Laag, < 100MB (ongecomprimeerd)
 |Gestructureerd
 |
 |Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-topology/latest/[Topology]
+|https://modellen.netbeheernederland.nl/nbnl-topology[Topology]
 |Laag, < 100MB (ongecomprimeerd)
 |Gestructureerd
 |
