@@ -115,7 +115,7 @@ vanuit het CIM, daar waar CGMES een functioneel gevraagd gebruiksscenario niet
 ondersteunt.
 ====
 
-Er zijn vijf verschillende profielen (dataproducten met bijbehorende datasets)
+Er zijn vier verschillende profielen (dataproducten met bijbehorende datasets)
 nodig om de informatievraag in te vullen:
 
 .Profielen
@@ -123,7 +123,7 @@ nodig om de informatievraag in te vullen:
 |===
 |Profiel |Beschrijving
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/index.html[Equipment (EQ)]
+|https://modellen.netbeheernederland.nl/nbnl-equipment[Equipment (EQ)]
 |Eigenschappen van *netfuncties*, de connectiviteit van het elektriciteitsnet
 
 |Operation (OP)
@@ -133,14 +133,8 @@ nodig om de informatievraag in te vullen:
 |Geo Location (GL)
 |Fysieke ligging van assets/netfuncties.
 
-|Steady State Hypothesis (SSH)
-|Stabiele toestand van het elektriciteitsnet
-
 |Asset (AS)
 |Fysieke eigenschappen van *netelementen*
-
-|Market (MKT)
-|Marktfacilitering binnen EU-markten
 |===
 
 === Volume, variety, veracity, velocity
@@ -402,15 +396,6 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 |Type |Beschrijving
 
 |Beslissing
-|Voor de gegevensuitwisseling tussen netbeheerders wordt gekozen voor een
- invulling op basis van NBility waardestroom _P.H Beschikbaar stellen van
- netbeheerdata_. Deze waardestoom voorziet in het uitwisselen van dataproducten
- tussen netbeheerders en derden, en bevat meer dan nodig voor uitwisseling
- tussen netbeheerders. Voor dit ontwerp zijn alleen de datasets en dataservices
- nodig om de oplossing te realiseren. Echter, met het oog op hergebruik wordt
- al voorgesorteerd op het kunnen uitwisselen van de dataproducten met derden.
-
-|Beslissing
 |_Use cases_ worden incrementeel opgesteld, waarbij het ontwerp bij nieuwe use
  cases wordt aangepast. Dit houdt in dat er over de tijd meer NBility
  waardestromen in scope worden gebracht.
@@ -429,6 +414,33 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
  consument van de profielen beschikbaar om kwaliteit en toepasbaarheid te
  testen.
 
+|Beslissing
+|Elke netbeheerder implementeert de architectuur op basis van eigen middelen en
+ invulling. Het ontkoppelpunt tussen netbeheerders zijn de
+ profielen/dataproducten die uitgewisseld worden.
+
+|Beslissing
+|Technische architectuur (integratiepatroon, dataplatform, etc.) worden op
+ een later moment uitgewerkt nadat _business analyse_ de correctheid van
+ <<_volume_variety_veracity_velocity>> bevestigt.
+
+|Beslissing
+|Voor de gegevensuitwisseling tussen netbeheerders wordt gekozen voor een
+ invulling op basis van NBility waardestroom _P.H Beschikbaar stellen van
+ netbeheerdata_. Deze waardestoom voorziet in het uitwisselen van dataproducten
+ tussen netbeheerders en derden, en bevat meer dan nodig voor uitwisseling
+ tussen netbeheerders. Voor dit ontwerp zijn alleen de datasets en dataservices
+ nodig om de oplossing te realiseren. Echter, met het oog op hergebruik wordt
+ al voorgesorteerd op het kunnen uitwisselen van de dataproducten met derden.
+
+|Beslissing
+|Er wordt afgeweken van de in _NBility_ beschreven waardestromen: _Overeenkomen
+ dataproduct_ wordt gebruikt om dataproducten te realiseren. NBility definieert
+ een complete waardestroom voor het realiseren van nieuwe producten, wat
+ significant meerwerk in scope brengt voor dit ontwerp. Implementerende
+ netbeheerders worden geadviseerd naar waardestroom _I.B Veranderen
+ bedrijfsinrichting_ te kijken voor implementatie van een voortbrengingsproces.
+
 |Aanname
 |Profielen (alle data die onder Netcode H13 wordt uitgewisseld) worden als open
  data aangeboden. Profielen zijn zuiver netbeheerderdata en daarmee onderhevig
@@ -440,18 +452,8 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
  profielen.
 
 |Aanname
-|Elke netbeheerder implementeert de architectuur op basis van eigen middelen en
- invulling. Het ontkoppelpunt tussen netbeheerders zijn de
- profielen/dataproducten die uitgewisseld worden.
-
-|Aanname
 |Elke netbeheerder publiceert via de eigen
  dataintegratieomgeving/maatwerkproces decentraal de profielen.
-
-|Aanname
-|Technische architectuur (integratiepatroon, dataplatform, etc.) worden op
- een later moment uitgewerkt nadat _business analyse_ de correctheid van
- <<_volume_variety_veracity_velocity>> bevestigt.
 
 |Aanname
 |Netbeheerders maken gebruik van decentrale IAM-oplossingen, er wordt geen
@@ -461,15 +463,8 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 |De _NBNL Data Catalog_ is beschikbaar.
 
 |Aanname
-|Datasets worden per kwartaal geleverd en zijn maximaal 3 maanden geldig.
-
-|Beslissing
-|Er wordt afgeweken van de in _NBility_ beschreven waardestromen: _Overeenkomen
- dataproduct_ wordt gebruikt om dataproducten te realiseren. NBility definieert
- een complete waardestroom voor het realiseren van nieuwe producten, wat
- significant meerwerk in scope brengt voor dit ontwerp. Implementerende
- netbeheerders worden geadviseerd naar waardestroom _I.B Veranderen
- bedrijfsinrichting_ te kijken voor implementatie van een voortbrengingsproces.
+|Datasets worden per kwartaal geïmplementeerd en zijn maximaal 3 maanden
+ geldig.
 
 |Aanname
 |Gedurende implementatie van het ontwerp door _Werkgroep TSO/DSO_ is de
