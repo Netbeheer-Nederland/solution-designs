@@ -1,0 +1,13 @@
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+shape: sequence_diagram
+
+"DRNB": "Derde/RNB"
+"CDO": "Broker"
+
+"DRNB" -> "CDO": "1. Verzoek om uniform overzicht"
+"CDO" -> "DRNB": "2. Verstrek het uniforme overzicht"
