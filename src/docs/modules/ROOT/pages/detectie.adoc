@@ -1,4 +1,4 @@
-= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen (DEIA)
+= Detectie van energie-intensieve apparaten ten behoeve van flexoplossingen (DEIA)
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten ten behoeve flexoplossingen_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
@@ -48,32 +48,42 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |ID |Als rol |Wil ik |Want
 
  |{counter:fe} 
- |Regionale Netbeheerder (RNB)
- |Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
- |Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vijf apparaattypes bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP),  thuisbatterijen (BESS) of apparaten tbv elektrisch koken
+ |Vervallen
+ | -
+ | -
 
  |{counter:fe} 
- |Regionale Netbeheerder (RNB)
- |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
- |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
+ |Vervallen
+ | -
+ | -
 
  |{counter:fe}
- |Registerbeheerder
- |Uniforme overzichten van aansluitingen waarachter zich energie-intensieve apparaten bevinden
- |Ik wil deze overzichten middels een broker kunnen aanbieden aan de daartoe gerechtigde afnemers.
+ |Vervallen
+ | - 
+ | -
 
  |{counter:fe}
- |Broker
- |Uniforme overzichten van aansluitingen waarachter zich energie-intensieve apparaten bevinden
- |Ik wil deze overzichten aan de daartoe gerechtigde afnemers beschikbaar stellen.
+ |Vervallen
+ | -
+ | -
+
+ |{counter:fe} 
+ |Opgesplitst
+ | -
+ | -
 
  |{counter:fe} 
  |Derde
- |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator
+ |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator, geaggregeerd op PC6
 a|
 * Als gemeente wil ik weten waar er behoefte is aan publieke laadpalen. 
 * Als brandweer wil ik weten waar thuisbatterijen een verhoogd risico zijn.
-* Als flexaanbieder wil ik gebruikers van energie-intensieve apparaten een flexpropositie kunnen doen.
+
+
+ |{counter:fe} 
+ |Derde
+ |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator, geaggregeerd op transformator
+ |Als flexaanbieder wil ik gebruikers van energie-intensieve apparaten een flexpropositie kunnen doen.
 
 |===
 
@@ -91,26 +101,7 @@ include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
 
 ----
 
-1. Een derde of een RNB vraagt een uniform overzicht op bij de EDSN.
-2. De Centrale Dataopslag verstrekt het gevraagde uniforme overzicht.
-
-=== Gebruiksscenario - Decentraal dataproduct
-
-In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
-
-.Gebruiksscenario: Decentraal dataproduct
-[d2,svg,theme=4]
-----
-
-include::partial$diagrams/detectie/gebruiksscenario-decentraal.d2[]
-
-----
-
-1. Een derde of een RNB vraagt een uniform overzicht bij alle relevante RNBs.
-2. Elke relevante RNB verstrekt het gevraagde uniforme overzicht.
-3. De aanvrager consolideert de ontvangen uniforme overzicht tot een geconsolideerd uniform overzicht.
-
-
+1. Een derde haalt een uniform overzicht op bij het dataportaal.
 
 === Architectuur
 
@@ -171,14 +162,13 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 1 
 |{counter:bea}
 |Beslissing
-|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
+|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 en MS/LS-trafo)
 
 // 2
  |{counter:bea} 
  |Aanname
  a|De Data Scientist teams verrijken de kwartierwaarden met 
 
-* het correspondentieadres van de aangeslotene (ten behoeve van de flexaanbieder),
 * het locatieadres van de aansluiting (ten behoeve van de aggregatie),
 * de MS/LS-transformator van de aansluiting (ten behoeve van de aggregatie)
 
@@ -190,7 +180,7 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 4
 |{counter:bea}
 |Aanname
-|In het centrale gebruikersscenario worden de uniforme overzichten ontsloten door EDSN.
+|In het centrale gebruikersscenario worden de uniforme overzichten ontsloten door het dataportaal (Installatieregister).
 
 // 5
 |{counter:bea}
@@ -205,7 +195,7 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 7
 |{counter:bea}
 |Aanname
-|In de data deel fase moet de parameter waarover geaggregeerd worden voor de aanvrager (derde en RNB) een herkenbare en bruikbare waarde zijn. Het is dus *geen* interne (RNB-specifieke) waarde.
+|In de data deel fase moet de parameter waarover geaggregeerd worden voor de aanvrager (derde) een herkenbare en bruikbare waarde zijn. Het is dus *geen* interne (RNB-specifieke) waarde.
 
 // 8
 |{counter:bea}
@@ -245,6 +235,6 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 // 15
  |{counter:bea}
  |Aaname
- |CERES wordt de centrale opslagplek. En CERES kan gebruik maken van een autorisatie en authenticatie platform.
+ |CERES/Installatieregister wordt de centrale opslagplek. En CERES/Installatieregister kan gebruik maken van een autorisatie en authenticatie platform.
 
 |===
