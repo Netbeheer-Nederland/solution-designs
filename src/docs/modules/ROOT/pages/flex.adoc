@@ -1,0 +1,109 @@
+= Flexgebieden / Flex Informatievoorziening (FI))
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct flex, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Er is *netcongestie* en *we* hebben behoefte aan ***inzicht*** in de *benodigde* en *beschikbare* *netcapaciteit* zodat wij, eventueel met een ***financiële prikkel***, ***sturing*** kunnen geven aan de *inzet* van de *netcapaciteit*. Om dit te realiseren moeten de *betrokken partijen* helder met elkaar *communiceren* tijdens het uitwisselen van *data*.  *flex* is de verzamelnaam voor de dataproducten die hiervoor ontworpen worden.
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase is met een dataproduct.
+
+.Functionele eisen
+[cols="1, 1, 8, 8"]
+|===
+|ID |Als rol |Wil ik |Want
+
+ |{counter:fe} 
+ |Derde
+ |flexinformatie
+a|
+* Ik wil inzicht 
+* Ik wil financieel kunnen prikkelen
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario - Centraal dataproduct
+
+Het dataproduct wordt centraal beschikbaar gesteld aan derden.
+
+.Gebruiksscenario: Centraal dataproduct
+[d2,svg,theme=4]
+----
+
+include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
+
+----
+
+1. Een derde haalt een uniform overzicht op bij het dataportaal.
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4]
+----
+
+include::partial$diagrams/detectie/architecture.d2[]
+
+include::partial$diagrams/legend.d2[]
+
+include::partial$diagrams/classes.d2[]
+
+----
+
+De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+
+== Dataset
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+==== Dataset
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag
+|===
+
+== Voorwaarden
+
+Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
+
+== Beslissingen en aannames
+
+[cols="1, 3, 6"]
+|===
+|ID |Type |Beschrijving
+
+// 1 
+|{counter:bea}
+|Beslissing
+|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 en MS/LS-trafo)
+
+|===
