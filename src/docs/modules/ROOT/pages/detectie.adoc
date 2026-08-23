@@ -1,6 +1,6 @@
 = Detectie van energie-intensieve apparaten ten behoeve van flexoplossingen (DEIA)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten ten behoeve flexoplossingen_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten achter de aansluiting_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
 ====
@@ -9,91 +9,70 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP, ook wel afgekort tot HP (_heat pumps_)) en thuisbatterijen (BESS, _Battery Energy Storage System_) zijn energie-intensieve apparaten. Zowel netbeheerders als andere partijen (_derden_) willen graag weten waar zij zich bevinden en hoe energie-intensief zij zijn. Data Scientist teams bij de drie grote netbeheerders werken samen om statistische modellen te maken die dit inzicht kunnen geven.
+Zonnepanelen (PV), thuisbatterijen (BESS, _Battery Energy Storage System_), thuislaadpunten (EV) en warmtepompen (HP (_heat pumps_)) en  zijn energie-intensieve apparaten. Zowel netbeheerders als andere partijen (_derden_) willen graag weten waar zij zich bevinden en hoe energie-intensief zij zijn. Data Scientist teams bij de drie grote netbeheerders werken samen om statistische modellen te maken die dit inzicht kunnen geven.
 
-De epic bestaat uit drie fasen, een _pilot fase_, een _landelijke fase_ en een _data deel_ fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
+De epic bestaat uit drie fasen, een _pilot fase_ (detecteren), een _landelijke fase_ (registreren) en een _data deel_ (distribueren) fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
 
-=== Pilot fase
+=== Pilot fase (detecteren)
 
 In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om het statistische model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
-=== Landelijke fase
+=== Landelijke fase (registreren)
 
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is per aansluiting en kan geaggregeerd worden tot middenspanningsruimte (MS/LS-trafo) of tot postcode 6-niveau niveau en tot gebiedsniveau. Formeel zijn dit geen dataproducten omdat ze worden uitgewisseld tussen netbeheerders onderling.
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. De data bestaat uit kwartierwaarden van 10 dagen per kwartaal. PV- en BESS-data zijn invoedingsdata en mogen op aansluitniveau opgeslagen worden. EV- en HP-data bevatten ook afnamedata en mogen niet op aansluitingsniveau opgeslagen worden. Deze fase resulteert in een dataset met voor elk energie-intensief apparaat (PV, BESS, EV, HP) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_). Deze dataset wordt periodiek, één keer per kwartaal, aangevuld. Formeel zijn deze datasets geen dataproducten omdat ze worden uitgewisseld tussen netbeheerders onderling.
 
-.Voorbeeld eindresultaat (uniform overzicht geaggregeerd op MS/LS-trafo)
-[cols= "1, 1, 1, 1"]
-|===
-|PowerTransformer |DeviceKind |ConfidenceLevel (%) |PeakPower (kW(p))
-|123 |BESS |95 |123 
-|123 |PV |97 |150
-|127 |HP |65 |77
-|123 |PV |99 |60
-|===
+=== Data deel fase (distribueren)
 
-
-=== Data deel fase
-
-In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar derden.
-
-De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mogen op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen niet op aansluitniveau gedeeeld worden.
+In de data deel fase worden de datasets uit de landelijke fase geaggregeerd conform GEMS en als open dataproducten beschikbaar gemaakt voor derden.
 
 == Functionele eisen
 
 Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase is met een dataproduct.
 
 .Functionele eisen
-[cols="1, 1, 8, 8"]
+[cols="1, 1, 6, 8"]
 |===
 |ID |Als rol |Wil ik |Want
 
- |{counter:fe} 
- |Vervallen
- | -
- | -
+  | {counter:fe} 
+  | gemeente
+  | op wijkniveau weten hoeveel energie-intensieve apparaten (PV, BESS, EV en HP) aanwezig zijn
+ a|  ik wil
 
- |{counter:fe} 
- |Vervallen
- | -
- | -
+ * de snelheid van de energietransitie monitoren, 
+ * analyses kunnen uitvoeren en
+ * gebiedsgerichte beleidskeuzes maken.
 
- |{counter:fe}
- |Vervallen
- | - 
- | -
+  | {counter:fe} 
+  | EV-dienstverlener (CPO)
+  | wijkprofielen van laadpuntdichtheid
+a| ik wil
 
- |{counter:fe}
- |Vervallen
- | -
- | -
+* kansen en knelpunten per wijk identificeren en 
+* passende oplossingen ontwikkelen ten behoeve van de optimalisatie van de laadinfrastructuur.
 
- |{counter:fe} 
- |Opgesplitst
- | -
- | -
+ | {counter:fe}
+ | eLaad
+ | inzicht in de aanwezigheid, dichtheid en spreiding van particuliere thuislaadpalen per buurt en wijk
+a|ik wil 
 
- |{counter:fe} 
- |Derde
- |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator, geaggregeerd op PC6
-a|
-* Als gemeente wil ik weten waar er behoefte is aan publieke laadpalen. 
-* Als brandweer wil ik weten waar thuisbatterijen een verhoogd risico zijn.
+* de ruimtelijke variatie in laadvermogen en piekbelasting beter modelleren en 
+* nauwkeurigere analyses maken van 
+** lokale netimpact, 
+** congestierisico en 
+** de effectiviteit van slim laden
 
-
- |{counter:fe} 
- |Derde
- |Een uniform overzicht van de aanwezigheid en het geschatte piekvermogen, met een _Confidence Level_,  van energie-intensieve apparaten (PV, EV, WP en BESS) achter een transformator, geaggregeerd op transformator
- |Als flexaanbieder wil ik gebruikers van energie-intensieve apparaten een flexpropositie kunnen doen.
+zodat ik een gerichte en datagedreven onderbouwing van net- en laadstrategieën kan maken.
 
 |===
 
 == Dataservice
 
-=== Gebruiksscenario - Centraal dataproduct
+=== Gebruiksscenario
 
-In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
+In de data delen fase is er gekozen voor een centraal scenario waarbij de open dataproducten opgehaald kunnen worden bij het Dataportaal.
 
-.Gebruiksscenario: Centraal dataproduct
+.Gebruiksscenario
 [d2,svg,theme=4]
 ----
 
@@ -101,7 +80,7 @@ include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
 
 ----
 
-1. Een derde haalt een uniform overzicht op bij het dataportaal.
+1. Een derde haalt een open dataproduct op bij het dataportaal.
 
 === Architectuur
 
@@ -151,7 +130,7 @@ include::partial$four_v.adoc[]
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
+Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 == Beslissingen en aannames
 
@@ -159,82 +138,100 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 |===
 |ID |Type |Beschrijving
 
-// 1 
 |{counter:bea}
 |Beslissing
-|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 en MS/LS-trafo)
+|Alles gebeurt conform GEMS.
 
-// 2
- |{counter:bea} 
+|{counter:bea}
+|Beslissing
+|Geen Data Scientist team gebruikt data van een andere netbeheerder.
+
+|{counter:bea}
+|Beslissing
+|Er is één statistisch model dat door elk Data Scientist team wordt gebruikt.
+
+ |{counter:bea}
  |Aanname
- a|De Data Scientist teams verrijken de kwartierwaarden met 
+ |Aan het einde de landelijke fase is er één statistisch model dat alle zes netbeheerders, dus ook Coteq, Rendo en Westland Infra, kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
 
-* het locatieadres van de aansluiting (ten behoeve van de aggregatie),
-* de MS/LS-transformator van de aansluiting (ten behoeve van de aggregatie)
+|{counter:bea}
+|Beslissing
+|Elk Data Scientist team levert haar dataset aan op de File Gateway.
 
-// 3
 |{counter:bea}
 |Aanname
-|De uniforme overzichten worden periodiek bijgewerkt
+|Elke dataset bevat metadata die het mogelijk maakt om de data te herleiden tot haar brondata en verwerkingsmethode.
 
-// 4
 |{counter:bea}
 |Aanname
-|In het centrale gebruikersscenario worden de uniforme overzichten ontsloten door het dataportaal (Installatieregister).
+|De datasets zijn interoperabel; lees, zij sluiten aan.
 
-// 5
+|{counter:bea}
+|Beslissing
+|Elk Data Scientist team levert haar dataset aan in JSON-formaat.
+
+|{counter:bea}
+|Aanname
+|De dataset wordt aangeleverd in _tall format_, niet in _wide format_.
+
+|{counter:bea}
+|Aanname
+|De gebruikte eenheid van vermogen is kiloWatt piek (kW(p)).
+
+|{counter:bea}
+|Aanname
+|De betrouwbaarheid wordt uitgedrukt in een percentage.
+
+|{counter:bea}
+|Beslissing
+|Elke Data Scientist team levert haar dataset aan in CIM.
+
+|{counter:bea}
+|Beslissing
+|Data van apparaten die wel invoeden (PV, BESS) worden op EAN aangeleverd.
+
+|{counter:bea}
+|Aanname
+|De EAN van invoedende apparaten is de EAN van de aansluiting, niet van het allocatiepunt en ook niet van het overdrachtspunt.
+
+|{counter:bea}
+|Beslissing
+|Data van apparaten die afnemen  maar niet invoeden (EV, HP) worden geaggregeerd aangeleverd.
+
+|{counter:bea}
+|Beslissing
+|Aggregatie van data gebeurd op PC6.
+
+|{counter:bea}
+|Beslissing
+|De datasets worden door Data Delen als open dataproduct beschikbaar gemaakt voor derden.
+
+|{counter:bea}
+|Beslissing
+|Het open dataproduct wordt, net als de datasets, aangeleverd in JSON-formaat conform CIM.
+
+|{counter:bea}
+|Beslissing
+|Het open dataproduct wordt centraal, op één URL endpoint, beschikbaar gemaakt. Dus niet federatief via zes URLs, voor elke netbeheerder één.
+
+|{counter:bea}
+|Beslissing
+|Verrijking van de datasets gebeurt nadat de datasets zijn aangeleverd op de File Gateway en voordat ze als dataproduct beschikbaar worden gemaakt.
+
+|{counter:bea}
+|Aanname
+|Nieuwe datasets zijn aanvullingen, geen vervangingen, waardoor opbouw van historie mogelijk is.
+
+|{counter:bea}
+|Aanname
+|Nieuwe datasets worden periodiek (driemaandelijks) gegenereerd.
+
 |{counter:bea}
 |Aanname
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
-// 6
 |{counter:bea}
 |Aanname
 |In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
-
-// 7
-|{counter:bea}
-|Aanname
-|In de data deel fase moet de parameter waarover geaggregeerd worden voor de aanvrager (derde) een herkenbare en bruikbare waarde zijn. Het is dus *geen* interne (RNB-specifieke) waarde.
-
-// 8
-|{counter:bea}
-|Aanname
-|In de data deel fase wordt de data op transformator (MS/LS) geaggregeerd. *Dus niet* op PC6 en ook niet op gebied.
-
-// 9
-|{counter:bea}
-|Aanname
-|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratief via zes URLs (één per nebeheerder).
-
-// 10
-|{counter:bea}
-|Aanname
-|Het is mogelijk om een dataset, als onderdeel van de dataservice, gefilterd te verstrekken.
-
-// 11
- |{counter:bea}
- |Aaname 
- |In de data deel fase wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. *NB*: Er is een positief advies van GEMS vereist om deze beslissing definitief te nemen.
-
-// 12
- |{counter:bea}
- |Aanname
- |Aan het einde van fase 2 is er één statistisch model dat alle zeven netbeheerders kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
-
-// 13
-  |{counter:bea}
-  |Aanname
-  |De uitkomsten van het draaien van het statistische model dat aan het einde van fase 2 wordt opgeleverd is interoperabel; lees de datasets sluiten aan.
-
-// 14
- |{counter:bea}
- |Aanname
- |Het statistische model wordt periodiek (driemaandelijks) gedraaid op de data van alle netbeheerders.
-
-// 15
- |{counter:bea}
- |Aaname
- |CERES/Installatieregister wordt de centrale opslagplek. En CERES/Installatieregister kan gebruik maken van een autorisatie en authenticatie platform.
 
 |===
