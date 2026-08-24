@@ -200,7 +200,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Aggregatie van data gebeurd op PC6.
+|Het aanleveren van geaggregeerde data door de Data Scientist teams gebeurt op PC6. Tenzij dat niet conform GEMS is, dan gebeurt dat op PC4.
 
 |{counter:bea}
 |Beslissing
