@@ -9,59 +9,53 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Er is *netcongestie* en *we* hebben behoefte aan ***inzicht*** in de *benodigde* en *beschikbare* *netcapaciteit* zodat wij, eventueel met een ***financiële prikkel***, ***sturing*** kunnen geven aan de *inzet* van de *netcapaciteit*. Om dit te realiseren moeten de *betrokken partijen* helder met elkaar *communiceren* tijdens het uitwisselen van *data*.  *flex* is de verzamelnaam voor de dataproducten die hiervoor ontworpen worden.
+Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulteren in dataproducten met  'flex-informatie'. Flexinzicht is een (verzameling van) open dataproduct(en), gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group]), die deze initiatieven ondersteunt. 
 
 == Functionele eisen
 
-Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase is met een dataproduct.
+De initiatieven die door Flexinzicht worden ondersteund zijn:
+
+1. _Benodigde flex per locatie_ (BBN-GV)
+2. Epic _Capaciteitskaart Belastingprofielen_ (BBN-KV)
+3. Epic _Netvooruitzicht_ (Meer inzicht)
+
+Voor elk van deze initiatieven worden functionele eisen (_functional requirements_) vastgelegd die geharmoniseerd worden. Zij vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
 
 .Functionele eisen
-[cols="1, 1, 8, 8"]
+[cols="2, 2, 8, 8"]
 |===
 |ID |Als rol |Wil ik |Want
 
- |{counter:fe} 
+ |Algemeen {counter:fe} 
  |Derde
- |flexinformatie
-a|
-* Ik wil inzicht 
-* Ik wil financieel kunnen prikkelen
+ |flex-informatie
+a|Ik wil
+
+* inzicht en
+* financieel kunnen prikkelen.
+
+|BBN-GV {counter:fe-bbngv}
+|BBN-GV
+|inzicht
+|handelingsperspectief.
+
+|BBN-KV {counter:fe-bbnkv}
+|BBN-KV
+|inzicht
+|handelingsperspectief.
+
+|MI {counter:fe-mi}
+|Meer inzicht
+|inzicht
+|handelingsperspectief.
 
 |===
 
 == Dataservice
 
-=== Gebruiksscenario - Centraal dataproduct
+=== Gebruiksscenario
 
-Het dataproduct wordt centraal beschikbaar gesteld aan derden.
-
-.Gebruiksscenario: Centraal dataproduct
-[d2,svg,theme=4]
-----
-
-include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
-
-----
-
-1. Een derde haalt een uniform overzicht op bij het dataportaal.
-
-=== Architectuur
-
-Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
-
-.Architectuur
-[d2,svg,theme=4]
-----
-
-include::partial$diagrams/detectie/architecture.d2[]
-
-include::partial$diagrams/legend.d2[]
-
-include::partial$diagrams/classes.d2[]
-
-----
-
-De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+_Wordt later ingevuld._
 
 == Dataset
 
@@ -79,31 +73,38 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Laag, < 100MB (ongecomprimeerd)
+|_Wordt later ingevuld._
 
 |Variety
-|Gestructureerd
+|_Wordt later ingevuld._
 
 |Veracity
-|Hoog
+|_Wordt later ingevuld._
 
 |Velocity
-|Laag
+|_Wordt later ingevuld._
 |===
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
+Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 == Beslissingen en aannames
 
-[cols="1, 3, 6"]
+[cols="2, 3, 6"]
 |===
 |ID |Type |Beschrijving
 
-// 1 
-|{counter:bea}
-|Beslissing
-|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 en MS/LS-trafo)
+|BBN-GV {counter:bea-bbngv}
+|Aanname
+|BBN-GV
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|BBN-KV
+
+|MI {counter:bea-mi}
+|Aanname
+|Meer inzicht
 
 |===
