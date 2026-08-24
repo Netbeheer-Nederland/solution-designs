@@ -140,7 +140,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Alles gebeurt conform GEMS.
+|Niets gebeurt in strijd met GEMS.
 
 |{counter:bea}
 |Beslissing
@@ -148,7 +148,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Er is één statistisch model dat door elk Data Scientist team wordt gebruikt.
+|Elk kwartaal is er één statistisch model dat door elk Data Scientist team wordt gebruikt.
 
  |{counter:bea}
  |Aanname
@@ -156,11 +156,11 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Elk Data Scientist team levert haar dataset aan op de File Gateway.
+|Elk Data Scientist team levert de uitkomst van haar statitistische model als dataset aan op de File Gateway van EDSN.
 
 |{counter:bea}
 |Aanname
-|Elke dataset bevat metadata die het mogelijk maakt om de data te herleiden tot haar brondata en verwerkingsmethode.
+|Elke dataset (uitkomst van het statitistische model) bevat metadata die het mogelijk maakt te achterhalen welke dataset en welke verwerkingsmethode is gebruikt (lineage).
 
 |{counter:bea}
 |Aanname
@@ -188,7 +188,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Data van apparaten die wel invoeden (PV, BESS) worden op EAN aangeleverd.
+|Data van apparaten die geregistreerd moeten worden in CERES (momenteel PV en BESS) worden op EAN aangeleverd.
 
 |{counter:bea}
 |Aanname
@@ -196,7 +196,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |{counter:bea}
 |Beslissing
-|Data van apparaten die afnemen  maar niet invoeden (EV, HP) worden geaggregeerd aangeleverd.
+|Data van apparaten die niet geregistreerd hoeven te worden in CERES (momenteel EV en HP) worden geaggregeerd aangeleverd conform GEMS.
 
 |{counter:bea}
 |Beslissing
