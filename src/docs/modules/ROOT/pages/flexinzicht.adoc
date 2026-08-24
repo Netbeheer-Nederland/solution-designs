@@ -123,7 +123,52 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 |BBN-KV {counter:bea-bbnkv}
 |Aanname
-|BBN-KV
+|#gebruiker van de capaciteitskaart# = Toelichting nodig. Zijn dit daadwerkelijk alle burgers, overheden, gebiedsontwikkelaars, energieadviseurs, CSP's en grootverbruikers?
+
+|BBN-KV {counter:bea-bbnkv}
+|Beslissing
+|https://begrippen.netbeheernederland.nl/doc/8eytm[#voedingsgebied#] = deel van het aardoppervlak waar zich de https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunten] van https://begrippen.netbeheernederland.nl/doc/gnhiy[aansluitingen] bevinden die worden gevoed door een bepaald deel van het https://begrippen.netbeheernederland.nl/doc/w9pqm[energienet].
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#station#  = De afgaande velden van transformator.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#toekomstige congestie# = Congestie over de 12 maanden.
+
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#congestie#  = Gebrek aan https://begrippen.netbeheernederland.nl/doc/dwk8c[tansportcapaciteit] energie.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#beschikbare capaciteit# = Toelichting nodig.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#toekomstige belastingprofielen# = Belastingprofielen over 12 maanden.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#belastingprofielen# = Toelichting nodig.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#netuitbreidingen# = Verzwaringen die over 12 maanden in bedrijf zijn.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#ontwikkeling van belasting# = Is hetzelfde als #toekomstige belastingprofielen#.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#benuttingsgraden# = Is hetzelfde als #beschikbare capaciteit#.
+
+|BBN-KV {counter:bea-bbnkv}
+|Aanname
+|#restruimte# = Is hetzelfde als #beschikbare capaciteit#.
 
 |MI {counter:bea-mi}
 |Aanname
