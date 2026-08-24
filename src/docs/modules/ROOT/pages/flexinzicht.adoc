@@ -21,6 +21,8 @@ De initiatieven die door Flexinzicht worden ondersteund zijn:
 
 Voor elk van deze initiatieven worden functionele eisen (_functional requirements_) vastgelegd die geharmoniseerd worden. Zij vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
 
+In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de betekenis van dit woord (in deze context) onduidelijk is. Verderop, bij de *Beslissingen en aannames*, wordt een aanname gedaan over die betekenis. Als dat echter niet lukt, of als er een toelichting nodig is dan is de aanname een verzoek om toelichting. Uitgangspunt is dat in een initiatief een woord niet van betekenis verandert.
+
 .Functionele eisen
 [cols="2, 2, 8, 8"]
 |===
@@ -35,14 +37,19 @@ a|Ik wil
 * financieel kunnen prikkelen.
 
 |BBN-GV {counter:fe-bbngv}
-|BBN-GV
-|inzicht
-|handelingsperspectief.
+|#netbeheerder#
+|van #elke# #netlocatie# in de #huidige# en #toekomstige# #netconfiguraties# de #verwachte flexbehoefte#. Van deze flexbehoefte wil ik de #omvang#, de #timing#, de #duur# en #veranderlijkheid strategische horizonnen# in een #geharmoniseerde datastructuur#.
+|ik wil #wachtlijsten#  terugdringen door de inzet van #flexibiliteitsveilingen# of door middel van  #verzwaringen#. Deze keuze zal bepaald worden op basis van #kosten# van de #verwachte overschrijdingen#.
 
-|BBN-KV {counter:fe-bbnkv}
-|BBN-KV
-|inzicht
-|handelingsperspectief.
+ |BBN-KV {counter:fe-bbnkv}
+ |#gebruiker van de capaciteitskaart# 
+a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en de #beschikbare capaciteit# op basis van 
+
+* #toekomstige# #belastingprofielen# (ontwikkeling van belasting), 
+* beschikbare capaciteit (benuttingsgraden, restruimte) en 
+* #netuitbreidingen#
+
+|Ik wil handelingsperspectief krijgen.
 
 |MI {counter:fe-mi}
 |Meer inzicht
@@ -95,9 +102,24 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |===
 |ID |Type |Beschrijving
 
-|BBN-GV {counter:bea-bbngv}
-|Aanname
-|BBN-GV
+|BBN-GV {counter:bea-bbngv} | Aanname | #netbeheerder# = Elke DSO, inclusief Coteq, Rendo en Westland Infra, e ook de TSO (TenneT).
+|BBN-GV {counter:bea-bbngv} | Aanname | #elke netlocatie# =  Afgaand veld. Dus netlocatie vanuit een asset perspectief en niet vanuit een geo of netfunctie persepectief.
+|BBN-GV {counter:bea-bbngv} | Aanname | #huidige netconfiguraties# = Normaalstand ten tijde van het aanmaken van het dataproduct (eigenlijk ten tijde van het aanmaken van de bijbehorende dataset).
+|BBN-GV {counter:bea-bbngv} | Aanname | #toekomstige netconfiguraties# =  Normaalstand over 12 maanden.
+|BBN-GV {counter:bea-bbngv} | Aanname | #netconfiguraties# =  Normaalstand van het netwerk. Dus niet de actuele stand. En er wordt geen rekening gehouden met onderhoud. 
+|BBN-GV {counter:bea-bbngv} | Aanname | #verwachte flexbehoefte# =  De verwachte flexbehoefte voor de komende 12 maanden, uitgesplitst naar invoeding en afname.
+|BBN-GV {counter:bea-bbngv} | Aanname | #flexbehoefte# =  De behoefte aan extra capaciteit bij afname en het overschot aan capaciteit bij invoeding als een functie in de tijd.
+|BBN-GV {counter:bea-bbngv} | Aanname | #omvang#  =  Toelichting nodig.
+|BBN-GV {counter:bea-bbngv} | Aanname | #timing#  = Toelichting nodig.
+|BBN-GV {counter:bea-bbngv} | Aanname | #duur# = Toelichting nodig.
+|BBN-GV {counter:bea-bbngv} | Aanname | #veranderlijkheid# =  Toelichting nodig. 
+|BBN-GV {counter:bea-bbngv} | Aanname | #strategische horizonnen# =  Toelichting nodig.
+|BBN-GV {counter:bea-bbngv} | Aanname | #geharmoniseerde datastructuur# =  CIM opgeslagen in JSON-LD-formaat tbv interoperabiliteit bij data uitwisseling.     
+|BBN-GV {counter:bea-bbngv} | Aanname | #wachtlijst# =  Wachtrijen op LS-, MS- en HS-niveau.
+|BBN-GV {counter:bea-bbngv} | Aanname | #flexibiliteitsveilingen#  =  Toelichting nodig.
+|BBN-GV {counter:bea-bbngv} | Aanname | #verzwaringen#  =  Verzwaringen van kabels en alle andere assets om deze verzwaring effectief te laten wezen.
+|BBN-GV {counter:bea-bbngv} | Aanname | #kosten# =  Toelichting nodig. Hoe worden deze kosten berekend? Wat is de input en hoe ziet de berekening er uit. Welke kosten zijn acceptabel? 
+|BBN-GV {counter:bea-bbngv} | Aanname | #verwachte overschrijdingen# = Toelichting nodig. Welke verwachte overschrijdingen? Hoe vaak, hoe lang, hoe groot? Welke verwachte overschrijdingen zijn acceptabel? 
 
 |BBN-KV {counter:bea-bbnkv}
 |Aanname
