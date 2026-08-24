@@ -7,3 +7,4 @@
 * xref::detectie.adoc[]
 * xref::nettopologie-belasting-capaciteit.adoc[]
 * xref::energieprofielen.adoc[]
+* xref::flexinzicht.adoc[]

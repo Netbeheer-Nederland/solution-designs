@@ -1,6 +1,6 @@
-= Flexgebieden / Flex Informatievoorziening (FI))
+= Flexinzicht
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct flex, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct Flexinzicht, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
 ====
