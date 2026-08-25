@@ -139,99 +139,123 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |ID |Type |Beschrijving
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Niets gebeurt in strijd met GEMS.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Geen Data Scientist team gebruikt data van een andere netbeheerder.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk kwartaal is er één statistisch model dat door elk Data Scientist team wordt gebruikt.
 
  |{counter:bea}
- |Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
  |Aan het einde de landelijke fase is er één statistisch model dat alle zes netbeheerders, dus ook Coteq, Rendo en Westland Infra, kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk Data Scientist team levert de uitkomst van haar statitistische model als dataset aan op de File Gateway van EDSN.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elke dataset (uitkomst van het statitistische model) bevat metadata die het mogelijk maakt te achterhalen welke dataset en welke verwerkingsmethode is gebruikt (lineage).
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De datasets zijn interoperabel; lees, zij sluiten aan.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk Data Scientist team levert haar dataset aan in JSON-formaat.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De dataset wordt aangeleverd in _tall format_, niet in _wide format_.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De gebruikte eenheid van vermogen is kiloWatt piek (kW(p)).
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De betrouwbaarheid wordt uitgedrukt in een percentage.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elke Data Scientist team levert haar dataset aan in CIM.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Data van apparaten die geregistreerd moeten worden in CERES (momenteel PV en BESS) worden op EAN aangeleverd.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De EAN van invoedende apparaten is de EAN van de aansluiting, niet van het allocatiepunt en ook niet van het overdrachtspunt.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Data van apparaten die niet geregistreerd hoeven te worden in CERES (momenteel EV en HP) worden geaggregeerd aangeleverd conform GEMS.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het aanleveren van geaggregeerde data door de Data Scientist teams gebeurt op PC6. Tenzij dat niet conform GEMS is, dan gebeurt dat op PC4.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De datasets worden door Data Delen als open dataproduct beschikbaar gemaakt voor derden.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het open dataproduct wordt, net als de datasets, aangeleverd in JSON-formaat conform CIM.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het open dataproduct wordt centraal, op één URL endpoint, beschikbaar gemaakt. Dus niet federatief via zes URLs, voor elke netbeheerder één.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Verrijking van de datasets gebeurt nadat de datasets zijn aangeleverd op de File Gateway en voordat ze als dataproduct beschikbaar worden gemaakt.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Nieuwe datasets zijn aanvullingen, geen vervangingen, waardoor opbouw van historie mogelijk is.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Nieuwe datasets worden periodiek (driemaandelijks) gegenereerd.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
 |{counter:bea}
-|Beslissing
+|Beslissing 
+// [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
 
 |===
