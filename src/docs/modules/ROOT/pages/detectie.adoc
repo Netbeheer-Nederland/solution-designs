@@ -1,4 +1,4 @@
-= Detectie van energie-intensieve apparaten ten behoeve van flexoplossingen (DEIA)
+= Detectie van energie-intensieve apparaten achter de aansluiting (DEIA)
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten achter de aansluiting_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
