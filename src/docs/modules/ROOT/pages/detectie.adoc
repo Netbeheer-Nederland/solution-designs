@@ -151,7 +151,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Elk kwartaal is er één statistisch model dat door elk Data Scientist team wordt gebruikt.
 
  |{counter:bea}
- |Aanname
+ |Beslissing
  |Aan het einde de landelijke fase is er één statistisch model dat alle zes netbeheerders, dus ook Coteq, Rendo en Westland Infra, kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
 
 |{counter:bea}
@@ -159,11 +159,11 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Elk Data Scientist team levert de uitkomst van haar statitistische model als dataset aan op de File Gateway van EDSN.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |Elke dataset (uitkomst van het statitistische model) bevat metadata die het mogelijk maakt te achterhalen welke dataset en welke verwerkingsmethode is gebruikt (lineage).
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |De datasets zijn interoperabel; lees, zij sluiten aan.
 
 |{counter:bea}
@@ -171,15 +171,15 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Elk Data Scientist team levert haar dataset aan in JSON-formaat.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |De dataset wordt aangeleverd in _tall format_, niet in _wide format_.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |De gebruikte eenheid van vermogen is kiloWatt piek (kW(p)).
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |De betrouwbaarheid wordt uitgedrukt in een percentage.
 
 |{counter:bea}
@@ -191,7 +191,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Data van apparaten die geregistreerd moeten worden in CERES (momenteel PV en BESS) worden op EAN aangeleverd.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |De EAN van invoedende apparaten is de EAN van de aansluiting, niet van het allocatiepunt en ook niet van het overdrachtspunt.
 
 |{counter:bea}
@@ -219,19 +219,19 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Verrijking van de datasets gebeurt nadat de datasets zijn aangeleverd op de File Gateway en voordat ze als dataproduct beschikbaar worden gemaakt.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |Nieuwe datasets zijn aanvullingen, geen vervangingen, waardoor opbouw van historie mogelijk is.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |Nieuwe datasets worden periodiek (driemaandelijks) gegenereerd.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
 |{counter:bea}
-|Aanname
+|Beslissing
 |In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
 
 |===
