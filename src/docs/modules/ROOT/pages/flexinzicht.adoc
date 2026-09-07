@@ -30,7 +30,7 @@ In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de b
 
  |Algemeen {counter:fe} 
  |Derde
- |flex-informatie
+ |#flex-informatie#
 a|Ik wil
 
 * inzicht en
@@ -102,6 +102,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |===
 |ID |Type |Beschrijving
 
+|Algemeen {counter:bea-algemeen} | Aanname | #flex-informatie# = Antwoord op de vraag '*#Waar#* is *#wanneer#* *#hoeveel#* *#netcapaciteit#* beschikbaar en voor *#hoe lang#*?'.
 |BBN-GV {counter:bea-bbngv} | Aanname | #netbeheerder# = Elke DSO, inclusief Coteq, Rendo en Westland Infra, e ook de TSO (TenneT).
 |BBN-GV {counter:bea-bbngv} | Aanname | #elke netlocatie# =  Afgaand veld. Dus netlocatie vanuit een asset perspectief en niet vanuit een geo of netfunctie persepectief.
 |BBN-GV {counter:bea-bbngv} | Aanname | #huidige netconfiguraties# = Normaalstand ten tijde van het aanmaken van het dataproduct (eigenlijk ten tijde van het aanmaken van de bijbehorende dataset).
