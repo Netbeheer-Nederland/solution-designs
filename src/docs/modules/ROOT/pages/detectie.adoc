@@ -1,6 +1,6 @@
 = Detectie van energie-intensieve apparaten achter de aansluiting (DEIA)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten achter de aansluiting_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten achter de aansluiting_), alsmede haar achterliggende architectuur en de gemaakte keuzes.
 
 [NOTE]
 ====
@@ -9,57 +9,46 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Zonnepanelen (PV), thuisbatterijen (BESS, _Battery Energy Storage System_), thuislaadpunten (EV) en warmtepompen (HP (_heat pumps_)) en  zijn energie-intensieve apparaten. Zowel netbeheerders als andere partijen (_derden_) willen graag weten waar zij zich bevinden en hoe energie-intensief zij zijn. Data Scientist teams bij de drie grote netbeheerders werken samen om statistische modellen te maken die dit inzicht kunnen geven.
-
-De epic bestaat uit drie fasen, een _pilot fase_ (detecteren), een _landelijke fase_ (registreren) en een _data deel_ (distribueren) fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
-
-=== Pilot fase (detecteren)
-
-In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om het statistische model te ontwikkelen en te trainen. Dit model is géén dataproduct.
-
-=== Landelijke fase (registreren)
-
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. De data bestaat uit kwartierwaarden van 10 dagen per kwartaal. PV- en BESS-data zijn invoedingsdata en mogen op aansluitniveau opgeslagen worden. EV- en HP-data bevatten ook afnamedata en mogen niet op aansluitingsniveau opgeslagen worden. Deze fase resulteert in een dataset met voor elk energie-intensief apparaat (PV, BESS, EV, HP) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_). Deze dataset wordt periodiek, één keer per kwartaal, aangevuld. Formeel zijn deze datasets geen dataproducten omdat ze worden uitgewisseld tussen netbeheerders onderling.
-
-=== Data deel fase (distribueren)
-
-In de data deel fase worden de datasets uit de landelijke fase geaggregeerd conform GEMS en als open dataproducten beschikbaar gemaakt voor derden.
+Zonnepanelen (PV), thuisbatterijen (BESS, _Battery Energy Storage System_),
+thuislaadpunten (EV) en warmtepompen (HP (_heat pumps_)) en  zijn
+energie-intensieve apparaten. Zowel netbeheerders als andere partijen
+(_derden_) willen graag weten waar zij zich bevinden en hoe energie-intensief
+zij zijn. Data Scientist teams bij de drie grote netbeheerders werken samen om
+statistische modellen te maken die dit inzicht geven.
 
 == Functionele eisen
 
-Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase is met een dataproduct.
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als
+rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*").
 
 .Functionele eisen
 [cols="1, 1, 6, 8"]
 |===
 |ID |Als rol |Wil ik |Want
 
-  | {counter:fe} 
-  | gemeente
-  | op wijkniveau weten hoeveel energie-intensieve apparaten (PV, BESS, EV en HP) aanwezig zijn
- a|  ik wil
+ | {counter:fe}
+ | Gemeente
+ | op wijkniveau weten hoeveel energie-intensieve apparaten (PV, BESS, EV en HP) aanwezig zijn
+a| ik wil
 
- * de snelheid van de energietransitie monitoren, 
+ * de snelheid van de energietransitie monitoren,
  * analyses kunnen uitvoeren en
  * gebiedsgerichte beleidskeuzes maken.
 
-  | {counter:fe} 
-  | EV-dienstverlener (CPO)
-  | wijkprofielen van laadpuntdichtheid
-a| ik wil
-
-* kansen en knelpunten per wijk identificeren en 
-* passende oplossingen ontwikkelen ten behoeve van de optimalisatie van de laadinfrastructuur.
+ | {counter:fe}
+ | EV-dienstverlener (CPO)
+ | inzicht in het aantal particuliere laadpalen op wijkniveau
+a| ik wil als onderdeel van een business case onderbouwen dat er additionele laadpalen nodig zijn in een wijk
 
  | {counter:fe}
  | eLaad
  | inzicht in de aanwezigheid, dichtheid en spreiding van particuliere thuislaadpalen per buurt en wijk
-a|ik wil 
+a|ik wil
 
-* de ruimtelijke variatie in laadvermogen en piekbelasting beter modelleren en 
-* nauwkeurigere analyses maken van 
-** lokale netimpact, 
-** congestierisico en 
+* de ruimtelijke variatie in laadvermogen en piekbelasting beter modelleren en
+* nauwkeurigere analyses maken van
+** lokale netimpact,
+** congestierisico en
 ** de effectiviteit van slim laden
 
 zodat ik een gerichte en datagedreven onderbouwing van net- en laadstrategieën kan maken.
@@ -70,8 +59,6 @@ zodat ik een gerichte en datagedreven onderbouwing van net- en laadstrategieën 
 
 === Gebruiksscenario
 
-In de data delen fase is er gekozen voor een centraal scenario waarbij de open dataproducten opgehaald kunnen worden bij het Dataportaal.
-
 .Gebruiksscenario
 [d2,svg,theme=4]
 ----
@@ -80,7 +67,11 @@ include::partial$diagrams/detectie/gebruiksscenario-centraal.d2[]
 
 ----
 
-1. Een derde haalt een open dataproduct op bij het dataportaal.
+1.
+2.
+3.
+4.
+5.
 
 === Architectuur
 
@@ -139,123 +130,131 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |ID |Type |Beschrijving
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Niets gebeurt in strijd met GEMS.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Geen Data Scientist team gebruikt data van een andere netbeheerder.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk kwartaal is er één statistisch model dat door elk Data Scientist team wordt gebruikt.
 
  |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
  |Aan het einde de landelijke fase is er één statistisch model dat alle zes netbeheerders, dus ook Coteq, Rendo en Westland Infra, kunnen gebruiken op hun eigen data wanneer zij de juiste tooling hebben.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk Data Scientist team levert de uitkomst van haar statitistische model als dataset aan op de File Gateway van EDSN.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elke dataset (uitkomst van het statitistische model) bevat metadata die het mogelijk maakt te achterhalen welke dataset en welke verwerkingsmethode is gebruikt (lineage).
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De datasets zijn interoperabel; lees, zij sluiten aan.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elk Data Scientist team levert haar dataset aan in JSON-formaat.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De dataset wordt aangeleverd in _tall format_, niet in _wide format_.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De gebruikte eenheid van vermogen is kiloWatt piek (kW(p)).
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De betrouwbaarheid wordt uitgedrukt in een percentage.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Elke Data Scientist team levert haar dataset aan in CIM.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Data van apparaten die geregistreerd moeten worden in CERES (momenteel PV en BESS) worden op EAN aangeleverd.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De EAN van invoedende apparaten is de EAN van de aansluiting, niet van het allocatiepunt en ook niet van het overdrachtspunt.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Data van apparaten die niet geregistreerd hoeven te worden in CERES (momenteel EV en HP) worden geaggregeerd aangeleverd conform GEMS.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het aanleveren van geaggregeerde data door de Data Scientist teams gebeurt op PC6. Tenzij dat niet conform GEMS is, dan gebeurt dat op PC4.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |De datasets worden door Data Delen als open dataproduct beschikbaar gemaakt voor derden.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het open dataproduct wordt, net als de datasets, aangeleverd in JSON-formaat conform CIM.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Het open dataproduct wordt centraal, op één URL endpoint, beschikbaar gemaakt. Dus niet federatief via zes URLs, voor elke netbeheerder één.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Verrijking van de datasets gebeurt nadat de datasets zijn aangeleverd op de File Gateway en voordat ze als dataproduct beschikbaar worden gemaakt.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Nieuwe datasets zijn aanvullingen, geen vervangingen, waardoor opbouw van historie mogelijk is.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |Nieuwe datasets worden periodiek (driemaandelijks) gegenereerd.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
 |{counter:bea}
-|Beslissing 
+|Beslissing
 // [Doco 00.01] - 20260824 - DEIA - Ontwerp
 |In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
+
+|{counter:bea}
+|Aanname
+|Gemeente is op zoek naar energie-intensieve apparaten, onafhankelijk van bron (detectie of registratie). De werkgroep heeft ervoor gekozen om enkel gedetecteerde apparaten te communiceren. TODO: achterliggende reden?
+
+|{counter:bea}
+|Aanname
+|Energie-intensieve apparaten worden via een nieuw register bij EDSN ontsloten. Aanlevering door de netbeheerders zijn onderdeel van het nieuwe register en valt onder de verantwoordelijkheid van EDSN (bestaand proces).
 
 |===

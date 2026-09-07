@@ -6,7 +6,8 @@ vars: {
 
 shape: sequence_diagram
 
-"Derde": "Derde"
-"Dataportaal": "Dataportaal"
-
-"Derde" -> "Dataportaal": "1. Haal dataproduct op"
+Netbeheerder -> EDSN: 1. Lever gedetecteerde apparaten
+EDSN -> EDSN: 2. Extract, transform & load
+EDSN -> Netbeheerder: 3. Bevestig levering
+Klant -> EDSN: 4. Vraag om gedetecteerde apparaten
+EDSN -> Klant: 5. Lever gedetecteerde apparaten
