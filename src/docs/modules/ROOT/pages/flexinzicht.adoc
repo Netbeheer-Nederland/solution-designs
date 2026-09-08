@@ -21,7 +21,7 @@ De initiatieven die door Flexinzicht worden ondersteund zijn:
 
 Voor elk van deze initiatieven moeten functionele eisen (_functional requirements_) worden vastgelegd en geharmoniseerd. Deze functionele eisen vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
 
-Functionele eisen `Algemeen 1` en `MI 1` zijn hoog over eisen. `BBN-GV 1` en  `BBN-KV 1` zijn al wat verder uitgewerkt. Maar er is besloten om te beginnen met `BBN-GV 2`.
+Functionele eisen `Algemeen 1` en `MI 1` zijn hoog over eisen. `BBN-GV 1` en  `BBN-KV 1` zijn al wat verder uitgewerkt. Maar er is besloten om te beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (TA).
 
 In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de betekenis van dit woord (in deze context) onduidelijk is. Verderop, bij de *Beslissingen en aannames*, wordt een aanname gedaan over die betekenis. Als dat echter niet lukt, of als er een toelichting nodig is dan is de aanname een verzoek om toelichting. Uitgangspunt is dat in een initiatief een woord niet van betekenis verandert.
 
@@ -65,13 +65,52 @@ a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en 
 
 ====
 
-=== Functionele eis BBN-GV 2
+=== Functionele eis Technisch Adviseur
 
+////
 *Als* #technisch adviseur betrokken bij de ontwikkeling, beoordeling of inzet van flexibiliteit# (bijv. batterijontwikkelaar, aggregator, energieleverancier, industriële partij of adviesbureau)
 
 *wil ik* inzicht hebben in de #actuele# en #verwachte flexbehoefte# per #netlocatie#, inclusief #omvang#, richting (invoeding of afname), #timing#, #duur#, #onzekerheid# en #veranderlijkheid# over verschillende #tijdshorizonnen#, aangevuld met #relevante# #belastingprofielen#, #operationele limieten#, #restcapaciteit# en #verwachte overschrijdingen#, op basis van een #geharmoniseerde datastructuur#
 
 *want* ik wil kunnen beoordelen #waar# en #wanneer flexibiliteit# technisch en economisch #relevant# is en onderbouwde keuzes maken voor ontwikkeling, locatiebepaling, ontwerp, portfolio-inrichting en #investeringsbeslissingen# op basis van één #geïntegreerde# en #betrouwbare informatiebron# over meerdere #netgebieden# en #netbeheerders# heen.
+////
+
+.Functionele eisen (Technisch Adviseur)
+[cols="2, 6, 6, 6"]
+|===
+|ID |Als rol |Wil ik |Want
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik de zakelijke aansluiting kunnen relateren aan de relevante netlocatie, het netvlak en het spanningsniveau
+ |zodat ik de juiste flexinformatie voor de beoogde batterijlocatie gebruik. 
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik per netlocatie inzicht in het benodigde flexvermogen, de flexenergie en de richting van de gevraagde flexibiliteit,
+ |zodat ik kan bepalen of laden, ontladen of beide technisch van waarde kunnen zijn. 
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik weten wanneer, hoe lang en hoe vaak flexbehoefte wordt verwacht,
+ |zodat ik het benodigde batterijvermogen, de energie-inhoud en de inzetduur kan beoordelen. 
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik inzicht in belasting, operationele limieten en richtingafhankelijke restcapaciteit vóór, tijdens en na een flexvenster,
+ |zodat ik kan beoordelen of de batterij tijdig kan laden en binnen de beschikbare netruimte kan ontladen. 
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik inzicht in scenario, bandbreedte, huidige en toekomstige netconfiguratie en relevante netontwikkelingen,
+ |zodat ik kan beoordelen of de batterijoplossing ook bij veranderende omstandigheden technisch passend blijft. 
+
+ |TA {counter:fe-ta}
+ |Als technisch adviseur voor batterijoplossingen achter de meter
+ |wil ik uniforme definities, tijdsresolutie, bron, actualiteit en kwaliteitsinformatie ontvangen,
+ |zodat ik locaties en scenario’s over netbeheerdersgebieden heen consistent kan vergelijken en mijn advies herleidbaar kan onderbouwen. 
+
+|===
 
 
 == Dataservice
@@ -161,15 +200,11 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 ====
 
-.Beslissingen en aannames `BBN-GV 2`
+.Beslissingen en aannames `Technisch Adviseur`
 [cols="2, 3, 6"]
 |===
 |ID |Type |Beschrijving
 
- |BBN-GV2 {counter:bea-bbngv2}  |Beslissing  |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `BN-GV 2.`
- |BBN-GV2 {counter:bea-bbngv2}  |Aanname | technisch adviseur betrokken bij de ontwikkeling, beoordeling of inzet van flexibiliteit  = markt.
- |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #flexbehoefte# = De behoefte aan extra capaciteit bij afname en het overschot aan capaciteit bij invoeding als een functie in de tijd.
- |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #actuele flexbehoefte# =  De verwachte flexbehoefte voor de komende maand, uitgesplitst naar invoeding en afname. _De actualiteit is afhankelijk van de verversingssnelheid van het dataproduct._
- |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #verwachte flexbehoefte# =  De verwachte flexbehoefte voor de komende 12 maanden, uitgesplitst naar invoeding en afname.
+ |TA {counter:bea-ta}  |Beslissing  |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
  
 |===
