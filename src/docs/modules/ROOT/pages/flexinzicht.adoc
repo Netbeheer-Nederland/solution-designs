@@ -19,11 +19,16 @@ De initiatieven die door Flexinzicht worden ondersteund zijn:
 2. Epic _Capaciteitskaart Belastingprofielen_ (BBN-KV)
 3. Epic _Netvooruitzicht_ (Meer inzicht)
 
-Voor elk van deze initiatieven worden functionele eisen (_functional requirements_) vastgelegd die geharmoniseerd worden. Zij vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
+Voor elk van deze initiatieven moeten functionele eisen (_functional requirements_) worden vastgelegd en geharmoniseerd. Deze functionele eisen vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
+
+Functionele eisen `Algemeen 1` en `MI 1` zijn hoog over eisen. `BBN-GV 1` en  `BBN-KV 1` zijn al wat verder uitgewerkt. Maar er is besloten om te beginnen met `BBN-GV 2`.
 
 In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de betekenis van dit woord (in deze context) onduidelijk is. Verderop, bij de *Beslissingen en aannames*, wordt een aanname gedaan over die betekenis. Als dat echter niet lukt, of als er een toelichting nodig is dan is de aanname een verzoek om toelichting. Uitgangspunt is dat in een initiatief een woord niet van betekenis verandert.
 
-.Functionele eisen
+.Functionele eisen `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` (gepauzeerd).
+[%collapsible]
+====
+.Functionele eisen (gepauzeerd)
 [cols="2, 2, 8, 8"]
 |===
 |ID |Als rol |Wil ik |Want
@@ -57,6 +62,17 @@ a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en 
 |handelingsperspectief.
 
 |===
+
+====
+
+=== Functionele eis BBN-GV 2
+
+*Als* #technisch adviseur betrokken bij de ontwikkeling, beoordeling of inzet van flexibiliteit# (bijv. batterijontwikkelaar, aggregator, energieleverancier, industriële partij of adviesbureau)
+
+*wil ik* inzicht hebben in de #actuele# en #verwachte flexbehoefte# per #netlocatie#, inclusief #omvang#, richting (invoeding of afname), #timing#, #duur#, #onzekerheid# en #veranderlijkheid# over verschillende #tijdshorizonnen#, aangevuld met #relevante# #belastingprofielen#, #operationele limieten#, #restcapaciteit# en #verwachte overschrijdingen#, op basis van een #geharmoniseerde datastructuur#
+
+*want* ik wil kunnen beoordelen #waar# en #wanneer flexibiliteit# technisch en economisch #relevant# is en onderbouwde keuzes maken voor ontwikkeling, locatiebepaling, ontwerp, portfolio-inrichting en #investeringsbeslissingen# op basis van één #geïntegreerde# en #betrouwbare informatiebron# over meerdere #netgebieden# en #netbeheerders# heen.
+
 
 == Dataservice
 
@@ -98,6 +114,10 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 == Beslissingen en aannames
 
+.Beslissingen en aannames `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` (gepauzeerd).
+[%collapsible]
+====
+
 [cols="2, 3, 6"]
 |===
 |ID |Type |Beschrijving
@@ -122,57 +142,34 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |BBN-GV {counter:bea-bbngv} | Aanname | #kosten# =  Toelichting nodig. Hoe worden deze kosten berekend? Wat is de input en hoe ziet de berekening er uit. Welke kosten zijn acceptabel? 
 |BBN-GV {counter:bea-bbngv} | Aanname | #verwachte overschrijdingen# = Toelichting nodig. Welke verwachte overschrijdingen? Hoe vaak, hoe lang, hoe groot? Welke verwachte overschrijdingen zijn acceptabel? 
 
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#gebruiker van de capaciteitskaart# = Toelichting nodig. Zijn dit daadwerkelijk alle burgers, overheden, gebiedsontwikkelaars, energieadviseurs, CSP's en grootverbruikers?
+|BBN-KV {counter:bea-bbnkv} |Aanname |#gebruiker van de capaciteitskaart# = Toelichting nodig. Zijn dit daadwerkelijk alle burgers, overheden, gebiedsontwikkelaars, energieadviseurs, CSP's en grootverbruikers?
+|BBN-KV {counter:bea-bbnkv} |Beslissing |https://begrippen.netbeheernederland.nl/doc/8eytm[#voedingsgebied#] = deel van het aardoppervlak waar zich de https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunten] van https://begrippen.netbeheernederland.nl/doc/gnhiy[aansluitingen] bevinden die worden gevoed door een bepaald deel van het https://begrippen.netbeheernederland.nl/doc/w9pqm[energienet].
+|BBN-KV {counter:bea-bbnkv} |Aanname |#station#  = De afgaande velden van transformator.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#toekomstige congestie# = Congestie over de 12 maanden.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#congestie#  = Gebrek aan https://begrippen.netbeheernederland.nl/doc/dwk8c[tansportcapaciteit] energie.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#beschikbare capaciteit# = Toelichting nodig.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#toekomstige belastingprofielen# = Belastingprofielen over 12 maanden.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#belastingprofielen# = Toelichting nodig.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#netuitbreidingen# = Verzwaringen die over 12 maanden in bedrijf zijn.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#ontwikkeling van belasting# = Is hetzelfde als #toekomstige belastingprofielen#.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#benuttingsgraden# = Is hetzelfde als #beschikbare capaciteit#.
+|BBN-KV {counter:bea-bbnkv} |Aanname |#restruimte# = Is hetzelfde als #beschikbare capaciteit#.
 
-|BBN-KV {counter:bea-bbnkv}
-|Beslissing
-|https://begrippen.netbeheernederland.nl/doc/8eytm[#voedingsgebied#] = deel van het aardoppervlak waar zich de https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunten] van https://begrippen.netbeheernederland.nl/doc/gnhiy[aansluitingen] bevinden die worden gevoed door een bepaald deel van het https://begrippen.netbeheernederland.nl/doc/w9pqm[energienet].
+|MI {counter:bea-mi} |Aanname |Meer inzicht
 
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#station#  = De afgaande velden van transformator.
+|===
 
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#toekomstige congestie# = Congestie over de 12 maanden.
+====
 
+.Beslissingen en aannames `BBN-GV 2`
+[cols="2, 3, 6"]
+|===
+|ID |Type |Beschrijving
 
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#congestie#  = Gebrek aan https://begrippen.netbeheernederland.nl/doc/dwk8c[tansportcapaciteit] energie.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#beschikbare capaciteit# = Toelichting nodig.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#toekomstige belastingprofielen# = Belastingprofielen over 12 maanden.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#belastingprofielen# = Toelichting nodig.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#netuitbreidingen# = Verzwaringen die over 12 maanden in bedrijf zijn.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#ontwikkeling van belasting# = Is hetzelfde als #toekomstige belastingprofielen#.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#benuttingsgraden# = Is hetzelfde als #beschikbare capaciteit#.
-
-|BBN-KV {counter:bea-bbnkv}
-|Aanname
-|#restruimte# = Is hetzelfde als #beschikbare capaciteit#.
-
-|MI {counter:bea-mi}
-|Aanname
-|Meer inzicht
-
+ |BBN-GV2 {counter:bea-bbngv2}  |Beslissing  |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `BN-GV 2.`
+ |BBN-GV2 {counter:bea-bbngv2}  |Aanname | technisch adviseur betrokken bij de ontwikkeling, beoordeling of inzet van flexibiliteit  = markt.
+ |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #flexbehoefte# = De behoefte aan extra capaciteit bij afname en het overschot aan capaciteit bij invoeding als een functie in de tijd.
+ |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #actuele flexbehoefte# =  De verwachte flexbehoefte voor de komende maand, uitgesplitst naar invoeding en afname. _De actualiteit is afhankelijk van de verversingssnelheid van het dataproduct._
+ |BBN-GV2 {counter:bea-bbngv2}  |Aanname | #verwachte flexbehoefte# =  De verwachte flexbehoefte voor de komende 12 maanden, uitgesplitst naar invoeding en afname.
+ 
 |===
