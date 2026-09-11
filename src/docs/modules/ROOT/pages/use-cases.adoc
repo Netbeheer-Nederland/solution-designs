@@ -129,6 +129,14 @@ a|
 |===
 |Use case |Spanningsniveau |Onderwerp
 
+|Systeemcode h12
+|HS & MS
+a|
+* Connectiviteit
+* Koppelpunt TSO/DSO
+* Voedingsgebied
+* Locatie
+
 |Aansluitoffensief
 |MS & LS
 a|
