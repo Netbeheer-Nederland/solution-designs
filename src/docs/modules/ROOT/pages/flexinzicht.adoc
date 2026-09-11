@@ -11,6 +11,16 @@ include::partial$data_product.adoc[]
 
 Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulteren in dataproducten met  'flex-informatie'. Flexinzicht is een (verzameling van) open dataproduct(en), gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group]), die deze initiatieven ondersteunt. 
 
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Technisch adviseur
+|Een organisatie of persoon die faciliteert bij het zoeken naar oplossingen voor congestieproblematiek door energie-advies te geven. In deze context is het een persoon die een batterijoplossing achter de meter ontwikkelt of beoordeelt voor een zakelijke aansluiting. De adviseur kan werkzaam zijn bij een batterijontwikkelaar, adviesbureau, industriële partij, energieleverancier of aggregator.
+
+|===
+
 == Functionele eisen
 
 De initiatieven die door Flexinzicht worden ondersteund zijn:
@@ -29,7 +39,7 @@ In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de b
 [%collapsible]
 ====
 .Functionele eisen (gepauzeerd)
-[cols="2, 2, 8, 8"]
+[cols="2,6,8,8"]
 |===
 |ID |Als rol |Wil ik |Want
 
@@ -76,39 +86,39 @@ a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en 
 ////
 
 .Functionele eisen (Technisch Adviseur)
-[cols="2, 6, 6, 6"]
+[cols="1, 2, 8, 8"]
 |===
 |ID |Als rol |Wil ik |Want
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik de zakelijke aansluiting kunnen relateren aan de relevante netlocatie, het netvlak en het spanningsniveau
- |zodat ik de juiste flexinformatie voor de beoogde batterijlocatie gebruik. 
+ |Als technisch adviseur
+ |wil ik de #zakelijke aansluiting# kunnen relateren aan de relevante #netlocatie#, het #netvlak# en het #spanningsniveau#
+ |zodat ik de juiste #flexinformatie# voor de beoogde batterijlocatie gebruik. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik per netlocatie inzicht in het benodigde flexvermogen, de flexenergie en de richting van de gevraagde flexibiliteit,
+ |Als technisch adviseur
+ |wil ik per #netlocatie# inzicht in het #benodigde flexvermogen#, de #flexenergie# en de #richting# van de #gevraagde flexibiliteit#,
  |zodat ik kan bepalen of laden, ontladen of beide technisch van waarde kunnen zijn. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik weten wanneer, hoe lang en hoe vaak flexbehoefte wordt verwacht,
+ |Als technisch adviseur
+ |wil ik weten wanneer, hoe lang en hoe vaak #flexbehoefte# wordt verwacht,
  |zodat ik het benodigde batterijvermogen, de energie-inhoud en de inzetduur kan beoordelen. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik inzicht in belasting, operationele limieten en richtingafhankelijke restcapaciteit vóór, tijdens en na een flexvenster,
- |zodat ik kan beoordelen of de batterij tijdig kan laden en binnen de beschikbare netruimte kan ontladen. 
+ |Als technisch adviseur
+ |wil ik inzicht in #belasting#, operationele limieten en #richtingafhankelijke restcapaciteit# vóór, tijdens en na een #flexvenster#,
+ |zodat ik kan beoordelen of de batterij tijdig kan laden en binnen de beschikbare #netruimte# kan ontladen. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik inzicht in scenario, bandbreedte, huidige en toekomstige netconfiguratie en relevante netontwikkelingen,
+ |Als technisch adviseur
+ |wil ik inzicht in scenario, bandbreedte, huidige en toekomstige #netconfiguratie# en #relevante netontwikkelingen#,
  |zodat ik kan beoordelen of de batterijoplossing ook bij veranderende omstandigheden technisch passend blijft. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur voor batterijoplossingen achter de meter
- |wil ik uniforme definities, tijdsresolutie, bron, actualiteit en kwaliteitsinformatie ontvangen,
- |zodat ik locaties en scenario’s over netbeheerdersgebieden heen consistent kan vergelijken en mijn advies herleidbaar kan onderbouwen. 
+ |Als technisch adviseur
+ |wil ik #uniforme definitie#s, #tijdsresolutie#, #bron#, #actualiteit# en kwaliteitsinformatie ontvangen,
+ |zodat ik locaties en scenario’s over #netbeheerdersgebieden# heen consistent kan vergelijken en mijn advies herleidbaar kan onderbouwen. 
 
 |===
 
