@@ -1,0 +1,202 @@
+= Use Cases NBNL Profile Group
+
+== Onderwerpen
+
+.Onderwerp naar _Common Information Model_ (CIM)
+[cols="1, 1, 2"]
+|===
+|Onderwerp |Profile |CIM Class
+
+|Connectiviteit
+|Equipment
+a|
+* `BaseVoltage`
+* `Bay`
+* `BusbarSection`
+* `ConnectivityNode`
+* `PowerTransformer`
+* `PowerTransformerEnd`
+* `Substation`
+* `Switch`
+* `Terminal`
+* `VoltageLevel`
+
+|Netveiligheid
+|Equipment (EQ 3.0)
+a|
+* `EquipmentLimitSeriesComponent`
+* `LimitDependency`
+* `SeriesEquipmentDependentLimit`
+
+|Topologie
+|Topology
+a|
+* `BusNameMarker`
+* `TopologicalNode`
+
+|Koppelpunt TSO/DSO
+|Equipment
+a|
+* `BoundaryPoint`
+* `ConnectivityNode`
+
+|Overdrachtspunt
+|Equipment
+a|
+* `EnergyConsumer`
+* `UsagePoint`
+
+|Voedingsgebied
+|Equipment, Topology
+a|
+* `ACLineSegment`
+* `EnergyConsumer`
+* `PowerTransformerEnd`
+* `Terminal`
+* `TopologicalNode`
+
+|Verbinding
+|Equipment
+a|
+* `ACLineSegment`
+* `Line`
+
+|Knelpunt
+|Equipment, Asset
+a|
+* `Contingency`
+* `ContingencyEquipment`
+* `CongestionDocument`
+
+|Aanwezige transportcapaciteit (ATC)
+|Equipment
+a|
+* `ActivePowerLimit`
+* `OperationalLimitSet`
+
+|Gevraagde (GTC) & benodigde (BTC) transportcapaciteit
+|Operation
+a|
+* `Analog`
+
+|Belastingprofiel (24u, 48u, ...)
+|Operation
+a|
+* `Analog`
+
+|Piekbelasting
+|Operation
+a|
+* `Analog`
+
+|Congestiegebied
+|Asset
+a|
+* `CongestionDocument`
+
+|Locatie
+|GeographicalLocation
+a|
+* `CoordinateSystem`
+* `GeographicalRegion`
+* `Location`
+* `PositionPoint`
+* `StreetAddress`
+* `StreetDetail`
+* `SubGeographicalRegion`
+
+|Wachtrij
+|Equipment, Operation
+a|
+* `ReportingGroup`
+* `Queue`
+
+|Netuitbreiding
+|Asset
+a|
+* `Asset`
+* `Project`
+* `Work`
+* `WorkTask`
+* `WorkTimeSchedule`
+
+|===
+
+== Use cases
+
+.Use case naar onderwerp
+[cols="1, 1, 2"]
+|===
+|Use case |Spanningsniveau |Onderwerp
+
+|Systeemcode h12
+|HS & MS
+a|
+* Connectiviteit
+* Koppelpunt TSO/DSO
+* Voedingsgebied
+* Locatie
+
+|Aansluitoffensief
+|MS & LS
+a|
+* Connectiviteit
+* Netveiligheid
+* Topologie
+* Voedingsgebied
+* Verbinding
+* Knelpunt
+* Aanwezige transportcapaciteit
+* Gevraagde & benodigde transportcapaciteit
+* Piekbelasting
+* Locatie
+
+|Buurtnet
+|LS
+a|
+* Connectiviteit
+* Netveiligheid
+* Topologie
+* Overdrachtspunt
+* Voedingsgebied
+* Aanwezige transportcapaciteit
+* Belastingprofiel
+* Locatie
+
+|Capaciteitskaart v3
+|HS & MS
+a|
+* Connectiviteit
+* Netveiligheid
+* Topologie
+* Koppelpunt TSO/DSO
+* Overdrachtspunt
+* Voedingsgebied
+* Verbinding
+* Knelpunt
+* Aanwezige transportcapaciteit
+* Gevraagde & benodigde transportcapaciteit
+* Congestiegebied
+* Locatie
+* Wachtrij
+* Netuitbreiding
+
+|Nettopologie, belasting en capaciteit
+|MS & LS
+a|
+* Connectiviteit
+* Netveiligheid
+* Topologie
+* Koppelpunt TSO/DSO
+* Overdrachtspunt
+* Voedingsgebied
+* Verbinding
+* Aanwezige transportcapaciteit
+* Gevraagde & benodigde transportcapaciteit
+* Belastingprofiel
+* Locatie
+
+|===
+
+_Inzicht in flexgebieden_ is nog niet opgenomen. Deze use case is nog niet door
+Team Semantiek gemodelleerd.
