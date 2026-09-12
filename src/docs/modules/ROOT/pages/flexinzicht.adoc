@@ -215,6 +215,7 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |===
 |ID |Type |Beschrijving
 
- |TA {counter:bea-ta}  |Beslissing  |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
+ |TA {counter:bea-ta}  |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
+ |TA {counter:bea-ta}  |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
  
 |===
