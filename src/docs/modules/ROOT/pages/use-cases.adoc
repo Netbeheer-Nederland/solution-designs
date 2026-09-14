@@ -2,6 +2,13 @@
 
 == Onderwerpen
 
+Onderwerpen zijn specifieke verzamelingen van functionaliteit. Elk onderwerp is
+netvlakagnostisch, i.e. van toepassing op elk spanningsniveau. Ook wordt enige
+kennis van de bijbehorende use cases verwacht: voor Buurtnet wordt b.v. een
+belastingprofiel in kwartierwaarden voor 24h en 48h vooruit. Voor het
+Aansluitoffensief is dit profiel per uur, 10 jaar vooruit. Bij <<_voortgang>>
+wordt, waar relevant, dit onderscheid benoemd.
+
 .Onderwerp naar _Common Information Model_ (CIM)
 [cols="1, 1, 2"]
 |===
@@ -25,7 +32,6 @@ a|
 |Equipment (EQ 3.0)
 a|
 * `EquipmentLimitSeriesComponent`
-* `LimitDependency`
 * `SeriesEquipmentDependentLimit`
 
 |Topologie
@@ -45,6 +51,7 @@ a|
 a|
 * `EnergyConsumer`
 * `UsagePoint`
+* `TopologicalNode`
 
 |Voedingsgebied
 |Equipment, Topology
@@ -84,15 +91,11 @@ a|
 a|
 * `Analog`
 
-|Piekbelasting
-|Operation
-a|
-* `Analog`
-
 |Congestiegebied
 |Asset
 a|
 * `CongestionDocument`
+* `Location`
 
 |Locatie
 |GeographicalLocation
@@ -123,6 +126,10 @@ a|
 |===
 
 == Use cases
+
+Use cases brengen <<_onderwerpen>> samen tot een specifieke invulling van
+functionele eisen vanuit een werkgroep, voor een specifiek spanningsniveau.
+Voor Buurtnet is b.v. connectiviteit van het laagspanningsnet (LS) vereist.
 
 .Use case naar onderwerp
 [cols="1, 1, 2"]
@@ -200,3 +207,125 @@ a|
 
 _Inzicht in flexgebieden_ is nog niet opgenomen. Deze use case is nog niet door
 Team Semantiek gemodelleerd.
+
+== Voortgang
+
+Elke netbeheerder (TSO & DSOs) implementeert de _NBNL Profile Group_ over de as
+van <<_use_cases>>. Om inzicht in de voortgang te geven wordt voor alle
+<<_onderwerpen>> een schatting gemaakt van de voortgang en eventuele
+aandachtspunten.
+
+=== Stedin
+
+Stedin werkt Q4/2026 aan twee use cases:
+
+1. Buurtnet (LS)
+2. Capaciteitskaart v3 (HS/MS)
+
+.Voortgang Stedin
+[cols="2, 1, 3, 1"]
+|===
+|Onderwerp |%-compleet |Opmerkingen |Gepland?
+
+|Connectiviteit
+|80%
+a|
+* `Terminal` & `ConnectivityNode` nog niet, rest v/d `Equipment`-s wel. Impact:
+  relatie tussen `Equipment`-s is in bronsystemen beschikbaar, nog geen
+  onderdeel van EQ dataset
+* connectiviteit voor Zeeland is niet beschikbaar, enkel `Substation`-s en
+  `PowerTransformer`-s
+* MS en LS allebei beschikbaar, onder EQ 3.0 (met binnenwereld van
+  `Substation`-s)
+|Q4/2026
+
+|Netveiligheid
+|100%
+a|
+* opgenomen in EQ
+|gereed
+
+|Topologie
+|0%
+a|
+* nog geen `TopologicalNode`-s tussen `EnergyConsumer` &
+  `PowerTransformerEnd`-s, of tussen `PowerTransformerEnd`-s
+|Q4/2026
+
+|Koppelpunt TSO/DSO
+|50%
+a|
+* afhankelijkheid op ander team (workaround beschikbaar)
+|Q4/2026
+
+|Overdrachtspunt
+|50%
+a|
+* overdrachtspunten zijn in bronsystemen beschikbaar (met EAN), nog niet in EQ
+* nog niet topologisch verbonden aan `PowerTransformerEnd`
+|Q4/2026
+
+|Voedingsgebied
+|50%
+a|
+* individuele `Equipment`-s gereed, nog niet topologisch verbonden
+|Q4/2026
+
+|Verbinding
+|50%
+a|
+* `ACLineSegment` gereed, `Line` nog niet. Mogelijk nog verduidelijking vanuit
+  Team Semantiek gevraagd
+|Q4/2026
+
+|Knelpunt
+|100%
+a|
+* alle knelpunten gereed: incl. congestierapport & schaarstekleur
+|gereed
+
+|Aanwezige transportcapaciteit (ATC)
+|100%
+a|
+* enkel voor knelpunten en niet voedingsgebieden, voor zowel invoeding & afname
+|gereed?
+
+|Gevraagde (GTC) & benodigde (BTC) transportcapaciteit
+|20%
+a|
+* in bronsystemen beschikbaar voor knelpunten, nog niet in OP
+|Q4/2026
+
+|Belastingprofiel
+|0%
+a|
+* Q4 in bronsystemen beschikbaar voor LS, nog niet in OP
+|Q1/2027
+
+|Congestiegebied
+|20%
+a|
+* in bronsystemen beschikbaar, nog niet in AS
+|Q4/2026
+
+|Locatie
+|20%
+a|
+* in bronsystemen beschikbaar, nog niet in GL
+* mogelijk nog verduidelijking vanuit Team Semantiek gevraagd rondom gebruik
+  BAG-registratie
+|Q4/2026
+
+|Wachtrij
+|0%
+a|
+* nog niet herijkt voor uniforme wachtrij vanuit werkgroep
+|?
+
+|Netuitbreiding
+|0%
+a|
+* wordt intern onderzocht
+|Q4/2026
+
+|===
