@@ -1,5 +1,23 @@
 = Use Cases NBNL Profile Group
 
+== Reikwijdte
+
+Dit document beschrijft de use cases en invulling van de
+https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group.html[NBNL
+Profile Group]. De _NBNL Profile Group_ bestaat uit de volgende dataproducten
+(_profiles_):
+
+* _Equipment_: defines the electrical equipment in the network model,
+  including their technical characteristics and relationships
+* _Asset_: describes the physical assets owned or managed by the utility,
+  including their identity, lifecycle, and management information
+* _Operation_: captures the real-time operational state and control
+  information of the power system used for monitoring and running the network
+* _Geographical Location_: provides the geographic position and spatial
+  representation of network assets and equipment on maps or geographic systems
+* _Topology_: represents an abstraction of the current electrical
+  connectivity of the network for a specific use case
+
 == Onderwerpen
 
 Onderwerpen zijn specifieke verzamelingen van functionaliteit. Elk onderwerp is
@@ -98,7 +116,7 @@ a|
 * `Location`
 
 |Locatie
-|GeographicalLocation
+|Geographical Location
 a|
 * `CoordinateSystem`
 * `GeographicalRegion`
@@ -232,17 +250,17 @@ Stedin werkt Q4/2026 aan twee use cases:
 a|
 * `Terminal` & `ConnectivityNode` nog niet, rest v/d `Equipment`-s wel. Impact:
   relatie tussen `Equipment`-s is in bronsystemen beschikbaar, nog geen
-  onderdeel van EQ dataset
+  onderdeel van Equipment dataset
 * connectiviteit voor Zeeland is niet beschikbaar, enkel `Substation`-s en
   `PowerTransformer`-s
-* MS en LS allebei beschikbaar, onder EQ 3.0 (met binnenwereld van
+* MS en LS allebei beschikbaar, onder Equipment 3.0 (met binnenwereld van
   `Substation`-s)
 |Q4/2026
 
 |Netveiligheid
 |100%
 a|
-* opgenomen in EQ
+* opgenomen in Equipment
 |gereed
 
 |Topologie
@@ -261,7 +279,8 @@ a|
 |Overdrachtspunt
 |50%
 a|
-* overdrachtspunten zijn in bronsystemen beschikbaar (met EAN), nog niet in EQ
+* overdrachtspunten zijn in bronsystemen beschikbaar (met EAN), nog niet in
+  Equipment
 * nog niet topologisch verbonden aan `PowerTransformerEnd`
 |Q4/2026
 
@@ -293,25 +312,25 @@ a|
 |Gevraagde (GTC) & benodigde (BTC) transportcapaciteit
 |20%
 a|
-* in bronsystemen beschikbaar voor knelpunten, nog niet in OP
+* in bronsystemen beschikbaar voor knelpunten, nog niet in Operation
 |Q4/2026
 
 |Belastingprofiel
 |0%
 a|
-* Q4 in bronsystemen beschikbaar voor LS, nog niet in OP
+* Q4 in bronsystemen beschikbaar voor LS, nog niet in Operation
 |Q1/2027
 
 |Congestiegebied
 |20%
 a|
-* in bronsystemen beschikbaar, nog niet in AS
+* in bronsystemen beschikbaar, nog niet in Asset
 |Q4/2026
 
 |Locatie
 |20%
 a|
-* in bronsystemen beschikbaar, nog niet in GL
+* in bronsystemen beschikbaar, nog niet in Geographical Location
 * mogelijk nog verduidelijking vanuit Team Semantiek gevraagd rondom gebruik
   BAG-registratie
 |Q4/2026
