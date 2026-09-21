@@ -339,12 +339,125 @@ a|
 |0%
 a|
 * nog niet herijkt voor uniforme wachtrij vanuit werkgroep
+* wat is de reikwijdte met ACA?
 |?
 
 |Netuitbreiding
 |0%
 a|
 * wordt intern onderzocht
+|Q4/2026
+
+|===
+
+=== Liander
+
+Liander werkt Q4/2026 aan twee use cases:
+
+1. Buurtnet (LS)
+2. Capaciteitskaart v3 (HS/MS)
+
+.Voortgang Liander
+[cols="2, 1, 3, 1"]
+|===
+|Onderwerp |%-compleet |Opmerkingen |Gepland?
+
+|Connectiviteit
+|50%
+a|
+* alleen LS beschikbaar, onder Equipment 2.0 (zonder binnenwereld van
+  `Substation`-s)
+|Q4/2026
+
+|Netveiligheid
+|0%
+a|
+* nog geen MS, dus ook geen connectiviteit onder netveiligheid
+|gereed
+
+|Topologie
+|0%
+a|
+* nog geen `TopologicalNode`-s tussen `EnergyConsumer` &
+  `PowerTransformerEnd`-s, of tussen `PowerTransformerEnd`-s
+|Q4/2026
+
+|Koppelpunt TSO/DSO
+|0%
+a|
+* nog niet in Equipment
+* afhankelijkheid op ander team?
+|Q4/2026
+
+|Overdrachtspunt
+|50%
+a|
+* overdrachtspunten zijn in bronsystemen beschikbaar (met EAN), nog niet in
+  Equipment
+* nog niet topologisch verbonden aan `PowerTransformerEnd`
+|Q4/2026
+
+|Voedingsgebied
+|50%
+a|
+* individuele `Equipment`-s gereed en in Equipment opgevoerd, nog niet
+  topologisch verbonden
+|Q4/2026
+
+|Verbinding
+|0%
+a|
+* geen verbindingen opgenomen, toekomst?
+|Q4/2026
+
+|Knelpunt
+|0%
+a|
+* nog geen knelpunten
+|Q4/2026
+
+|Aanwezige transportcapaciteit (ATC)
+|0%
+a|
+* Q4 in bronsystemen beschikbaar voor MS/LS (?), nog niet in Equipment
+|Q4/2026
+
+|Gevraagde (GTC) & benodigde (BTC) transportcapaciteit
+|20%
+a|
+* Q4 in bronsystemen beschikbaar voor MS/LS (?), nog niet in Operation
+|Q4/2026
+
+|Belastingprofiel
+|0%
+a|
+* Q4 in bronsystemen beschikbaar voor LS (?), nog niet in Operation
+* MS in scope?
+|Q4/2027
+
+|Congestiegebied
+|0%
+a|
+* van toepassing voor Liander?
+|Q4/2026
+
+|Locatie
+|20%
+a|
+* in bronsystemen beschikbaar, nog niet in Geographical Location
+|Q4/2026
+
+|Wachtrij
+|0%
+a|
+* nog niet herijkt voor uniforme wachtrij vanuit werkgroep
+* wat is de reikwijdte met ACA?
+|?
+
+|Netuitbreiding
+|0%
+a|
+* nog niet in Asset
 |Q4/2026
 
 |===
