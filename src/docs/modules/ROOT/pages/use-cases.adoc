@@ -352,6 +352,8 @@ a|
 
 === Liander
 
+CAUTION: DRAFT VERSIE, niet geverifieerd!
+
 Liander werkt Q4/2026 aan twee use cases:
 
 1. Buurtnet (LS)
