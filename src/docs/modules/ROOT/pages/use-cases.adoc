@@ -373,7 +373,7 @@ a|
 |0%
 a|
 * nog geen MS, dus ook geen connectiviteit onder netveiligheid
-|gereed
+|Q4/2026
 
 |Topologie
 |0%
