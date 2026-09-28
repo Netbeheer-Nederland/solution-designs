@@ -1,0 +1,134 @@
+= Automated Congestion Assessment (ACA)
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de gegevens ter
+ondersteuning van _Automated Congestion Assessment_, alsmede de achterliggende
+architectuur en gemaakte keuzes.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
+
+1. TODO
+2. TODO
+
+== Rollen
+
+De dataproducten beschreven in dit ontwerp kennen meerdere stakeholders, elk
+met een eigen verzameling behoeften en wensen. De <<_functionele_eisen>>
+behorend bij elke rol worden in het volgende hoofdstuk beschreven.
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|TransmissieSysteemBeheerder (TSB|TSO)
+|Een netbeheerder die is aangewezen voor het beheer van één of meer netten
+ vallend onder het landelijk hoogspanningsnet.
+
+|DistributieSysteemBeheerder (DSB|DSO)
+|Een netbeheerder die is aangewezen voor het beheer van één of meer netten,
+ anders dan het landelijk hoogspanningsnet.
+|===
+
+== Functionele eisen
+
+Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
+*doen*.
+
+.Functionele eisen
+[cols="1, 1, 1"]
+|===
+|Als Rol |Wil ik |Want
+
+|TSO
+|
+|
+
+|DSO
+|
+|
+|===
+
+== Dataservice
+
+Deze _use case_ volgt de referentiearchitectuur geïmplementeerd voor de _NBNL
+Profile Group_.
+
+=== Architectuur
+
+Deze _use case_ volgt de referentiearchitectuur geïmplementeerd voor de _NBNL
+Profile Group_.
+
+== Dataset
+
+Voor de informatiebehoefte van Buurtnet worden vier dataproducten vanuit de
+_NBNL Profile Group_ (her)gebruikt:
+
+* *Equipment* (EQ): connectiviteit voor het elektriciteitsnet, definitie van
+  netfuncties voor de overige dataproducten;
+* *Operation* (OP): belasting van transformatoren en andere netfuncties;
+* *GeoLocation* (GL): locatie van aansluitingen in het elektriciteitsnet;
+* *Topology* (TP): koppeling tussen overdrachtspunt en transformator en
+  nethierarchie;
+* *Asset* (AS): netuitbreiding en congestierapport.
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1, 1, 1, 1"]
+|===
+|Dataproduct |Volume |Variety |Veracity |Velocity
+
+|https://modellen.netbeheernederland.nl/nbnl-equipment[Equipment]
+|Midden, < 300MB (ongecomprimeerd)?
+|Gestructureerd
+|Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
+aansluitingen.
+|Laag, verandert alleen wanneer de connectiviteit van het elektriciteitsnet
+verandert
+
+|https://modellen.netbeheernederland.nl/nbnl-operation[Operation]
+|?
+|Gestructureerd
+|
+|?
+
+|https://modellen.netbeheernederland.nl/nbnl-geographical-location[GeoLocation]
+|?
+|Gestructureerd
+|
+|Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
+
+|https://modellen.netbeheernederland.nl/nbnl-topology[Topology]
+|
+|Gestructureerd
+|
+|Laag, verandert alleen wanneer de connectiviteit van het elektriciteitsnet
+verandert
+|===
+
+== Voorwaarden
+
+Deze dataproducten worden als _open data_ aangeboden. TODO: klopt dit?
+
+== Beslissingen en aannames
+
+[cols="1, 1, 3"]
+|===
+|Datum |Type |Beschrijving
+
+|28-09-2026
+|Beslissing
+|Voor implementatie van ACA wordt de _NBNL Profile Group_ ingezet, inclusief
+bestaande data-uitwisseling.
+|===
