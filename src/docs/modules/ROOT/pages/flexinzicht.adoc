@@ -1,5 +1,7 @@
 = Flexinzicht
 
+Versie 20260929T1641
+
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct Flexinzicht, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
@@ -85,40 +87,45 @@ a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en 
 *want* ik wil kunnen beoordelen #waar# en #wanneer flexibiliteit# technisch en economisch #relevant# is en onderbouwde keuzes maken voor ontwikkeling, locatiebepaling, ontwerp, portfolio-inrichting en #investeringsbeslissingen# op basis van één #geïntegreerde# en #betrouwbare informatiebron# over meerdere #netgebieden# en #netbeheerders# heen.
 ////
 
-.Functionele eisen (Technisch Adviseur)
-[cols="1, 2, 8, 8"]
+.Functionele eisen (Technisch Adviseur (TA))
+[cols="2, 3, 8, 7"]
 |===
 |ID |Als rol |Wil ik |Want
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik de #zakelijke aansluiting# kunnen relateren aan de relevante #netlocatie#, het #netvlak# en het #spanningsniveau#
  |zodat ik de juiste #flexinformatie# voor de beoogde batterijlocatie gebruik. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik per #netlocatie# inzicht in het #benodigde flexvermogen#, de #flexenergie# en de #richting# van de #gevraagde flexibiliteit#,
  |zodat ik kan bepalen of laden, ontladen of beide technisch van waarde kunnen zijn. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik weten wanneer, hoe lang en hoe vaak #flexbehoefte# wordt verwacht,
  |zodat ik het benodigde batterijvermogen, de energie-inhoud en de inzetduur kan beoordelen. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik inzicht in #belasting#, operationele limieten en #richtingafhankelijke restcapaciteit# vóór, tijdens en na een #flexvenster#,
  |zodat ik kan beoordelen of de batterij tijdig kan laden en binnen de beschikbare #netruimte# kan ontladen. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik inzicht in scenario, bandbreedte, huidige en toekomstige #netconfiguratie# en #relevante netontwikkelingen#,
  |zodat ik kan beoordelen of de batterijoplossing ook bij veranderende omstandigheden technisch passend blijft. 
 
  |TA {counter:fe-ta}
- |Als technisch adviseur
+ |Als TA
  |wil ik #uniforme definitie#s, #tijdsresolutie#, #bron#, #actualiteit# en kwaliteitsinformatie ontvangen,
  |zodat ik locaties en scenario’s over #netbeheerdersgebieden# heen consistent kan vergelijken en mijn advies herleidbaar kan onderbouwen. 
+
+ |TA {counter:fe-ta}
+ |Als TA
+ |van https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunt] binnen een https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] een uniform overzicht van de https://begrippen.netbeheernederland.nl/doc/dwk8c[transportcapaciteiten] (https://begrippen.netbeheernederland.nl/doc/2whwi[aanwezige], https://begrippen.netbeheernederland.nl/doc/7bs28[benodigde], https://begrippen.netbeheernederland.nl/doc/7n44w[gevraagde] en https://begrippen.netbeheernederland.nl/doc/bma66[regelbare]) over tijd 
+ |ik wil weten welke batterijoplossingen bij deze overdrachtspunten haalbaar zijn.
 
 |===
 
@@ -215,7 +222,10 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |===
 |ID |Type |Beschrijving
 
- |TA {counter:bea-ta}  |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
- |TA {counter:bea-ta}  |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
+ |TA {counter:bea-ta} |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
+ |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
+ |TA {counter:bea-ta} |Aanname |Alleen overdrachtspunten op LS-niveau. En alleen overdrachtspunten waar een batterijoplossing implementeerbaar is
+ |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
+ |TA {counter:bea-ta} |Aanname |Alleen huidig net, geen geplande uitbreidingen
  
 |===
