@@ -108,6 +108,11 @@ a|
 a|
 * `Analog`
 
+|Piekbelasting (max. vermogen over een periode)
+|Operation
+a|
+* `Analog`
+
 |Congestiegebied
 |Asset
 a|
