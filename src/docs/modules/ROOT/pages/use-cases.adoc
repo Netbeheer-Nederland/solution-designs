@@ -57,20 +57,20 @@ a|
 * `BusNameMarker`
 * `TopologicalNode`
 
-|Koppelpunt TSO/DSO
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Koppelpunt TSO/DSO]
 |Equipment
 a|
 * `BoundaryPoint`
 * `ConnectivityNode`
 
-|Overdrachtspunt
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Overdrachtspunt]
 |Equipment
 a|
 * `EnergyConsumer`
 * `UsagePoint`
 * `TopologicalNode`
 
-|Voedingsgebied
+|https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
 |Equipment, Topology
 a|
 * `ACLineSegment`
@@ -92,13 +92,18 @@ a|
 * `ContingencyEquipment`
 * `CongestionDocument`
 
-|Aanwezige transportcapaciteit (ATC)
+|https://begrippen.netbeheernederland.nl/doc/2whwi[Aanwezige transportcapaciteit (ATC)]
 |Equipment
 a|
 * `ActivePowerLimit`
 * `OperationalLimitSet`
 
-|Gevraagde (GTC) & benodigde (BTC) transportcapaciteit
+|https://begrippen.netbeheernederland.nl/doc/7n44w[Gevraagde transportcapaciteit (GTC)]
+|Operation
+a|
+* `Analog`
+
+|https://begrippen.netbeheernederland.nl/doc/7bs28[Benodigde transportcapaciteit (BTC)]
 |Operation
 a|
 * `Analog`
@@ -113,7 +118,7 @@ a|
 a|
 * `Analog`
 
-|Congestiegebied
+|https://begrippen.netbeheernederland.nl/doc/7qmcr[Congestiegebied]
 |Asset
 a|
 * `CongestionDocument`
@@ -136,7 +141,7 @@ a|
 * `ReportingGroup`
 * `Queue`
 
-|Netuitbreiding
+|https://begrippen.netbeheernederland.nl/doc/iwmdn[Netuitbreiding]
 |Asset
 a|
 * `Asset`
@@ -176,7 +181,8 @@ a|
 * Verbinding
 * Knelpunt
 * Aanwezige transportcapaciteit
-* Gevraagde & benodigde transportcapaciteit
+* Gevraagde transportcapaciteit
+* Benodigde transportcapaciteit
 * Piekbelasting
 * Locatie
 
@@ -204,7 +210,8 @@ a|
 * Verbinding
 * Knelpunt
 * Aanwezige transportcapaciteit
-* Gevraagde & benodigde transportcapaciteit
+* Gevraagde transportcapaciteit
+* Benodigde transportcapaciteit
 * Congestiegebied
 * Locatie
 * Wachtrij
@@ -221,7 +228,8 @@ a|
 * Voedingsgebied
 * Verbinding
 * Aanwezige transportcapaciteit
-* Gevraagde & benodigde transportcapaciteit
+* Gevraagde transportcapaciteit
+* Benodigde transportcapaciteit
 * Belastingprofiel
 * Locatie
 
