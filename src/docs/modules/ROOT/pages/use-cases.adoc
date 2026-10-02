@@ -24,8 +24,7 @@ Onderwerpen zijn specifieke verzamelingen van functionaliteit. Elk onderwerp is
 netvlakagnostisch, i.e. van toepassing op elk spanningsniveau. Ook wordt enige
 kennis van de bijbehorende use cases verwacht: voor Buurtnet wordt b.v. een
 belastingprofiel in kwartierwaarden voor 24h en 48h vooruit. Voor het
-Aansluitoffensief is dit profiel per uur, 10 jaar vooruit. Bij <<_voortgang>>
-wordt, waar relevant, dit onderscheid benoemd.
+Aansluitoffensief is dit profiel per uur, 10 jaar vooruit.
 
 .Onderwerp naar _Common Information Model_ (CIM)
 [cols="1, 1, 2"]
