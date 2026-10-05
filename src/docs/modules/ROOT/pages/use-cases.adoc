@@ -165,14 +165,6 @@ geïmplementeerd te zijn om het onderwerp ingevuld te hebben.
 |===
 |Use case |Spanningsniveau |Onderwerp
 
-|Systeemcode h12
-|HS & MS
-a|
-* Connectiviteit
-* Koppelpunt TSO/DSO
-* Locatie
-* Voedingsgebied
-
 |Aansluitoffensief
 |MS & LS
 a|
@@ -233,6 +225,14 @@ a|
 * Overdrachtspunt
 * Topologie
 * Verbinding
+* Voedingsgebied
+
+|Systeemcode h12
+|HS & MS
+a|
+* Connectiviteit
+* Koppelpunt TSO/DSO
+* Locatie
 * Voedingsgebied
 
 |===
