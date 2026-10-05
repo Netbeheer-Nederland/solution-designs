@@ -227,5 +227,6 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
  |TA {counter:bea-ta} |Aanname |Alleen overdrachtspunten op LS-niveau. En alleen overdrachtspunten waar een batterijoplossing implementeerbaar is
  |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
  |TA {counter:bea-ta} |Aanname |Alleen huidig net, geen geplande uitbreidingen
- 
+ |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
+
 |===
