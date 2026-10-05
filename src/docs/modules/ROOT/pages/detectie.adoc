@@ -257,4 +257,16 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |Aanname
 |Energie-intensieve apparaten worden via een nieuw register bij EDSN ontsloten. Aanlevering door de netbeheerders zijn onderdeel van het nieuwe register en valt onder de verantwoordelijkheid van EDSN (bestaand proces).
 
+|{counter:bea}
+|Aanname
+|Het dataplatform van EDSN is veilig genoeg om de uitkomsten van het statistisch model op overdrachtspunt op te slaan. Dit heeft als voordeel dat data op uniforme wijze geaggregeerd kan worden en daardoor ook geaggregeerd herbruikbaar is. Samen met de Visie Data Delen en de nieuwe Energiewet leidt dit tot de aanname dat GEMS akkoord zal gaan met opslag van de uitkomst van het statistische model op overdrachtspunt op het dataplatform van EDSN. 
+
+|{counter:bea}
+|Aanname
+|De Data Scientist teams kunnen de uitkomsten van de statistische modellen (laten) aanleveren bij hun datadeel team.
+
+|{counter:bea}
+|Aanname
+|De datadeel teams van de netbeheerders kunnen de data conform het CIM-schema op overdrachtspunt volgens het bestaande proces aanleveren bij EDSN; in JSON-LD per bouwblok.
+
 |===
