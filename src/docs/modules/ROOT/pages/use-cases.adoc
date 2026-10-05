@@ -7,15 +7,15 @@ https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-pro
 Profile Group]. De _NBNL Profile Group_ bestaat uit de volgende dataproducten
 (_profiles_):
 
-* _Equipment_: defines the electrical equipment in the network model,
+* _Equipment_ (EQ): defines the electrical equipment in the network model,
   including their technical characteristics and relationships
-* _Asset_: describes the physical assets owned or managed by the utility,
+* _Asset_ (AS): describes the physical assets owned or managed by the utility,
   including their identity, lifecycle, and management information
-* _Operation_: captures the real-time operational state and control
+* _Operation_ (OP): captures the real-time operational state and control
   information of the power system used for monitoring and running the network
-* _Geographical Location_: provides the geographic position and spatial
+* _Geographical Location_ (GL): provides the geographic position and spatial
   representation of network assets and equipment on maps or geographic systems
-* _Topology_: represents an abstraction of the current electrical
+* _Topology_ (TP): represents an abstraction of the current electrical
   connectivity of the network for a specific use case
 
 == Onderwerpen
@@ -31,74 +31,13 @@ Aansluitoffensief is dit profiel per uur, 10 jaar vooruit.
 |===
 |Onderwerp |Profile |CIM Class
 
-|Connectiviteit
-|Equipment
-a|
-* `BaseVoltage`
-* `Bay`
-* `BusbarSection`
-* `ConnectivityNode`
-* `PowerTransformer`
-* `PowerTransformerEnd`
-* `Substation`
-* `Switch`
-* `Terminal`
-* `VoltageLevel`
-
-|Netveiligheid
-|Equipment (EQ 3.0)
-a|
-* `EquipmentLimitSeriesComponent`
-* `SeriesEquipmentDependentLimit`
-
-|Topologie
-|Topology
-a|
-* `BusNameMarker`
-* `TopologicalNode`
-
-|https://begrippen.netbeheernederland.nl/doc/fqqa7[Koppelpunt TSO/DSO]
-|Equipment
-a|
-* `BoundaryPoint`
-* `ConnectivityNode`
-
-|https://begrippen.netbeheernederland.nl/doc/fqqa7[Overdrachtspunt]
-|Equipment
-a|
-* `EnergyConsumer`
-* `UsagePoint`
-* `TopologicalNode`
-
-|https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
-|Equipment, Topology
-a|
-* `ACLineSegment`
-* `EnergyConsumer`
-* `PowerTransformerEnd`
-* `Terminal`
-* `TopologicalNode`
-
-|Verbinding
-|Equipment
-a|
-* `ACLineSegment`
-* `Line`
-
-|Knelpunt
-|Equipment, Asset
-a|
-* `Contingency`
-* `ContingencyEquipment`
-* `CongestionDocument`
-
 |https://begrippen.netbeheernederland.nl/doc/2whwi[Aanwezige transportcapaciteit (ATC)]
 |Equipment
 a|
 * `ActivePowerLimit`
 * `OperationalLimitSet`
 
-|https://begrippen.netbeheernederland.nl/doc/7n44w[Gevraagde transportcapaciteit (GTC)]
+|Belastingprofiel (24u, 48u, ...)
 |Operation
 a|
 * `Analog`
@@ -108,21 +47,43 @@ a|
 a|
 * `Analog`
 
-|Belastingprofiel (24u, 48u, ...)
-|Operation
-a|
-* `Analog`
-
-|Piekbelasting (max. vermogen over een periode)
-|Operation
-a|
-* `Analog`
-
 |https://begrippen.netbeheernederland.nl/doc/7qmcr[Congestiegebied]
 |Asset
 a|
 * `CongestionDocument`
 * `Location`
+
+|Connectiviteit
+|Equipment
+a|
+* `BaseVoltage`
+* `Bay` (EQ 3.0)
+* `BusbarSection` (EQ 3.0)
+* `ConnectivityNode`
+* `PowerTransformer`
+* `PowerTransformerEnd`
+* `Substation`
+* `Switch` (EQ 3.0)
+* `Terminal`
+* `VoltageLevel`
+
+|https://begrippen.netbeheernederland.nl/doc/7n44w[Gevraagde transportcapaciteit (GTC)]
+|Operation
+a|
+* `Analog`
+
+|Knelpunt
+|Equipment, Asset
+a|
+* `Contingency`
+* `ContingencyEquipment`
+* `CongestionDocument`
+
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Koppelpunt TSO/DSO]
+|Equipment
+a|
+* `BoundaryPoint`
+* `ConnectivityNode`
 
 |Locatie
 |Geographical Location
@@ -135,12 +96,6 @@ a|
 * `StreetDetail`
 * `SubGeographicalRegion`
 
-|Wachtrij
-|Equipment, Operation
-a|
-* `ReportingGroup`
-* `Queue`
-
 |https://begrippen.netbeheernederland.nl/doc/iwmdn[Netuitbreiding]
 |Asset
 a|
@@ -150,13 +105,60 @@ a|
 * `WorkTask`
 * `WorkTimeSchedule`
 
+|Netveiligheid
+|Equipment
+a|
+* `EquipmentLimitSeriesComponent` (EQ 3.0)
+* `SeriesEquipmentDependentLimit` (EQ 3.0)
+
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Overdrachtspunt]
+|Equipment
+a|
+* `EnergyConsumer`
+* `UsagePoint`
+* `TopologicalNode`
+
+|Piekbelasting (max. vermogen over een periode)
+|Operation
+a|
+* `Analog`
+
+|Topologie
+|Topology
+a|
+* `BusNameMarker` (TP 2.0)
+* `TopologicalNode`
+
+|Verbinding
+|Equipment
+a|
+* `ACLineSegment` (EQ 3.0)
+* `Line` (EQ 3.0)
+
+|https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
+|Equipment, Topology
+a|
+* `ACLineSegment` (EQ 3.0)
+* `EnergyConsumer`
+* `PowerTransformerEnd`
+* `Terminal`
+* `TopologicalNode`
+
+|Wachtrij
+|Equipment, Operation
+a|
+* `ReportingGroup`
+* `Queue`
+
 |===
 
 == Use cases
 
 Use cases brengen <<_onderwerpen>> samen tot een specifieke invulling van
 functionele eisen vanuit een werkgroep, voor een specifiek spanningsniveau.
-Voor Buurtnet is b.v. connectiviteit van het laagspanningsnet (LS) vereist.
+Voor Buurtnet is b.v. connectiviteit van het laagspanningsnet (LS) vereist. Ook
+hoeven, afhankelijk van gemaakte afspraken, niet alle CIM-classes
+geïmplementeerd te zijn om het onderwerp ingevuld te hebben.
 
 .Use case naar onderwerp
 [cols="1, 1, 2"]
@@ -168,70 +170,70 @@ Voor Buurtnet is b.v. connectiviteit van het laagspanningsnet (LS) vereist.
 a|
 * Connectiviteit
 * Koppelpunt TSO/DSO
-* Voedingsgebied
 * Locatie
+* Voedingsgebied
 
 |Aansluitoffensief
 |MS & LS
 a|
-* Connectiviteit
-* Netveiligheid
-* Topologie
-* Voedingsgebied
-* Verbinding
-* Knelpunt
 * Aanwezige transportcapaciteit
-* Gevraagde transportcapaciteit
 * Benodigde transportcapaciteit
-* Piekbelasting
+* Connectiviteit
+* Gevraagde transportcapaciteit
+* Knelpunt
 * Locatie
+* Netveiligheid
+* Piekbelasting
+* Topologie
+* Verbinding
+* Voedingsgebied
 
 |Buurtnet
 |LS
 a|
-* Connectiviteit
-* Netveiligheid
-* Topologie
-* Overdrachtspunt
-* Voedingsgebied
 * Aanwezige transportcapaciteit
 * Belastingprofiel
+* Connectiviteit
 * Locatie
+* Netveiligheid
+* Overdrachtspunt
+* Topologie
+* Voedingsgebied
 
 |Capaciteitskaart v3
 |HS & MS
 a|
-* Connectiviteit
-* Netveiligheid
-* Topologie
-* Koppelpunt TSO/DSO
-* Overdrachtspunt
-* Voedingsgebied
-* Verbinding
-* Knelpunt
 * Aanwezige transportcapaciteit
-* Gevraagde transportcapaciteit
 * Benodigde transportcapaciteit
 * Congestiegebied
+* Connectiviteit
+* Gevraagde transportcapaciteit
+* Knelpunt
+* Koppelpunt TSO/DSO
 * Locatie
-* Wachtrij
 * Netuitbreiding
+* Netveiligheid
+* Overdrachtspunt
+* Topologie
+* Verbinding
+* Voedingsgebied
+* Wachtrij
 
 |Nettopologie, belasting en capaciteit
 |MS & LS
 a|
-* Connectiviteit
-* Netveiligheid
-* Topologie
-* Koppelpunt TSO/DSO
-* Overdrachtspunt
-* Voedingsgebied
-* Verbinding
 * Aanwezige transportcapaciteit
-* Gevraagde transportcapaciteit
-* Benodigde transportcapaciteit
 * Belastingprofiel
+* Benodigde transportcapaciteit
+* Connectiviteit
+* Gevraagde transportcapaciteit
+* Koppelpunt TSO/DSO
 * Locatie
+* Netveiligheid
+* Overdrachtspunt
+* Topologie
+* Verbinding
+* Voedingsgebied
 
 |===
 
