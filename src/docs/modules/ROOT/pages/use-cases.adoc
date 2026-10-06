@@ -7,16 +7,21 @@ https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-pro
 Profile Group]. De _NBNL Profile Group_ bestaat uit de volgende dataproducten
 (_profiles_):
 
-* _Equipment_ (EQ): defines the electrical equipment in the network model,
-  including their technical characteristics and relationships
-* _Asset_ (AS): describes the physical assets owned or managed by the utility,
-  including their identity, lifecycle, and management information
-* _Operation_ (OP): captures the real-time operational state and control
-  information of the power system used for monitoring and running the network
-* _Geographical Location_ (GL): provides the geographic position and spatial
-  representation of network assets and equipment on maps or geographic systems
-* _Topology_ (TP): represents an abstraction of the current electrical
-  connectivity of the network for a specific use case
+* https://modellen.netbeheernederland.nl/nbnl-equipment[Equipment] (EQ):
+  defines the electrical equipment in the network model, including their
+  technical characteristics and relationships
+* https://modellen.netbeheernederland.nl/nbnl-asset[Asset] (AS): describes
+  the physical assets owned or managed by the utility, including their
+  identity, lifecycle, and management information
+* https://modellen.netbeheernederland.nl/nbnl-operation[Operation] (OP):
+  captures the real-time operational state and control information of the power
+  system used for monitoring and running the network
+* https://modellen.netbeheernederland.nl/nbnl-geographical-location[Geographical
+  Location] (GL): provides the geographic position and spatial representation
+  of network assets and equipment on maps or geographic systems
+* https://modellen.netbeheernederland.nl/nbnl-topology[Topology] (TP):
+  represents an abstraction of the current electrical connectivity of the
+  network for a specific use case
 
 == Onderwerpen
 
