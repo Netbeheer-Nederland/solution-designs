@@ -228,5 +228,6 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
  |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
  |TA {counter:bea-ta} |Aanname |Alleen huidig net, geen geplande uitbreidingen
  |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
+  |TA {counter:bea-ta} |Beslissing |`TA 1` t/m `TA 7` zijn gepauzeerd. Eerst data dan functionele eis daar op aanpassen
 
 |===
