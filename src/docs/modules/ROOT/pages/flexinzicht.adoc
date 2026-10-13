@@ -1,6 +1,6 @@
 = Flexinzicht
 
-Versie 20260929T1641
+Versie 20261013T1717
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct Flexinzicht, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
@@ -11,7 +11,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulteren in dataproducten met  'flex-informatie'. Flexinzicht is een (verzameling van) open dataproduct(en), gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group]), die deze initiatieven ondersteunt. 
+Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulteren in dataproducten met  'flex-informatie'. Flexinzicht is een (verzameling van) open dataproduct(en), gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group,window=read-later]), die deze initiatieven ondersteunt. 
 
 .Rollen
 [cols="1, 2"]
@@ -230,5 +230,6 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
  |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
  |TA {counter:bea-ta} |Beslissing |`TA 1` t/m `TA 7` zijn gepauzeerd. Eerst data dan functionele eis daar op aanpassen
  |TA {counter:bea-ta} |Aanname |Voor netprognoses 3, 10 en 30 jaren in de toekomst kan `Gepland net` gebruikt worden. Voor 10 jaren vooruit kan ook gebruik worden gemaakt van Aansluitoffensief (10 jaren vooruit)
-
+ |TA {counter:bea-ta} |Beslissing |We prognotiseren 3 jaren vooruit
+ 
 |===
