@@ -1,7 +1,5 @@
 = Flexinzicht
 
-Versie 20261013T1717
-
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct Flexinzicht, alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
@@ -222,14 +220,22 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 |===
 |ID |Type |Beschrijving
 
- |TA {counter:bea-ta} |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
- |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
+ |TA {counter:bea-ta} |Beslissing |Het uitwerken van de functionele eisen van `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` is gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
+ |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het ingerichte proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
  |TA {counter:bea-ta} |Aanname |Alleen overdrachtspunten op LS-niveau. En alleen overdrachtspunten waar een batterijoplossing implementeerbaar is
- |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
- |TA {counter:bea-ta} |Aanname |Alleen huidig net, geen geplande uitbreidingen
- |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
- |TA {counter:bea-ta} |Beslissing |`TA 1` t/m `TA 7` zijn gepauzeerd. Eerst data dan functionele eis daar op aanpassen
+ |TA {counter:bea-ta} |Aanname |Vervallen
+ |TA {counter:bea-ta} |Aanname |Alleen huidig net en geen geplande uitbreidingen
+ |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing, geen financiële afhandeling.
+ |TA {counter:bea-ta} |Beslissing |Het uitwerken van de functionele eisen `TA 1` t/m `TA 7` is gepauzeerd. Eerst data dan functionele eis daar op aanpassen
  |TA {counter:bea-ta} |Aanname |Voor netprognoses 3, 10 en 30 jaren in de toekomst kan `Gepland net` gebruikt worden. Voor 10 jaren vooruit kan ook gebruik worden gemaakt van Aansluitoffensief (10 jaren vooruit)
  |TA {counter:bea-ta} |Beslissing |We prognotiseren 3 jaren vooruit
  
 |===
+
+// |TA {counter:bea-ta} |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
+// |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
+// |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
+// |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
+// |TA {counter:bea-ta} |Beslissing |`TA 1` t/m `TA 7` zijn gepauzeerd. Eerst data dan functionele eis daar op aanpassen
+
+Versie 20261015T1700
