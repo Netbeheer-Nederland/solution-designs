@@ -92,38 +92,13 @@ a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en 
 
  |TA {counter:fe-ta}
  |Als TA
- |wil ik de #zakelijke aansluiting# kunnen relateren aan de relevante #netlocatie#, het #netvlak# en het #spanningsniveau#
- |zodat ik de juiste #flexinformatie# voor de beoogde batterijlocatie gebruik. 
+ |een uniform overzicht van https://begrippen.netbeheernederland.nl/doc/2whwi[aanwezige], https://begrippen.netbeheernederland.nl/doc/7bs28[benodigde] en https://begrippen.netbeheernederland.nl/doc/bma66[regelbare] https://begrippen.netbeheernederland.nl/doc/dwk8c[transportcapaciteit] in een https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] en een https://begrippen.netbeheernederland.nl/doc/7qmcr[congestiegebied]
+ |ik wil weten welke batterijoplossingen (ten behoeve van verzwaring of als  regelmiddel) bij dit https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] en https://begrippen.netbeheernederland.nl/doc/7qmcr[congestiegebied] haalbaar zijn.
 
  |TA {counter:fe-ta}
  |Als TA
- |wil ik per #netlocatie# inzicht in het #benodigde flexvermogen#, de #flexenergie# en de #richting# van de #gevraagde flexibiliteit#,
- |zodat ik kan bepalen of laden, ontladen of beide technisch van waarde kunnen zijn. 
-
- |TA {counter:fe-ta}
- |Als TA
- |wil ik weten wanneer, hoe lang en hoe vaak #flexbehoefte# wordt verwacht,
- |zodat ik het benodigde batterijvermogen, de energie-inhoud en de inzetduur kan beoordelen. 
-
- |TA {counter:fe-ta}
- |Als TA
- |wil ik inzicht in #belasting#, operationele limieten en #richtingafhankelijke restcapaciteit# vóór, tijdens en na een #flexvenster#,
- |zodat ik kan beoordelen of de batterij tijdig kan laden en binnen de beschikbare #netruimte# kan ontladen. 
-
- |TA {counter:fe-ta}
- |Als TA
- |wil ik inzicht in scenario, bandbreedte, huidige en toekomstige #netconfiguratie# en #relevante netontwikkelingen#,
- |zodat ik kan beoordelen of de batterijoplossing ook bij veranderende omstandigheden technisch passend blijft. 
-
- |TA {counter:fe-ta}
- |Als TA
- |wil ik #uniforme definitie#s, #tijdsresolutie#, #bron#, #actualiteit# en kwaliteitsinformatie ontvangen,
- |zodat ik locaties en scenario’s over #netbeheerdersgebieden# heen consistent kan vergelijken en mijn advies herleidbaar kan onderbouwen. 
-
- |TA {counter:fe-ta}
- |Als TA
- |van https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunt] binnen een https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] een uniform overzicht van de https://begrippen.netbeheernederland.nl/doc/dwk8c[transportcapaciteiten] (https://begrippen.netbeheernederland.nl/doc/2whwi[aanwezige], https://begrippen.netbeheernederland.nl/doc/7bs28[benodigde], https://begrippen.netbeheernederland.nl/doc/7n44w[gevraagde] en https://begrippen.netbeheernederland.nl/doc/bma66[regelbare]) over tijd 
- |ik wil weten welke batterijoplossingen bij deze overdrachtspunten haalbaar zijn.
+ |een uniform overzicht van de oplosdatums (datum vanaf wanneer de congestie is opgelost) van alle bovenliggende congestiegebieden waar een congestiegebied op LS-niveau deel van uit maakt
+ |ik weten wanneer de congestie voor dit congestiegebied op LS-niveau is opgelost.
 
 |===
 
@@ -232,10 +207,4 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
  
 |===
 
-// |TA {counter:bea-ta} |Beslissing |`Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` zijn gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
-// |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het bestaande proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
-// |TA {counter:bea-ta} |Aanname |Alleen historische data en gebruikersprofielen
-// |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing.
-// |TA {counter:bea-ta} |Beslissing |`TA 1` t/m `TA 7` zijn gepauzeerd. Eerst data dan functionele eis daar op aanpassen
-
-Versie 20261015T1700
+Publicatiedatum 20261016.
