@@ -1,5 +1,11 @@
 = Use Cases NBNL Profile Group
 
+:as: https://modellen.netbeheernederland.nl/nbnl-asset/3.0/schema/class/
+:eq: https://modellen.netbeheernederland.nl/nbnl-equipment/3.0/schema/class/
+:gl: https://modellen.netbeheernederland.nl/nbnl-geographical-location/1.3/schema/class/
+:op: https://modellen.netbeheernederland.nl/nbnl-operation/3.0/schema/class/
+:tp: https://modellen.netbeheernederland.nl/nbnl-topology/2.0/schema/class/
+
 == Reikwijdte
 
 Dit document beschrijft de use cases en invulling van de
@@ -23,146 +29,12 @@ Profile Group]. De _NBNL Profile Group_ bestaat uit de volgende dataproducten
   represents an abstraction of the current electrical connectivity of the
   network for a specific use case
 
-== Onderwerpen
-
-Onderwerpen zijn specifieke verzamelingen van functionaliteit. Elk onderwerp is
-netvlakagnostisch, i.e. van toepassing op elk spanningsniveau. Ook wordt enige
-kennis van de bijbehorende use cases verwacht: voor Buurtnet wordt b.v. een
-belastingprofiel in kwartierwaarden voor 24h en 48h vooruit. Voor het
-Aansluitoffensief is dit profiel per uur, 10 jaar vooruit.
-
-.Onderwerp naar _Common Information Model_ (CIM)
-[cols="1, 1, 2"]
-|===
-|Onderwerp |Profile |CIM Class
-
-|https://begrippen.netbeheernederland.nl/doc/2whwi[Aanwezige transportcapaciteit (ATC)]
-|Equipment
-a|
-* `ActivePowerLimit`
-* `OperationalLimitSet`
-
-|Belastingprofiel (24u, 48u, ...)
-|Operation
-a|
-* `Analog`
-
-|https://begrippen.netbeheernederland.nl/doc/7bs28[Benodigde transportcapaciteit (BTC)]
-|Operation
-a|
-* `Analog`
-
-|https://begrippen.netbeheernederland.nl/doc/7qmcr[Congestiegebied]
-|Asset
-a|
-* `CongestionDocument`
-* `Location`
-
-|Connectiviteit
-|Equipment
-a|
-* `BaseVoltage`
-* `Bay` (EQ 3.0)
-* `BusbarSection` (EQ 3.0)
-* `ConnectivityNode`
-* `PowerTransformer`
-* `PowerTransformerEnd`
-* `Substation`
-* `Switch` (EQ 3.0)
-* `Terminal`
-* `VoltageLevel`
-
-|https://begrippen.netbeheernederland.nl/doc/7n44w[Gevraagde transportcapaciteit (GTC)]
-|Operation
-a|
-* `Analog`
-
-|Knelpunt
-|Equipment, Asset
-a|
-* `Contingency`
-* `ContingencyEquipment`
-* `CongestionDocument`
-
-|https://begrippen.netbeheernederland.nl/doc/fqqa7[Koppelpunt TSO/DSO]
-|Equipment
-a|
-* `BoundaryPoint`
-* `ConnectivityNode`
-
-|Locatie
-|Geographical Location
-a|
-* `CoordinateSystem`
-* `GeographicalRegion`
-* `Location`
-* `PositionPoint`
-* `StreetAddress`
-* `StreetDetail`
-* `SubGeographicalRegion`
-
-|https://begrippen.netbeheernederland.nl/doc/iwmdn[Netuitbreiding]
-|Asset
-a|
-* `Asset`
-* `Project`
-* `Work`
-* `WorkTask`
-* `WorkTimeSchedule`
-
-|Netveiligheid
-|Equipment
-a|
-* `EquipmentLimitSeriesComponent` (EQ 3.0)
-* `SeriesEquipmentDependentLimit` (EQ 3.0)
-
-|https://begrippen.netbeheernederland.nl/doc/fqqa7[Overdrachtspunt]
-|Equipment
-a|
-* `EnergyConsumer`
-* `UsagePoint`
-* `TopologicalNode`
-
-|Piekbelasting (max. vermogen over een periode)
-|Operation
-a|
-* `Analog`
-
-|Topologie
-|Topology
-a|
-* `BusNameMarker` (TP 2.0)
-* `TopologicalNode`
-
-|Verbinding
-|Equipment
-a|
-* `ACLineSegment` (EQ 3.0)
-* `Line` (EQ 3.0)
-
-|https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
-|Equipment, Topology
-a|
-* `ACLineSegment` (EQ 3.0)
-* `EnergyConsumer`
-* `PowerTransformerEnd`
-* `Terminal`
-* `TopologicalNode`
-
-|Wachtrij
-|Equipment, Operation
-a|
-* `ReportingGroup`
-* `Queue`
-
-|===
-
 == Use cases
 
 Use cases brengen <<_onderwerpen>> samen tot een specifieke invulling van
 functionele eisen vanuit een werkgroep, voor een specifiek spanningsniveau.
-Voor Buurtnet is b.v. connectiviteit van het laagspanningsnet (LS) vereist. Ook
-hoeven, afhankelijk van gemaakte afspraken, niet alle CIM-classes
+Voor _Buurtnet_ is b.v. connectiviteit van het laagspanningsnet (LS) vereist.
+Ook hoeven, afhankelijk van gemaakte afspraken, niet alle CIM-classes
 geïmplementeerd te zijn om het onderwerp ingevuld te hebben.
 
 .Use case naar onderwerp
@@ -174,13 +46,15 @@ geïmplementeerd te zijn om het onderwerp ingevuld te hebben.
 |MS & LS
 a|
 * Aanwezige transportcapaciteit
+* Belastingprofiel (prognose, 10j, 1u)
 * Benodigde transportcapaciteit
 * Connectiviteit
 * Gevraagde transportcapaciteit
 * Knelpunt
-* Locatie
+* Locatie (postcode+huisnummer)
+* Locatie (WGS84)
 * Netveiligheid
-* Piekbelasting
+* Piekbelasting (historisch, 1j)
 * Topologie
 * Verbinding
 * Voedingsgebied
@@ -189,9 +63,11 @@ a|
 |LS
 a|
 * Aanwezige transportcapaciteit
-* Belastingprofiel
+* Belastingprofiel (historisch, 24+48u, 15m)
+* Belastingprofiel (prognose, 24+48u, 15m)
 * Connectiviteit
-* Locatie
+* Locatie (postcode+huisnummer)
+* Locatie (WGS84)
 * Netveiligheid
 * Overdrachtspunt
 * Topologie
@@ -207,7 +83,9 @@ a|
 * Gevraagde transportcapaciteit
 * Knelpunt
 * Koppelpunt TSO/DSO
-* Locatie
+* Locatie (postcode6)
+* Locatie (WGS84)
+* *MS-route*
 * Netuitbreiding
 * Netveiligheid
 * Overdrachtspunt
@@ -216,16 +94,52 @@ a|
 * Voedingsgebied
 * Wachtrij
 
+|Inzicht in flexgebieden
+|MS & LS
+a|
+* Aanwezige transportcapaciteit
+* Benodigde transportcapaciteit
+* Congestiegebied
+* Connectiviteit
+* Gevraagde transportcapaciteit
+* Knelpunt
+* Locatie (postcode+huisnummer)
+* Locatie (WGS84)
+* Netuitbreiding
+* Netveiligheid
+* Overdrachtspunt
+* *Regelbare transportcapaciteit*
+* Topologie
+* Verbinding
+* Voedingsgebied
+* Wachtrij
+
+|Netbewust Publiek Laden
+|LS
+a|
+* Aanwezige transportcapaciteit
+* *Charge Point Operator*
+* Connectiviteit
+* *Cluster van laadpalen*
+* Locatie (postcode+huisnummer)
+* Locatie (WGS84)
+* Netveiligheid
+* Overdrachtspunt
+* Piekbelasting (historisch, 1j)
+* Topologie
+* Voedingsgebied
+
 |Nettopologie, belasting en capaciteit
 |MS & LS
 a|
 * Aanwezige transportcapaciteit
-* Belastingprofiel
+* Belastingprofiel (prognose, 10j, 1u)
 * Benodigde transportcapaciteit
 * Connectiviteit
 * Gevraagde transportcapaciteit
 * Koppelpunt TSO/DSO
-* Locatie
+* Locatie (postcode+huisnummer)
+* Locatie (WGS84)
 * Netveiligheid
 * Overdrachtspunt
 * Topologie
@@ -237,10 +151,183 @@ a|
 a|
 * Connectiviteit
 * Koppelpunt TSO/DSO
-* Locatie
+* Locatie (WGS84)
 * Voedingsgebied
 
 |===
 
-_Inzicht in flexgebieden_ is nog niet opgenomen. Deze use case is nog niet door
-Team Semantiek gemodelleerd.
+== Onderwerpen
+
+Onderwerpen zijn specifieke verzamelingen van functionaliteit. Elk onderwerp is
+netvlakagnostisch, i.e. van toepassing op elk spanningsniveau. Ook wordt enige
+kennis van de bijbehorende use cases verwacht, b.v. op welke punten in het net
+wordt gevraagd om _Aanwezige transportcapaciteit (ATC)_.
+
+.Onderwerp naar _Common Information Model_ (CIM)
+[cols="2, 1, 2"]
+|===
+|Onderwerp |Profile |CIM Class
+
+|https://begrippen.netbeheernederland.nl/doc/2whwi[Aanwezige transportcapaciteit (ATC)]
+|Equipment
+a|
+* `{eq}ActivePowerLimit[ActivePowerLimit]`
+* `{eq}OperationalLimitSet[OperationalLimitSet]`
+
+|Belastingprofiel (prognose, 24+48u, 15m)
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|Belastingprofiel (historisch, 24+48u, 15m)
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|Belastingprofiel (prognose, 10j, 1u)
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|https://begrippen.netbeheernederland.nl/doc/7bs28[Benodigde transportcapaciteit (BTC)]
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|Charge Point Operator
+|*Market*
+a|
+* `?`
+
+|Cluster van laadpalen
+|Equipment
+a|
+* `{eq}EnergyConsumer[EnergyConsumer]`
+* `{eq}ReportingGroup[ReportingGroup] (?)`
+* `{eq}UsagePoint[UsagePoint]`
+
+|https://begrippen.netbeheernederland.nl/doc/7qmcr[Congestiegebied]
+|Asset, Geographical Location
+a|
+* `{as}CongestionDocument[CongestionDocument]`
+* `{gl}Location[Location]`
+
+|Connectiviteit
+|Equipment
+a|
+* `{eq}BaseVoltage[BaseVoltage]`
+* `{eq}Bay[Bay]` (>= EQ 3.0)
+* `{eq}BusbarSection[BusbarSection]` (>= EQ 3.0)
+* `{eq}ConnectivityNode[ConnectivityNode]`
+* `{eq}PowerTransformer[PowerTransformer]`
+* `{eq}PowerTransformerEnd[PowerTransformerEnd]`
+* `{eq}Substation[Substation]`
+* `{eq}Switch[Switch]` (>= EQ 3.0)
+* `{eq}Terminal[Terminal]`
+* `{eq}VoltageLevel[VoltageLevel]`
+
+|https://begrippen.netbeheernederland.nl/doc/7n44w[Gevraagde transportcapaciteit (GTC)]
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|Knelpunt
+|Equipment, Asset
+a|
+* `{eq}Contingency[Contingency]`
+* `{eq}ContingencyEquipment[ContingencyEquipment]`
+* `{as}CongestionDocument[CongestionDocument]`
+
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Koppelpunt TSO/DSO]
+|Equipment
+a|
+* `{eq}BoundaryPoint[eu:BoundaryPoint]`
+* `{eq}ConnectivityNode[ConnectivityNode]`
+
+|Locatie (postcode6)
+|Geographical Location
+a|
+* `{gl}Location[Location]`
+* `{gl}StreetAddress[StreetAddress]`
+
+|Locatie (postcode+huisnummer)
+|Geographical Location
+a|
+* `{gl}Location[Location]`
+* `{gl}StreetAddress[StreetAddress]`
+* `{gl}StreetDetail[StreetDetail]`
+
+|Locatie (WGS84)
+|Equipment, Geographical Location
+a|
+* `{gl}CoordinateSystem[CoordinateSystem]`
+* `{eq}GeographicalRegion[GeographicalRegion]`
+* `{gl}Location[location]`
+* `{gl}PositionPoint[PositionPoint]`
+* `{eq}SubGeographicalRegion[SubGeographicalRegion]`
+
+|MS-route
+|Equipment
+a|
+* `?`
+
+|https://begrippen.netbeheernederland.nl/doc/iwmdn[Netuitbreiding]
+|Asset
+a|
+* `{as}Asset[Asset]`
+* `{as}Project[Project]`
+* `{as}Work[Work]`
+* `{as}WorkTask[WorkTask]`
+* `{as}WorkTimeSchedule[WorkTimeSchedule]`
+
+|Netveiligheid
+|Equipment
+a|
+* `{eq}EquipmentLimitSeriesComponent[EquipmentLimitSeriesComponent]` (>= EQ 3.0)
+* `{eq}SeriesEquipmentDependentLimit[SeriesEquipmentDependentLimit]` (>= EQ 3.0)
+
+|https://begrippen.netbeheernederland.nl/doc/fqqa7[Overdrachtspunt]
+|Equipment, Topology
+a|
+* `{eq}EnergyConsumer[EnergyConsumer]`
+* `{eq}UsagePoint[UsagePoint]`
+* `{tp}TopologicalNode[TopologicalNode]`
+
+|Piekbelasting (historisch, 1j)
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|https://begrippen.netbeheernederland.nl/doc/bma66[Regelbare transportcapaciteit (RTC)]
+|Operation
+a|
+* `{op}Analog[Analog]`
+
+|Topologie
+|Topology
+a|
+* `{tp}BusNameMarker[BusNameMarker]` (TP 2.0)
+* `{tp}TopologicalNode[TopologicalNode]`
+
+|Verbinding
+|Equipment
+a|
+* `{eq}ACLineSegment[ACLineSegment]` (>= EQ 3.0)
+* `{eq}Line[Line]` (>= EQ 3.0)
+
+|https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
+|Equipment, Topology
+a|
+* `{eq}ACLineSegment[ACLineSegment]` (>= EQ 3.0)
+* `{eq}EnergyConsumer[EnergyConsumer]`
+* `{eq}PowerTransformerEnd[PowerTransformerEnd]`
+* `{eq}Terminal[Terminal]`
+* `{tp}TopologicalNode[TopologicalNode]`
+
+|Wachtrij
+|Equipment, Operation
+a|
+* `{eq}ReportingGroup[ReportingGroup]`
+* `{op}Queue[nl:Queue]`
+
+|===

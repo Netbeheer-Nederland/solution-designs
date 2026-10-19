@@ -1,50 +1,66 @@
 = Automated Congestion Assessment (ACA)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor de gegevens ter
-ondersteuning van _Automated Congestion Assessment_, alsmede de achterliggende
-architectuur en gemaakte keuzes.
+The *DSO-TSO Congestion Data Exchange* outlines the framework for data exchange
+between Distribution System Operators (DSOs) and Transmission System Operator
+(TSO) for _congestion management study_ purposes. This initiative aims to
+enhance the accuracy and efficiency of energy data management, ensuring
+seamless integration and communication between system operators.
+
+This document details various aspects of data exchange, including load
+profiles, and prognosis logic. It emphasizes the importance of adhering to
+standardized formats for time series data, which ensures consistency and
+reliability in data delivery for all parties involved. The document also
+highlights the roles and responsibilities of different stakeholders involved in
+the project, providing a clear approach for implementation and approval
+processes.
+
+This document is prepared in English in order to facilitate software
+development and ensure the broadest possible understanding and compatibility
+across teams and stakeholders.
 
 [NOTE]
 ====
-include::partial$data_product.adoc[]
+include::partial$profile_group_en.adoc[]
 ====
 
-== Reikwijdte
+== Scope
 
-Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
 
-1. TODO
-2. TODO
+Load Profile::
+Time series containing 8760 hourly data points, representing an hour of a
+prognosis year, per Primary Substation (containing HV/MV boundary point(s)).
 
-== Rollen
+Baseline Profile::
+TODO
+
+== Roles
 
 De dataproducten beschreven in dit ontwerp kennen meerdere stakeholders, elk
-met een eigen verzameling behoeften en wensen. De <<_functionele_eisen>>
+met een eigen verzameling behoeften en wensen. De <<_functional_requirements>>
 behorend bij elke rol worden in het volgende hoofdstuk beschreven.
 
-.Rollen
+.Roles
 [cols="1, 2"]
 |===
-|Rol |Beschrijving
+|Role |Description
 
-|TransmissieSysteemBeheerder (TSB|TSO)
-|Een netbeheerder die is aangewezen voor het beheer van één of meer netten
- vallend onder het landelijk hoogspanningsnet.
+|Transmission System Operator (TSO)
+|
 
-|DistributieSysteemBeheerder (DSB|DSO)
-|Een netbeheerder die is aangewezen voor het beheer van één of meer netten,
- anders dan het landelijk hoogspanningsnet.
+|Distribution System Operator (TSO)
+|
 |===
 
-== Functionele eisen
+== Functional Requirements
 
 Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
 *doen*.
 
 .Functionele eisen
 [cols="1, 1, 1"]
+
 |===
-|Als Rol |Wil ik |Want
+|As Role |I need |Because
 
 |TSO
 |
@@ -55,34 +71,28 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
 |
 |===
 
-== Dataservice
+== Data service
 
 Deze _use case_ volgt de referentiearchitectuur geïmplementeerd voor de _NBNL
 Profile Group_.
 
-=== Architectuur
+=== Architecture
 
 Deze _use case_ volgt de referentiearchitectuur geïmplementeerd voor de _NBNL
 Profile Group_.
 
 == Dataset
 
-Voor de informatiebehoefte van Buurtnet worden vier dataproducten vanuit de
-_NBNL Profile Group_ (her)gebruikt:
-
-* *Equipment* (EQ): connectiviteit voor het elektriciteitsnet, definitie van
-  netfuncties voor de overige dataproducten;
-* *Operation* (OP): belasting van transformatoren en andere netfuncties;
-* *GeoLocation* (GL): locatie van aansluitingen in het elektriciteitsnet;
-* *Topology* (TP): koppeling tussen overdrachtspunt en transformator en
-  nethierarchie;
-* *Asset* (AS): netuitbreiding en congestierapport.
+* *Equipment* (EQ):
+* *Operation* (OP):
+* *GeoLocation* (GL):
+* *Topology* (TP):
 
 === Volume, variety, veracity, velocity
 
 [NOTE]
 ====
-include::partial$four_v.adoc[]
+include::partial$four_v_en.adoc[]
 ====
 
 [cols="1, 1, 1, 1, 1"]
@@ -117,18 +127,18 @@ verandert
 verandert
 |===
 
-== Voorwaarden
+== Conditions of use
 
-Deze dataproducten worden als _open data_ aangeboden. TODO: klopt dit?
+Restricted data, _System Operator_ internal.
 
-== Beslissingen en aannames
+== Assumptions and decisions
 
 [cols="1, 1, 3"]
 |===
 |Datum |Type |Beschrijving
 
-|28-09-2026
-|Beslissing
+|16-10-2026
+|Decisions
 |Voor implementatie van ACA wordt de _NBNL Profile Group_ ingezet, inclusief
 bestaande data-uitwisseling.
 |===
