@@ -9,7 +9,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulteren in dataproducten met  'flex-informatie'. Flexinzicht is een (verzameling van) open dataproduct(en), gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group,window=read-later]), die deze initiatieven ondersteunt. 
+Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die moeten resulteren in dataproducten met 'flex-informatie'. Flexinzicht is een open dataproduct, gebaseerd op de zogenoemde _bouwblokken_ (https://modellen.netbeheernederland.nl/data-products/information-models/nbnl-profile-group[NBNL Profile Group,window=read-later]), het is de basis voor dataproducten die met steeds meer 'flex-informatie' steeds meer van deze initiatieven ondersteunen. 
 
 .Rollen
 [cols="1, 2"]
@@ -23,91 +23,35 @@ Binnen Netbeheer Nederland (NBNL) lopen meerdere initiatieven die kunnen resulte
 
 == Functionele eisen
 
-De initiatieven die door Flexinzicht worden ondersteund zijn:
+Voor dit dataproduct gelden functionele eisen (_functional requirements_). Deze functionele eisen vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde ermee gecreëerd wordt ("*Want*"). 
 
-1. _Benodigde flex per locatie_ (BBN-GV)
-2. Epic _Capaciteitskaart Belastingprofielen_ (BBN-KV)
-3. Epic _Netvooruitzicht_ (Meer inzicht)
+// In de functionele eisen kunnen sommige woorden #gemarkeerd# zijn. Dat betekent dat de betekenis van dit woord (in deze context) onduidelijk is. Verderop, bij de *Beslissingen en aannames*, wordt een aanname gedaan over die betekenis. Als dat echter niet lukt, of als er een toelichting nodig is dan is de aanname een verzoek om toelichting. 
 
-Voor elk van deze initiatieven moeten functionele eisen (_functional requirements_) worden vastgelegd en geharmoniseerd. Deze functionele eisen vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en welke meerwaarde er mee gecreëerd wordt ("*Want*"). 
-
-Functionele eisen `Algemeen 1` en `MI 1` zijn hoog over eisen. `BBN-GV 1` en  `BBN-KV 1` zijn al wat verder uitgewerkt. Maar er is besloten om te beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (TA).
-
-In de functionele eisen zijn sommige woorden #gemarkeerd#. Dat betekent dat de betekenis van dit woord (in deze context) onduidelijk is. Verderop, bij de *Beslissingen en aannames*, wordt een aanname gedaan over die betekenis. Als dat echter niet lukt, of als er een toelichting nodig is dan is de aanname een verzoek om toelichting. Uitgangspunt is dat in een initiatief een woord niet van betekenis verandert.
-
-.Functionele eisen `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` (gepauzeerd).
-[%collapsible]
-====
-.Functionele eisen (gepauzeerd)
-[cols="2,6,8,8"]
-|===
-|ID |Als rol |Wil ik |Want
-
- |Algemeen {counter:fe} 
- |Derde
- |#flex-informatie#
-a|Ik wil
-
-* inzicht en
-* financieel kunnen prikkelen.
-
-|BBN-GV {counter:fe-bbngv}
-|#netbeheerder#
-|van #elke# #netlocatie# in de #huidige# en #toekomstige# #netconfiguraties# de #verwachte flexbehoefte#. Van deze flexbehoefte wil ik de #omvang#, de #timing#, de #duur# en #veranderlijkheid strategische horizonnen# in een #geharmoniseerde datastructuur#.
-|ik wil #wachtlijsten#  terugdringen door de inzet van #flexibiliteitsveilingen# of door middel van  #verzwaringen#. Deze keuze zal bepaald worden op basis van #kosten# van de #verwachte overschrijdingen#.
-
- |BBN-KV {counter:fe-bbnkv}
- |#gebruiker van de capaciteitskaart# 
-a|van elk #voedingsgebied# en van elk #station# de #toekomstige# #congestie# en de #beschikbare capaciteit# op basis van 
-
-* #toekomstige# #belastingprofielen# (ontwikkeling van belasting), 
-* beschikbare capaciteit (benuttingsgraden, restruimte) en 
-* #netuitbreidingen#
-
-|Ik wil handelingsperspectief krijgen.
-
-|MI {counter:fe-mi}
-|Meer inzicht
-|inzicht
-|handelingsperspectief.
-
-|===
-
-====
-
-=== Functionele eis Technisch Adviseur
-
-////
-*Als* #technisch adviseur betrokken bij de ontwikkeling, beoordeling of inzet van flexibiliteit# (bijv. batterijontwikkelaar, aggregator, energieleverancier, industriële partij of adviesbureau)
-
-*wil ik* inzicht hebben in de #actuele# en #verwachte flexbehoefte# per #netlocatie#, inclusief #omvang#, richting (invoeding of afname), #timing#, #duur#, #onzekerheid# en #veranderlijkheid# over verschillende #tijdshorizonnen#, aangevuld met #relevante# #belastingprofielen#, #operationele limieten#, #restcapaciteit# en #verwachte overschrijdingen#, op basis van een #geharmoniseerde datastructuur#
-
-*want* ik wil kunnen beoordelen #waar# en #wanneer flexibiliteit# technisch en economisch #relevant# is en onderbouwde keuzes maken voor ontwikkeling, locatiebepaling, ontwerp, portfolio-inrichting en #investeringsbeslissingen# op basis van één #geïntegreerde# en #betrouwbare informatiebron# over meerdere #netgebieden# en #netbeheerders# heen.
-////
-
-.Functionele eisen (Technisch Adviseur (TA))
+.Functionele eisen
 [cols="2, 3, 8, 7"]
 |===
 |ID |Als rol |Wil ik |Want
 
- |TA {counter:fe-ta}
+ |TA {counter:fe}
  |Als TA
  |een uniform overzicht van https://begrippen.netbeheernederland.nl/doc/2whwi[aanwezige], https://begrippen.netbeheernederland.nl/doc/7bs28[benodigde] en https://begrippen.netbeheernederland.nl/doc/bma66[regelbare] https://begrippen.netbeheernederland.nl/doc/dwk8c[transportcapaciteit] in een https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] en een https://begrippen.netbeheernederland.nl/doc/7qmcr[congestiegebied]
- |ik wil weten welke batterijoplossingen (ten behoeve van verzwaring of als  regelmiddel) bij dit https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] en https://begrippen.netbeheernederland.nl/doc/7qmcr[congestiegebied] haalbaar zijn.
-
- |TA {counter:fe-ta}
+ |_wordt nagevraagd bij de TA_.
+ 
+ |TA {counter:fe}
  |Als TA
- |een uniform overzicht van de oplosdatums (datum vanaf wanneer de congestie is opgelost) van alle bovenliggende congestiegebieden waar een congestiegebied op LS-niveau deel van uit maakt
- |ik weten wanneer de congestie voor dit congestiegebied op LS-niveau is opgelost.
+ |een uniform overzicht van de oplosdatums (datum vanaf wanneer de congestie is opgelost) van alle bovenliggende congestiegebieden waar een congestiegebied op MS-niveau deel van uit maakt
+ |_wordt nagevraagd bij de TA_.
 
 |===
 
+// fe 1: ik wil weten welke batterijoplossingen (ten behoeve van verzwaring of als  regelmiddel) bij dit https://begrippen.netbeheernederland.nl/doc/8eytm[voedingsgebied] en https://begrippen.netbeheernederland.nl/doc/7qmcr[congestiegebied] haalbaar zijn.
+// fe 2: ik weten wanneer de congestie voor dit congestiegebied op MS-niveau is opgelost.
 
 == Dataservice
 
 === Gebruiksscenario
 
-_Wordt later ingevuld._
+_Kan in deze fase nog niet bepaald worden._
 
 == Dataset
 
@@ -125,16 +69,17 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|_Wordt later ingevuld._
+|_Kan in deze fase nog niet bepaald worden._
 
 |Variety
-|_Wordt later ingevuld._
+|_Kan in deze fase nog niet bepaald worden._
 
 |Veracity
-|_Wordt later ingevuld._
+|_Kan in deze fase nog niet bepaald worden._
 
 |Velocity
-|_Wordt later ingevuld._
+|_Kan in deze fase nog niet bepaald worden._
+
 |===
 
 == Voorwaarden
@@ -143,68 +88,16 @@ Dit dataproduct wordt als _open_ dataproduct aangeboden.
 
 == Beslissingen en aannames
 
-.Beslissingen en aannames `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` (gepauzeerd).
-[%collapsible]
-====
-
+.Beslissingen en aannames
 [cols="2, 3, 6"]
 |===
 |ID |Type |Beschrijving
 
-|Algemeen {counter:bea-algemeen} | Aanname | #flex-informatie# = Antwoord op de vraag '*#Waar#* is *#wanneer#* *#hoeveel#* *#netcapaciteit#* beschikbaar en voor *#hoe lang#*?'.
-|BBN-GV {counter:bea-bbngv} | Aanname | #netbeheerder# = Elke DSO, inclusief Coteq, Rendo en Westland Infra, e ook de TSO (TenneT).
-|BBN-GV {counter:bea-bbngv} | Aanname | #elke netlocatie# =  Afgaand veld. Dus netlocatie vanuit een asset perspectief en niet vanuit een geo of netfunctie persepectief.
-|BBN-GV {counter:bea-bbngv} | Aanname | #huidige netconfiguraties# = Normaalstand ten tijde van het aanmaken van het dataproduct (eigenlijk ten tijde van het aanmaken van de bijbehorende dataset).
-|BBN-GV {counter:bea-bbngv} | Aanname | #toekomstige netconfiguraties# =  Normaalstand over 12 maanden.
-|BBN-GV {counter:bea-bbngv} | Aanname | #netconfiguraties# =  Normaalstand van het netwerk. Dus niet de actuele stand. En er wordt geen rekening gehouden met onderhoud. 
-|BBN-GV {counter:bea-bbngv} | Aanname | #verwachte flexbehoefte# =  De verwachte flexbehoefte voor de komende 12 maanden, uitgesplitst naar invoeding en afname.
-|BBN-GV {counter:bea-bbngv} | Aanname | #flexbehoefte# =  De behoefte aan extra capaciteit bij afname en het overschot aan capaciteit bij invoeding als een functie in de tijd.
-|BBN-GV {counter:bea-bbngv} | Aanname | #omvang#  =  Toelichting nodig.
-|BBN-GV {counter:bea-bbngv} | Aanname | #timing#  = Toelichting nodig.
-|BBN-GV {counter:bea-bbngv} | Aanname | #duur# = Toelichting nodig.
-|BBN-GV {counter:bea-bbngv} | Aanname | #veranderlijkheid# =  Toelichting nodig. 
-|BBN-GV {counter:bea-bbngv} | Aanname | #strategische horizonnen# =  Toelichting nodig.
-|BBN-GV {counter:bea-bbngv} | Aanname | #geharmoniseerde datastructuur# =  CIM opgeslagen in JSON-LD-formaat tbv interoperabiliteit bij data uitwisseling.     
-|BBN-GV {counter:bea-bbngv} | Aanname | #wachtlijst# =  Wachtrijen op LS-, MS- en HS-niveau.
-|BBN-GV {counter:bea-bbngv} | Aanname | #flexibiliteitsveilingen#  =  Toelichting nodig.
-|BBN-GV {counter:bea-bbngv} | Aanname | #verzwaringen#  =  Verzwaringen van kabels en alle andere assets om deze verzwaring effectief te laten wezen.
-|BBN-GV {counter:bea-bbngv} | Aanname | #kosten# =  Toelichting nodig. Hoe worden deze kosten berekend? Wat is de input en hoe ziet de berekening er uit. Welke kosten zijn acceptabel? 
-|BBN-GV {counter:bea-bbngv} | Aanname | #verwachte overschrijdingen# = Toelichting nodig. Welke verwachte overschrijdingen? Hoe vaak, hoe lang, hoe groot? Welke verwachte overschrijdingen zijn acceptabel? 
-
-|BBN-KV {counter:bea-bbnkv} |Aanname |#gebruiker van de capaciteitskaart# = Toelichting nodig. Zijn dit daadwerkelijk alle burgers, overheden, gebiedsontwikkelaars, energieadviseurs, CSP's en grootverbruikers?
-|BBN-KV {counter:bea-bbnkv} |Beslissing |https://begrippen.netbeheernederland.nl/doc/8eytm[#voedingsgebied#] = deel van het aardoppervlak waar zich de https://begrippen.netbeheernederland.nl/doc/fqqa7[overdrachtspunten] van https://begrippen.netbeheernederland.nl/doc/gnhiy[aansluitingen] bevinden die worden gevoed door een bepaald deel van het https://begrippen.netbeheernederland.nl/doc/w9pqm[energienet].
-|BBN-KV {counter:bea-bbnkv} |Aanname |#station#  = De afgaande velden van transformator.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#toekomstige congestie# = Congestie over de 12 maanden.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#congestie#  = Gebrek aan https://begrippen.netbeheernederland.nl/doc/dwk8c[tansportcapaciteit] energie.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#beschikbare capaciteit# = Toelichting nodig.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#toekomstige belastingprofielen# = Belastingprofielen over 12 maanden.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#belastingprofielen# = Toelichting nodig.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#netuitbreidingen# = Verzwaringen die over 12 maanden in bedrijf zijn.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#ontwikkeling van belasting# = Is hetzelfde als #toekomstige belastingprofielen#.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#benuttingsgraden# = Is hetzelfde als #beschikbare capaciteit#.
-|BBN-KV {counter:bea-bbnkv} |Aanname |#restruimte# = Is hetzelfde als #beschikbare capaciteit#.
-
-|MI {counter:bea-mi} |Aanname |Meer inzicht
-
-|===
-
-====
-
-.Beslissingen en aannames `Technisch Adviseur`
-[cols="2, 3, 6"]
-|===
-|ID |Type |Beschrijving
-
- |TA {counter:bea-ta} |Beslissing |Het uitwerken van de functionele eisen van `Algemeen 1`, `BBN-GV 1`,  `BBN-KV 1` en `MI 1` is gepauzeerd. We beginnen met `UC Dataproduct Benodigde Flex per Locatie - BBN-GV _Technisch Adviseur` (Technisch Adviseur)
- |TA {counter:bea-ta} |Aanname |Data wordt aangeleverd conform het ingerichte proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
- |TA {counter:bea-ta} |Aanname |Alleen overdrachtspunten op LS-niveau. En alleen overdrachtspunten waar een batterijoplossing implementeerbaar is
- |TA {counter:bea-ta} |Aanname |Vervallen
- |TA {counter:bea-ta} |Aanname |Alleen huidig net en geen geplande uitbreidingen
- |TA {counter:bea-ta} |Aanname |Doel is inzicht, geen sturing, geen financiële afhandeling.
- |TA {counter:bea-ta} |Beslissing |Het uitwerken van de functionele eisen `TA 1` t/m `TA 7` is gepauzeerd. Eerst data dan functionele eis daar op aanpassen
- |TA {counter:bea-ta} |Aanname |Voor netprognoses 3, 10 en 30 jaren in de toekomst kan `Gepland net` gebruikt worden. Voor 10 jaren vooruit kan ook gebruik worden gemaakt van Aansluitoffensief (10 jaren vooruit)
- |TA {counter:bea-ta} |Beslissing |We prognotiseren 3 jaren vooruit
+ |TA {counter:bea} |Aanname |Data wordt aangeleverd conform het ingerichte proces: Bij elke __system operator__ (DSO, TSO) door het __data deel team__ per NBNL Profiel (bouwblok) in JSON-LD validerend tegen de bijbehorende ShaCL
+ |TA {counter:bea} |Aanname |Doel is inzicht, geen sturing, geen financiële afhandeling.
+ |TA {counter:bea} |Aanname |Alleen huidig net en geen geplande uitbreidingen
+ |TA {counter:bea} |Beslissing |We prognotiseren 3 jaren vooruit
  
 |===
 
-Publicatiedatum 20261016.
+Publicatiedatum 20261019.
