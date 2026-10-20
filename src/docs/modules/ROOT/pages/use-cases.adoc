@@ -59,7 +59,6 @@ a|
 * Netveiligheid
 * Piekbelasting (historisch, 1j)
 * Topologie
-* Verbinding
 * Voedingsgebied
 
 |Belastingprofielen in beeld
@@ -78,7 +77,6 @@ a|
 * Overdrachtspunt
 * *Restruimte*
 * Topologie
-* Verbinding
 * Voedingsgebied
 
 |Buurtnet
@@ -114,7 +112,6 @@ a|
 * Overdrachtspunt
 * *Regelbare transportcapaciteit*
 * Topologie
-* Verbinding
 * Voedingsgebied
 * Wachtrij
 
@@ -134,7 +131,6 @@ a|
 * Overdrachtspunt
 * *Regelbare transportcapaciteit*
 * Topologie
-* Verbinding
 * Voedingsgebied
 * Wachtrij
 
@@ -159,7 +155,6 @@ a|
 * Overdrachtspunt
 * *Regelbare transportcapaciteit*
 * Topologie
-* Verbinding
 * Voedingsgebied
 * Wachtrij
 
@@ -198,7 +193,6 @@ a|
 * Netveiligheid
 * Overdrachtspunt
 * Topologie
-* Verbinding
 * Voedingsgebied
 
 |Stroomnetchecker
@@ -239,7 +233,6 @@ a|
 * Netveiligheid
 * *Regelbare transportcapaciteit*
 * Topologie
-* Verbinding
 * Voedingsgebied
 
 |Wachtlijst herijking
@@ -322,10 +315,12 @@ a|
 |Connectiviteit (gepland net)
 |Equipment
 a|
+* `{eq}ACLineSegment[ACLineSegment]` (>= EQ 3.0)
 * `{eq}BaseVoltage[BaseVoltage]`
 * `{eq}Bay[Bay]` (>= EQ 3.0)
 * `{eq}BusbarSection[BusbarSection]` (>= EQ 3.0)
 * `{eq}ConnectivityNode[ConnectivityNode]`
+* `{eq}Line[Line]` (>= EQ 3.0)
 * `{eq}PowerTransformer[PowerTransformer]`
 * `{eq}PowerTransformerEnd[PowerTransformerEnd]`
 * `{eq}Substation[Substation]`
@@ -415,12 +410,6 @@ a|
 a|
 * `{tp}BusNameMarker[BusNameMarker]` (TP 2.0)
 * `{tp}TopologicalNode[TopologicalNode]`
-
-|Verbinding
-|Equipment
-a|
-* `{eq}ACLineSegment[ACLineSegment]` (>= EQ 3.0)
-* `{eq}Line[Line]` (>= EQ 3.0)
 
 |https://begrippen.netbeheernederland.nl/doc/8eytm[Voedingsgebied]
 |Equipment, Topology
